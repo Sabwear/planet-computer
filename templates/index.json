@@ -30,7 +30,7 @@
             "heading": "Votre espace de travail",
             "text": "",
             "button_label": "Explorer",
-            "button_link": "/search?q=ordinateur&type=product",
+            "button_link": "/collections/ordinateurs-de-bureau",
             "campaign_photo": "workspace"
           }
         },
@@ -40,7 +40,7 @@
             "heading": "Place au gaming",
             "text": "",
             "button_label": "Explorer",
-            "button_link": "/search?q=gaming&type=product",
+            "button_link": "/collections/gaming",
             "campaign_photo": "gaming"
           }
         }
@@ -61,9 +61,10 @@
         "c0": {
           "type": "category",
           "settings": {
-            "label": "Portables",
+            "label": "Ordinateurs portables",
             "icon": "laptop",
-            "link": "/search?q=portable&type=product"
+            "link": "/collections/ordinateurs-portables",
+            "collection": "ordinateurs-portables"
           }
         },
         "c1": {
@@ -71,7 +72,8 @@
           "settings": {
             "label": "PC de bureau",
             "icon": "desktop",
-            "link": "/search?q=bureau&type=product"
+            "link": "/collections/ordinateurs-de-bureau",
+            "collection": "ordinateurs-de-bureau"
           }
         },
         "c2": {
@@ -79,7 +81,8 @@
           "settings": {
             "label": "Gaming",
             "icon": "gaming",
-            "link": "/search?q=gaming&type=product"
+            "link": "/collections/gaming",
+            "collection": "gaming"
           }
         },
         "c3": {
@@ -87,7 +90,8 @@
           "settings": {
             "label": "Moniteurs",
             "icon": "monitor",
-            "link": "/search?q=moniteur&type=product"
+            "link": "/collections/moniteurs",
+            "collection": "moniteurs"
           }
         },
         "c4": {
@@ -95,15 +99,17 @@
           "settings": {
             "label": "Accessoires",
             "icon": "keyboard",
-            "link": "/search?q=accessoire&type=product"
+            "link": "/collections/accessoires-informatiques",
+            "collection": "accessoires-informatiques"
           }
         },
         "c5": {
           "type": "category",
           "settings": {
-            "label": "Stockage",
-            "icon": "storage",
-            "link": "/search?q=stockage&type=product"
+            "label": "Imprimantes",
+            "icon": "printer",
+            "link": "/collections/imprimantes",
+            "collection": "imprimantes"
           }
         }
       },
@@ -134,7 +140,8 @@
         "show_all": true,
         "background": "plain",
         "spacing": 24,
-        "catalog_source": "laptops"
+        "catalog_source": "laptops",
+        "collection": "ordinateurs-portables"
       }
     },
     "campaigns": {
@@ -150,7 +157,7 @@
             "heading": "La mobilité au quotidien",
             "text": "",
             "button_label": "Découvrir",
-            "button_link": "shopify://collections/all",
+            "button_link": "/collections/ordinateurs-portables",
             "campaign_photo": "portable"
           }
         },
@@ -160,7 +167,7 @@
             "heading": "Votre univers gaming",
             "text": "",
             "button_label": "Découvrir",
-            "button_link": "shopify://collections/all",
+            "button_link": "/collections/gaming",
             "campaign_photo": "gaming"
           }
         },
@@ -170,7 +177,7 @@
             "heading": "Un bureau bien équipé",
             "text": "",
             "button_label": "Découvrir",
-            "button_link": "shopify://collections/all",
+            "button_link": "/collections/ordinateurs-de-bureau",
             "campaign_photo": "workspace"
           }
         }
@@ -193,7 +200,8 @@
         "show_all": true,
         "background": "plain",
         "spacing": 24,
-        "catalog_source": "gaming"
+        "catalog_source": "gaming",
+        "collection": "gaming"
       }
     },
     "deals": {
@@ -214,7 +222,7 @@
     "monitors": {
       "type": "product-carousel",
       "settings": {
-        "heading": "Moniteurs & Accessoires",
+        "heading": "Moniteurs",
         "maximum": 12,
         "spec_mode": "monitor",
         "show_price": true,
@@ -223,7 +231,8 @@
         "show_all": true,
         "background": "plain",
         "spacing": 24,
-        "catalog_source": "monitors"
+        "catalog_source": "monitors",
+        "collection": "moniteurs"
       }
     },
     "professional": {
@@ -238,7 +247,8 @@
         "show_all": true,
         "background": "plain",
         "spacing": 24,
-        "catalog_source": "desktop"
+        "catalog_source": "desktop",
+        "collection": "ordinateurs-de-bureau"
       }
     },
     "arrivals": {

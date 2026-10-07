@@ -10,7 +10,7 @@
         {% if settings.pc_contact_phone != blank %}<a href="tel:{{ settings.pc_contact_phone | remove: ' ' | escape }}">{{ settings.pc_contact_phone | escape }}</a>{% endif %}
         {% if settings.social_facebook_link != blank %}<a href="{{ settings.social_facebook_link }}">{{ 'pc.shell.facebook' | t }}</a>{% endif %}
       </div>
-      {% if section.settings.catalog_links %}<div><h2 class="pc-footer__heading">Explorer</h2><ul class="pc-footer__links" role="list"><li><a href="{{ routes.all_products_collection_url }}">Tous les produits</a></li><li><a href="{{ routes.search_url }}?q=portable&amp;type=product">PC portables</a></li><li><a href="{{ routes.search_url }}?q=moniteur&amp;type=product">Moniteurs & accessoires</a></li></ul></div>{% endif %}
+      {% if section.settings.catalog_links %}<div><h2 class="pc-footer__heading">Explorer</h2><ul class="pc-footer__links" role="list"><li><a href="{{ routes.all_products_collection_url }}">Tous les produits</a></li><li><a href="/collections/ordinateurs-portables">PC portables</a></li><li><a href="/collections/moniteurs">Moniteurs</a></li></ul></div>{% endif %}
       {% if section.settings.contact_link != blank %}<div><h2 class="pc-footer__heading">Votre projet</h2><ul class="pc-footer__links" role="list"><li><a href="{{ section.settings.contact_link }}">Nous contacter</a></li>{% if section.settings.guide_link != blank %}<li><a href="{{ section.settings.guide_link }}">Guide d’achat</a></li>{% endif %}<li><a href="{{ routes.cart_url }}">Mon panier</a></li></ul></div>{% endif %}
       {% for block in section.blocks %}
         {% if block.settings.menu.links != blank %}

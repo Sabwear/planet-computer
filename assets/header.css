@@ -78,4 +78,28 @@ pc-predictive-search input[type='search']::-webkit-search-cancel-button { -webki
 .pc-catalog-nav { border-top: 1px solid #edf0f4; background: #f8fafc; }
 .pc-catalog-nav .pc-container { display: flex; gap: 32px; overflow-x: auto; scrollbar-width: thin; }
 .pc-catalog-nav a { flex: 0 0 auto; min-height: 48px; display: inline-flex; align-items: center; color: #25354b; font-size: 1.4rem; text-decoration: none; font-weight: 600; }
-.pc-catalog-nav a:hover { color: var(--pc-accent); text-decoration: underline; }
+.pc-catalog-nav a:hover { color: var(--pc-color-accent); text-decoration: underline; }
+
+/* Retail masthead and editable campaign strip. */
+.pc-announcements--accent { background: #c92825; }
+.pc-announcements__row { justify-content: space-between; font-weight: 600; letter-spacing: .02em; }
+.pc-announcements a { display: inline-flex; align-items: center; min-height: 28px; text-decoration: none; }
+.pc-announcements a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.pc-announcements a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.pc-catalog-nav .pc-container { gap: 26px; }
+.pc-catalog-nav__all { color: #fff !important; background: var(--pc-color-primary); padding-inline: 16px; gap: 10px; border-radius: 5px 5px 0 0; }
+.pc-catalog-nav__all .pc-icon { width: 18px; height: 18px; }
+.pc-search:focus-within { border-color: var(--pc-color-primary); box-shadow: 0 0 0 2px rgb(23 42 71 / 10%); }
+@media (min-width:1024px) {
+  .pc-header-section:has(.pc-header--sticky) { position: sticky; top: 0; z-index: 40; }
+  .pc-header--sticky .pc-header__surface { box-shadow: 0 3px 12px rgb(23 42 71 / 6%); }
+  .pc-header__row { padding-block: 20px; }
+  .pc-desktop-nav--utilities .pc-nav-list { justify-content: flex-end; gap: 24px; }
+  .pc-desktop-nav--utilities .pc-nav-link, .pc-desktop-nav--utilities .pc-mega summary { min-height: 36px; padding-block: 4px; font-size: 1.2rem; }
+}
+@media (max-width:767px) {
+  .pc-announcements__row { justify-content: center; gap: 0; padding-block: 4px; font-size: 1.05rem; }
+  .pc-announcements__row > div + div { display: none; }
+  .pc-catalog-nav .pc-container { gap: 20px; }
+  .pc-catalog-nav a { font-size: 1.2rem; min-height: 44px; }
+}

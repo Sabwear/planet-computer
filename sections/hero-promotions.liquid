@@ -1,4 +1,5 @@
 {{ 'homepage.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'pc-retail-motion.js' | asset_url }}" defer="defer"></script>
 {% if section.settings.heading != blank or section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
   <section class="pc-hero pc-section" style="padding-block: {{ section.settings.spacing }}px">
     <div class="pc-container pc-hero__grid">

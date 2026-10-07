@@ -4,16 +4,95 @@
   "sections": {
     "announcement-bar": {
       "type": "pc-announcement-bar",
-      "settings": {},
-      "blocks": {},
-      "block_order": []
+      "settings": {
+        "style": "accent"
+      },
+      "blocks": {
+        "catalog": {
+          "type": "announcement",
+          "settings": {
+            "text": "LE BON ÉQUIPEMENT POUR CHAQUE PROJET",
+            "link": "shopify://collections/all"
+          }
+        },
+        "contact": {
+          "type": "announcement",
+          "settings": {
+            "text": "Un projet professionnel ? Contactez-nous",
+            "link": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "catalog",
+        "contact"
+      ]
     },
     "header": {
       "type": "pc-header",
       "settings": {
         "menu": "main-menu",
-        "catalog_navigation": true
-      }
+        "catalog_navigation": true,
+        "sticky_header": true
+      },
+      "blocks": {
+        "category0": {
+          "type": "category",
+          "settings": {
+            "collection": "ordinateurs-portables",
+            "label": "Ordinateurs portables",
+            "link": "/collections/ordinateurs-portables"
+          }
+        },
+        "category1": {
+          "type": "category",
+          "settings": {
+            "collection": "ordinateurs-de-bureau",
+            "label": "PC de bureau",
+            "link": "/collections/ordinateurs-de-bureau"
+          }
+        },
+        "category2": {
+          "type": "category",
+          "settings": {
+            "collection": "gaming",
+            "label": "Gaming",
+            "link": "/collections/gaming"
+          }
+        },
+        "category3": {
+          "type": "category",
+          "settings": {
+            "collection": "moniteurs",
+            "label": "Moniteurs",
+            "link": "/collections/moniteurs"
+          }
+        },
+        "category4": {
+          "type": "category",
+          "settings": {
+            "collection": "accessoires-informatiques",
+            "label": "Accessoires",
+            "link": "/collections/accessoires-informatiques"
+          }
+        },
+        "category5": {
+          "type": "category",
+          "settings": {
+            "collection": "imprimantes",
+            "label": "Imprimantes",
+            "link": "/collections/imprimantes"
+          }
+        }
+      },
+      "block_order": [
+        "category0",
+        "category1",
+        "category2",
+        "category3",
+        "category4",
+        "category5"
+      ]
     }
   },
   "order": [

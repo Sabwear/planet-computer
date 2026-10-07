@@ -4,7 +4,7 @@
   {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 {% endif %}
-<pc-header class="pc-header" data-section-id="{{ section.id }}">
+<pc-header class="pc-header{% if section.settings.sticky_header %} pc-header--sticky{% endif %}" data-section-id="{{ section.id }}">
   <header class="pc-header__surface">
     <div class="pc-container pc-header__row">
       {% if section.settings.menu.links != blank %}
@@ -39,7 +39,7 @@
       </div>
     </div>
     {% if section.settings.menu.links != blank %}
-      <nav class="pc-desktop-nav pc-container" aria-label="{{ 'pc.shell.main_navigation' | t }}">
+      <nav class="pc-desktop-nav pc-container{% if section.settings.catalog_navigation %} pc-desktop-nav--utilities{% endif %}" aria-label="{{ 'pc.shell.main_navigation' | t }}">
         <ul class="pc-nav-list" role="list">
           {% for link in section.settings.menu.links %}
             <li>
@@ -73,7 +73,16 @@
         <nav aria-label="{{ 'pc.shell.main_navigation' | t }}">{% render 'pc-mobile-navigation', menu: section.settings.menu %}</nav>
       </dialog>
     {% endif %}
-    {% if section.settings.catalog_navigation %}<nav class="pc-catalog-nav" aria-label="Univers informatiques"><div class="pc-container"><a href="{{ routes.all_products_collection_url }}">Tout le catalogue</a><a href="{{ routes.search_url }}?q=portable&amp;type=product">PC portables</a><a href="{{ routes.search_url }}?q=bureau&amp;type=product">PC de bureau</a><a href="{{ routes.search_url }}?q=gaming&amp;type=product">Gaming</a><a href="{{ routes.search_url }}?q=moniteur&amp;type=product">Moniteurs</a><a href="{{ routes.search_url }}?q=accessoire&amp;type=product">Accessoires</a></div></nav>{% endif %}
+    {% if section.settings.catalog_navigation %}
+      <nav class="pc-catalog-nav" aria-label="Univers informatiques"><div class="pc-container">
+        <a class="pc-catalog-nav__all" href="{{ routes.all_products_collection_url }}">{% render 'pc-icon', name: 'menu' %} Tout le catalogue</a>
+        {% for block in section.blocks %}
+          {% assign category_url = block.settings.collection.url | default: block.settings.link %}
+          {% assign category_label = block.settings.label | default: block.settings.collection.title %}
+          {% if category_url != blank and category_label != blank %}<a href="{{ category_url }}" {{ block.shopify_attributes }}>{{ category_label | escape }}</a>{% endif %}
+        {% endfor %}
+      </div></nav>
+    {% endif %}
   </header>
 </pc-header>
 {% if settings.cart_type == 'notification' %}{% render 'cart-notification' %}{% endif %}
@@ -86,7 +95,9 @@
       "header"
     ]
   },
-  "settings": [{"type":"checkbox","id":"catalog_navigation","label":"Afficher les univers informatiques","default":false},
+  "max_blocks": 10,
+  "blocks": [{"type":"category","name":"Univers informatique","settings":[{"type":"collection","id":"collection","label":"Collection"},{"type":"text","id":"label","label":"Libellé"},{"type":"url","id":"link","label":"Lien alternatif"}]}],
+  "settings": [{"type":"checkbox","id":"sticky_header","label":"En-tête fixe sur grand écran","default":false},{"type":"checkbox","id":"catalog_navigation","label":"Afficher les univers informatiques","default":false},
     {
       "type": "link_list",
       "id": "menu",
