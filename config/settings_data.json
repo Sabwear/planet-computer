@@ -188,7 +188,9 @@
           "color_scheme": "scheme-1"
         }
       }
-    }
+    },
+    "pc_brand_name": "Planet Computer",
+    "pc_system_font": true
   },
   "presets": {
     "Planet Computer": {
