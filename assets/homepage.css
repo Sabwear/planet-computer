@@ -141,3 +141,5 @@ pc-carousel { display: block; }
  .pc-promo-grid .pc-campaign-tile { flex: 0 0 88%; scroll-snap-align: start; }
  .pc-promo-grid .pc-campaign-tile--photo h3 { font-size: 2rem; }
 }
+.pc-hero__content .pc-title { font-weight: 750; }
+.pc-campaign-tile--photo h2, .pc-campaign-tile--photo h3 { color: inherit; font-weight: 700; }
