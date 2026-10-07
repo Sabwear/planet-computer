@@ -8,8 +8,10 @@
           {% assign category_url = block.settings.collection.url | default: block.settings.link %}
           {% if category_url != blank %}
             {% assign category_image = block.settings.image | default: block.settings.collection.image %}
+            {% assign category_asset = 'pc-category-' | append: block.settings.icon | append: '.webp' %}
+            {% if block.settings.icon == 'printer' %}{% assign category_asset = 'pc-product-58031561-1.jpg' %}{% endif %}
             <li {{ block.shopify_attributes }}><a href="{{ category_url }}">
-              {% if category_image != blank %}<span class="pc-category-image">{% render 'responsive-image', image: category_image, alt: '', decorative: true, sizes: '120px', image_class: 'pc-product-image' %}</span>{% else %}{% if section.settings.photographic_categories %}<span class="pc-category-image"><img src="{% if block.settings.icon == 'printer' %}{{ 'pc-product-58031561-1.jpg' | asset_url }}{% else %}{{ 'pc-category-' | append: block.settings.icon | append: '.webp' | asset_url }}{% endif %}" width="256" height="256" alt="" loading="lazy"></span>{% else %}<span class="pc-category-image pc-category-icon">{% render 'pc-icon', name: block.settings.icon %}</span>{% endif %}{% endif %}
+              {% if category_image != blank %}<span class="pc-category-image">{% render 'responsive-image', image: category_image, alt: '', decorative: true, sizes: '120px', image_class: 'pc-product-image' %}</span>{% else %}{% if section.settings.photographic_categories %}<span class="pc-category-image"><img src="{{ category_asset | asset_url }}" width="256" height="256" alt="" loading="lazy"></span>{% else %}<span class="pc-category-image pc-category-icon">{% render 'pc-icon', name: block.settings.icon %}</span>{% endif %}{% endif %}
               <span>{{ block.settings.label | default: block.settings.collection.title | escape }}</span>
             </a></li>
           {% endif %}
