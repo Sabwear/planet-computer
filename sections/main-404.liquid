@@ -1,0 +1,16 @@
+{{ 'pc-support.css' | asset_url | stylesheet_tag }}
+<section class="pc-section pc-not-found"><div class="pc-container"><div class="pc-not-found__panel pc-stack">
+  <p class="pc-eyebrow">ERREUR 404</p>
+  <h1 class="pc-title">{{ section.settings.heading | default: 'Page introuvable' | escape }}</h1>
+  <p class="pc-muted">{{ section.settings.text | escape }}</p>
+  <form class="pc-not-found__search" action="{{ routes.search_url }}" method="get" role="search">
+    <label class="visually-hidden" for="PCMissingSearch-{{ section.id }}">Rechercher un produit</label>
+    <input id="PCMissingSearch-{{ section.id }}" name="q" type="search" placeholder="Modèle, processeur, RAM, SSD…" required maxlength="200">
+    <input type="hidden" name="type" value="product">
+    <button class="pc-button" type="submit">{% render 'pc-icon', name: 'search' %}<span class="visually-hidden">Rechercher</span></button>
+  </form>
+  <div class="pc-not-found__actions"><a class="pc-button" href="{{ routes.all_products_collection_url }}">Explorer le catalogue</a><a class="pc-button pc-button--secondary" href="{{ routes.root_url }}">Retour à l’accueil</a></div>
+</div></div></section>
+{% schema %}
+{"name":"Page introuvable Planet","settings":[{"type":"text","id":"heading","label":"Titre","default":"Retrouvons votre chemin."},{"type":"textarea","id":"text","label":"Description","default":"Cette page est introuvable. Retrouvez un produit avec la recherche ou explorez le catalogue."}]}
+{% endschema %}

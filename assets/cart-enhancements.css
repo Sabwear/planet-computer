@@ -1,0 +1,4 @@
+.cart-items td { overflow-wrap: anywhere; }
+.cart-item__name { font-size: 1.5rem; }
+.cart__checkout-button { min-height: 48px; border-radius: var(--pc-radius-sm); }
+@media (max-width: 749px) { .cart-item { column-gap: 12px; } .cart-item__details { min-width: 0; } }

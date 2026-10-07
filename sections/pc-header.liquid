@@ -1,0 +1,104 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'mega-menu.js' | asset_url }}" defer="defer"></script>
+{% if settings.cart_type == 'notification' %}
+  {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+{% endif %}
+<pc-header class="pc-header" data-section-id="{{ section.id }}">
+  <header class="pc-header__surface">
+    <div class="pc-container pc-header__row">
+      {% if section.settings.menu.links != blank %}
+        <button class="pc-icon-button pc-menu-trigger" type="button" data-menu-open hidden aria-haspopup="dialog" aria-controls="PCMenu-{{ section.id }}" aria-expanded="false">
+          {% render 'pc-icon', name: 'menu' %}<span class="visually-hidden">{{ 'pc.shell.open_menu' | t }}</span>
+        </button>
+      {% endif %}
+      <a class="pc-brand" href="{{ routes.root_url }}">
+        {% if settings.logo != blank %}
+          {% assign logo_alt = settings.logo.alt | default: shop.name %}
+          {{ settings.logo | image_url: width: 600 | image_tag: widths: '100, 200, 300, 400, 600', sizes: '(max-width: 767px) 140px, 200px', alt: logo_alt, class: 'pc-brand__logo' }}
+        {% else %}
+          <span>{{ settings.pc_brand_name | default: shop.name | escape }}</span>
+        {% endif %}
+      </a>
+      {% if settings.predictive_search_enabled %}<script src="{{ 'pc-predictive-search.js' | asset_url }}" defer="defer"></script><pc-predictive-search class="pc-search-container" data-url="{{ routes.predictive_search_url }}" data-loading="{{ 'pc.search.loading' | t }}" data-results-label="{{ 'pc.search.results' | t }}" data-failure="{{ 'pc.search.failure' | t }}">{% endif %}
+      <form class="pc-search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="PCSearch-{{ section.id }}">{{ 'pc.shell.search_label' | t }}</label>
+        <input id="PCSearch-{{ section.id }}" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'pc.shell.search_placeholder' | t }}" maxlength="200">
+        <input type="hidden" name="options[prefix]" value="last">
+        {% if settings.predictive_search_enabled %}<button type="reset" class="pc-search-reset" hidden aria-label="{{ 'pc.search.clear' | t }}">{% render 'pc-icon', name: 'close' %}</button>{% endif %}
+        <button type="submit" class="pc-search__submit">{% render 'pc-icon', name: 'search' %}<span class="visually-hidden">{{ 'pc.shell.search_submit' | t }}</span></button>
+      </form>
+      {% if settings.predictive_search_enabled %}<div class="pc-predictive-results" id="PCSuggestions-{{ section.id }}" data-pc-results role="listbox" aria-label="{{ 'pc.search.suggestions' | t }}" hidden></div><span class="visually-hidden" data-pc-status role="status"></span></pc-predictive-search>{% endif %}
+      <div class="pc-header__actions">
+        {% if shop.customer_accounts_enabled %}
+          <a class="pc-icon-button pc-account" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">
+            {% render 'pc-icon', name: 'account' %}<span class="pc-action-label">{{ 'pc.shell.account' | t }}</span>
+          </a>
+        {% endif %}
+        <a class="pc-icon-button pc-cart" href="{{ routes.cart_url }}" id="cart-icon-bubble">{% render 'pc-cart-icon' %}</a>
+      </div>
+    </div>
+    {% if section.settings.menu.links != blank %}
+      <nav class="pc-desktop-nav pc-container" aria-label="{{ 'pc.shell.main_navigation' | t }}">
+        <ul class="pc-nav-list" role="list">
+          {% for link in section.settings.menu.links %}
+            <li>
+              {% if link.links != blank %}
+                <details class="pc-mega">
+                  <summary>{{ link.title | escape }}{% render 'pc-icon', name: 'chevron' %}</summary>
+                  <div class="pc-mega__panel">
+                    <a class="pc-mega__all" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ 'pc.shell.view_category' | t: category: link.title | escape }}</a>
+                    <ul class="pc-mega__groups" role="list">
+                      {% for child in link.links %}
+                        <li><a class="pc-mega__heading" href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title | escape }}</a>
+                          {% if child.links != blank %}<ul class="pc-mega__children" role="list">{% for grandchild in child.links %}<li><a href="{{ grandchild.url }}"{% if grandchild.current %} aria-current="page"{% endif %}>{{ grandchild.title | escape }}</a></li>{% endfor %}</ul>{% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </details>
+              {% else %}
+                <a class="pc-nav-link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+      <details class="pc-mobile-fallback pc-container" data-menu-fallback>
+        <summary>{{ 'pc.shell.menu' | t }}</summary>
+        <nav aria-label="{{ 'pc.shell.main_navigation' | t }}">{% render 'pc-mobile-navigation', menu: section.settings.menu %}</nav>
+      </details>
+      <dialog class="pc-menu-dialog" id="PCMenu-{{ section.id }}" aria-labelledby="PCMenuTitle-{{ section.id }}">
+        <div class="pc-menu-dialog__top"><h2 id="PCMenuTitle-{{ section.id }}">{{ 'pc.shell.menu' | t }}</h2><button class="pc-icon-button" type="button" data-menu-close autofocus>{% render 'pc-icon', name: 'close' %}<span class="visually-hidden">{{ 'pc.shell.close_menu' | t }}</span></button></div>
+        <nav aria-label="{{ 'pc.shell.main_navigation' | t }}">{% render 'pc-mobile-navigation', menu: section.settings.menu %}</nav>
+      </dialog>
+    {% endif %}
+    {% if section.settings.catalog_navigation %}<nav class="pc-catalog-nav" aria-label="Univers informatiques"><div class="pc-container"><a href="{{ routes.all_products_collection_url }}">Tout le catalogue</a><a href="{{ routes.search_url }}?q=portable&amp;type=product">PC portables</a><a href="{{ routes.search_url }}?q=bureau&amp;type=product">PC de bureau</a><a href="{{ routes.search_url }}?q=gaming&amp;type=product">Gaming</a><a href="{{ routes.search_url }}?q=moniteur&amp;type=product">Moniteurs</a><a href="{{ routes.search_url }}?q=accessoire&amp;type=product">Accessoires</a></div></nav>{% endif %}
+  </header>
+</pc-header>
+{% if settings.cart_type == 'notification' %}{% render 'cart-notification' %}{% endif %}
+{% schema %}
+{
+  "name": "En-tête Planet Computer",
+  "class": "pc-header-section",
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "settings": [{"type":"checkbox","id":"catalog_navigation","label":"Afficher les univers informatiques","default":false},
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu principal",
+      "default": "main-menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "En-tête Planet Computer"
+    }
+  ],
+  "limit": 1
+}
+{% endschema %}

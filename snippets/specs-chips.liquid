@@ -1,0 +1,15 @@
+{% liquid
+  assign keys = 'cpu,ram,storage,screen_size' | split: ','
+  if mode == 'gaming'
+    assign keys = 'cpu,gpu,ram,storage' | split: ','
+  elsif mode == 'monitor'
+    assign keys = 'screen_size,resolution,refresh_rate,panel_type' | split: ','
+  endif
+%}
+<ul class="pc-specs" role="list">
+  {% for key in keys %}
+    {% assign value = product.metafields.tech[key].value %}
+    {% assign label_key = 'pc.specs.' | append: key %}
+    {% if value != blank %}<li><span class="visually-hidden">{{ label_key | t }} : </span>{{ value | escape }}</li>{% endif %}
+  {% endfor %}
+</ul>

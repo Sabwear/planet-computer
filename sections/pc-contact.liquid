@@ -1,0 +1,62 @@
+{{ 'pc-support.css' | asset_url | stylesheet_tag }}
+<section class="pc-section pc-contact">
+  <div class="pc-container">
+    <nav class="pc-support-breadcrumb" aria-label="Fil d’Ariane"><a href="{{ routes.root_url }}">Accueil</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
+    <div class="pc-contact__layout">
+      <div class="pc-contact__intro pc-stack">
+        <p class="pc-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h1 class="pc-title">{{ section.settings.heading | default: page.title | escape }}</h1>
+        {% if section.settings.text != blank %}<div class="rte pc-muted">{{ section.settings.text }}</div>{% endif %}
+        {% if page.content != blank %}<div class="rte">{{ page.content }}</div>{% endif %}
+        <div class="pc-contact__notes pc-stack">
+          {% if section.settings.notes_heading != blank %}<h2>{{ section.settings.notes_heading | escape }}</h2>{% endif %}
+          <p class="pc-muted">{{ section.settings.notes | escape }}</p>
+          {% if settings.pc_contact_email != blank %}<a class="pc-support-link" href="mailto:{{ settings.pc_contact_email | escape }}">{% render 'pc-icon', name: 'email' %}{{ settings.pc_contact_email | escape }}</a>{% endif %}
+          {% if settings.pc_contact_phone != blank %}<a class="pc-support-link" href="tel:{{ settings.pc_contact_phone | remove: ' ' | escape }}">{% render 'pc-icon', name: 'phone' %}{{ settings.pc_contact_phone | escape }}</a>{% endif %}
+          {% if settings.pc_address != blank %}<p>{{ settings.pc_address | escape | newline_to_br }}</p>{% endif %}
+          <a class="pc-support-link" href="{{ routes.all_products_collection_url }}">Explorer le catalogue {% render 'pc-icon', name: 'chevron' %}</a>
+        </div>
+      </div>
+      <div class="pc-contact__panel">
+        <h2 class="pc-section-heading">{{ section.settings.form_heading | default: 'Écrivez-nous' | escape }}</h2>
+        <p class="pc-muted pc-contact__required">Les champs marqués d’un * sont obligatoires.</p>
+        {% assign form_id = 'PCContact-' | append: section.id %}
+        {% form 'contact', id: form_id %}
+          {% if form.posted_successfully? %}
+            <div class="pc-form-status pc-form-status--success" role="status" tabindex="-1" autofocus><h3>Votre message a bien été envoyé.</h3><p>Merci de nous avoir contactés.</p></div>
+          {% else %}
+            {% if form.errors %}<div class="pc-form-status pc-form-status--error" role="alert" tabindex="-1" autofocus><h3>Votre message n’a pas été envoyé.</h3>{{ form.errors | default_errors }}</div>{% endif %}
+            <div class="pc-contact__fields">
+              <div class="pc-form-field"><label for="{{ form_id }}-name">Nom *</label><input id="{{ form_id }}-name" name="contact[name]" autocomplete="name" required maxlength="120" value="{{ form.name | default: customer.name | escape }}"></div>
+              <div class="pc-form-field"><label for="{{ form_id }}-email">Adresse e-mail *</label><input id="{{ form_id }}-email" name="contact[email]" type="email" autocomplete="email" required maxlength="254" autocapitalize="off" spellcheck="false" value="{{ form.email | default: customer.email | escape }}"{% if form.errors contains 'email' %} aria-invalid="true"{% endif %}></div>
+              <div class="pc-form-field"><label for="{{ form_id }}-phone">Téléphone <span>(facultatif)</span></label><input id="{{ form_id }}-phone" name="contact[phone]" type="tel" autocomplete="tel" maxlength="40" value="{{ form.phone | escape }}"></div>
+              <div class="pc-form-field"><label for="{{ form_id }}-subject">Votre demande</label><select id="{{ form_id }}-subject" name="contact[Projet]"><option>Question sur un produit</option><option>Projet professionnel</option><option>Compatibilité et configuration</option><option>Commande existante</option><option>Autre demande</option></select></div>
+              {% if section.settings.company_field %}<div class="pc-form-field pc-form-field--wide"><label for="{{ form_id }}-company">Entreprise <span>(facultatif)</span></label><input id="{{ form_id }}-company" name="contact[Entreprise]" autocomplete="organization" maxlength="160"></div>{% endif %}
+              <div class="pc-form-field pc-form-field--wide"><label for="{{ form_id }}-message">Votre message *</label><textarea id="{{ form_id }}-message" name="contact[body]" rows="6" required maxlength="5000" aria-describedby="{{ form_id }}-hint">{{ form.body | escape }}</textarea><p class="pc-muted pc-field-hint" id="{{ form_id }}-hint">Précisez le modèle, votre usage ou votre numéro de commande si nécessaire.</p></div>
+            </div>
+            {% if shop.privacy_policy != blank %}<p class="pc-contact__privacy">Consultez notre <a href="{{ shop.privacy_policy.url }}">politique de confidentialité</a> pour connaître le traitement de vos données.</p>{% endif %}
+            <button class="pc-button" type="submit">Envoyer mon message {% render 'pc-icon', name: 'chevron' %}</button>
+          {% endif %}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name":"Contact Planet",
+  "limit":1,
+  "enabled_on":{"templates":["page"]},
+  "settings":[
+    {"type":"text","id":"eyebrow","label":"Surtitre","default":"PARLONS DE VOTRE PROJET"},
+    {"type":"text","id":"heading","label":"Titre principal","default":"Votre prochain projet commence ici."},
+    {"type":"richtext","id":"text","label":"Présentation","default":"<p>Une question sur une configuration, un besoin professionnel ou une commande ? Partagez les détails de votre demande.</p>"},
+    {"type":"text","id":"notes_heading","label":"Titre des conseils","default":"Pour une demande précise"},
+    {"type":"textarea","id":"notes","label":"Conseils","default":"Indiquez votre usage, les logiciels concernés, les quantités recherchées et votre budget si vous le souhaitez."},
+    {"type":"text","id":"form_heading","label":"Titre du formulaire","default":"Écrivez-nous"},
+    {"type":"checkbox","id":"company_field","label":"Champ entreprise","default":true},
+    {"type":"paragraph","content":"Le formulaire utilise Shopify. Les coordonnées affichées proviennent uniquement des paramètres confirmés du thème. Aucun délai de réponse n’est promis."}
+  ],
+  "presets":[{"name":"Contact Planet"}]
+}
+{% endschema %}

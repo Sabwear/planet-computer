@@ -1,0 +1,17 @@
+{% if image != blank %}
+  {% liquid
+    assign image_alt = alt | default: image.alt
+    if decorative
+      assign image_alt = ''
+    endif
+    assign image_sizes = sizes | default: '(min-width: 1280px) 260px, (min-width: 768px) 30vw, 45vw'
+    assign image_widths = widths | default: '160, 240, 320, 480, 640, 960, 1280, 1600'
+    assign loading = 'lazy'
+    assign priority = 'auto'
+    if eager
+      assign loading = 'eager'
+      assign priority = 'high'
+    endif
+  %}
+  {{ image | image_url: width: 1600 | image_tag: widths: image_widths, sizes: image_sizes, width: image.width, height: image.height, alt: image_alt, loading: loading, fetchpriority: priority, class: image_class }}
+{% endif %}

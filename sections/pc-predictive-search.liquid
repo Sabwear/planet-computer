@@ -1,0 +1,12 @@
+<div data-pc-suggestions data-count="{{ predictive_search.resources.products.size }}">
+  {% if predictive_search.resources.products.size > 0 %}
+    <ul class="pc-suggestions" role="presentation">
+      {% for product in predictive_search.resources.products %}
+        <li role="presentation"><a role="option" aria-selected="false" id="PCSuggestion-{{ product.id }}" data-option href="{{ product.url }}" tabindex="-1">
+          {% if product.featured_image != blank %}{% render 'responsive-image', image: product.featured_image, alt: '', decorative: true, sizes: '64px', image_class: 'pc-suggestion-image' %}{% endif %}
+          <div><p class="pc-suggestion-title">{{ product.title | escape }}</p>{% render 'pc-price', product: product %}{% render 'specs-chips', product: product %}</div>
+        </a></li>
+      {% endfor %}
+    </ul>
+  {% else %}<p class="pc-suggestions-empty">{{ 'pc.search.empty' | t }}</p>{% endif %}
+</div>

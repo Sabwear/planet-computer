@@ -1,0 +1,23 @@
+{
+  "name": "En-tête",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "pc-announcement-bar",
+      "settings": {},
+      "blocks": {},
+      "block_order": []
+    },
+    "header": {
+      "type": "pc-header",
+      "settings": {
+        "menu": "main-menu",
+        "catalog_navigation": true
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

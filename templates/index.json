@@ -1,0 +1,322 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-promotions",
+      "settings": {
+        "spacing": 24,
+        "editorial_art": true,
+        "eyebrow": "PLANET COMPUTER · INFORMATIQUE",
+        "heading": "Un nouvel élan pour vos idées.",
+        "text": "<p>Travail, création, gaming : trouvez l’équipement qui correspond à votre quotidien.</p>",
+        "button_label": "Explorer le catalogue",
+        "button_link": "shopify://collections/all",
+        "secondary_label": "Parlons de votre projet",
+        "secondary_link": "shopify://pages/contact"
+      },
+      "blocks": {
+        "work": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Votre espace de travail",
+            "text": "Du bureau à vos déplacements, pensez confort et polyvalence.",
+            "button_label": "Explorer",
+            "button_link": "/search?q=ordinateur&type=product"
+          }
+        },
+        "gaming": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Place au gaming",
+            "text": "Comparez les configurations et choisissez votre prochaine expérience.",
+            "button_label": "Explorer",
+            "button_link": "/search?q=gaming&type=product"
+          }
+        }
+      },
+      "block_order": [
+        "work",
+        "gaming"
+      ]
+    },
+    "categories": {
+      "type": "category-circles",
+      "settings": {
+        "spacing": 24,
+        "heading": "Explorez nos univers"
+      },
+      "blocks": {
+        "c0": {
+          "type": "category",
+          "settings": {
+            "label": "Portables",
+            "icon": "laptop",
+            "link": "/search?q=portable&type=product"
+          }
+        },
+        "c1": {
+          "type": "category",
+          "settings": {
+            "label": "PC de bureau",
+            "icon": "desktop",
+            "link": "/search?q=bureau&type=product"
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "label": "Gaming",
+            "icon": "gaming",
+            "link": "/search?q=gaming&type=product"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "label": "Moniteurs",
+            "icon": "monitor",
+            "link": "/search?q=moniteur&type=product"
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "label": "Accessoires",
+            "icon": "keyboard",
+            "link": "/search?q=accessoire&type=product"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "label": "Stockage",
+            "icon": "storage",
+            "link": "/search?q=stockage&type=product"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ]
+    },
+    "brands": {
+      "type": "brand-strip",
+      "settings": {
+        "spacing": 16
+      }
+    },
+    "laptops": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "PC Portables",
+        "maximum": 10,
+        "spec_mode": "computer",
+        "show_price": true,
+        "quick_add": true,
+        "carousel": true,
+        "show_all": true,
+        "background": "plain",
+        "spacing": 32
+      }
+    },
+    "campaigns": {
+      "type": "promo-grid",
+      "settings": {
+        "spacing": 24,
+        "heading": "Le bon équipement commence par le bon usage"
+      },
+      "blocks": {
+        "p0": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Travailler partout",
+            "text": "Format, autonomie, clavier : les critères à comparer pour vos déplacements.",
+            "button_label": "Voir le catalogue",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "p1": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Créer sans limites",
+            "text": "Processeur, mémoire et écran : composez un environnement adapté à vos projets.",
+            "button_label": "Voir le catalogue",
+            "button_link": "shopify://collections/all"
+          }
+        },
+        "p2": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Soigner chaque détail",
+            "text": "Écran, connectique et accessoires : construisez un bureau qui vous ressemble.",
+            "button_label": "Voir le catalogue",
+            "button_link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "p0",
+        "p1",
+        "p2"
+      ]
+    },
+    "gaming": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "Gaming",
+        "maximum": 10,
+        "spec_mode": "gaming",
+        "show_price": true,
+        "quick_add": true,
+        "carousel": true,
+        "show_all": true,
+        "background": "plain",
+        "spacing": 32
+      }
+    },
+    "deals": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "À ne pas manquer",
+        "maximum": 10,
+        "spec_mode": "computer",
+        "show_price": true,
+        "quick_add": true,
+        "carousel": true,
+        "show_all": true,
+        "background": "deals",
+        "spacing": 32
+      }
+    },
+    "monitors": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "Moniteurs & Accessoires",
+        "maximum": 10,
+        "spec_mode": "monitor",
+        "show_price": true,
+        "quick_add": true,
+        "carousel": true,
+        "show_all": true,
+        "background": "plain",
+        "spacing": 32
+      }
+    },
+    "professional": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "Professionnel / Workstations",
+        "maximum": 10,
+        "spec_mode": "computer",
+        "show_price": true,
+        "quick_add": true,
+        "carousel": true,
+        "show_all": true,
+        "background": "plain",
+        "spacing": 32
+      }
+    },
+    "arrivals": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "Nouveaux Arrivages",
+        "maximum": 10,
+        "spec_mode": "computer",
+        "show_price": true,
+        "quick_add": true,
+        "carousel": true,
+        "show_all": true,
+        "background": "soft",
+        "spacing": 32
+      }
+    },
+    "b2b": {
+      "type": "b2b-quote-cta",
+      "settings": {
+        "enabled": true,
+        "heading": "Un projet d’équipement ?",
+        "text": "<p>Partagez votre usage, votre budget et les configurations recherchées pour commencer la discussion.</p>",
+        "button_label": "Nous contacter",
+        "button_link": "shopify://pages/contact",
+        "spacing": 32
+      }
+    },
+    "services": {
+      "type": "pc-services",
+      "settings": {}
+    },
+    "newsletter": {
+      "type": "pc-newsletter",
+      "settings": {
+        "enabled": false
+      }
+    },
+    "guide": {
+      "type": "pc-buying-guide",
+      "settings": {
+        "anchor": "guide-achat",
+        "eyebrow": "LES REPÈRES UTILES",
+        "heading": "Choisir avec les bonnes informations.",
+        "text": "Du premier repérage à la comparaison des configurations, gardez les critères qui comptent pour vous.",
+        "button_label": "Poser une question",
+        "button_link": "shopify://pages/contact"
+      },
+      "blocks": {
+        "q0": {
+          "type": "question",
+          "settings": {
+            "question": "Quels critères comparer pour un ordinateur ?",
+            "answer": "<p>Commencez par votre usage et vos logiciels. Comparez ensuite le processeur, la mémoire, le stockage, l’écran et la connectique indiqués sur chaque fiche produit.</p>"
+          }
+        },
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Comment vérifier la compatibilité d’un accessoire ?",
+            "answer": "<p>Comparez la référence exacte de votre appareil avec les modèles, ports et dimensions indiqués dans la fiche de l’accessoire. En cas de doute, transmettez-nous les deux références avant de commander.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Où trouver l’état et les caractéristiques du produit ?",
+            "answer": "<p>Consultez les informations et les photos de la fiche produit. Si l’état, une caractéristique ou les conditions de garantie ne sont pas indiqués, demandez une précision avant de commander.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Comment présenter un projet professionnel ?",
+            "answer": "<p>Indiquez les usages, les logiciels, les quantités recherchées et votre budget. Vous pouvez aussi préciser les ports et formats nécessaires à votre installation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q0",
+        "q1",
+        "q2",
+        "q3"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "brands",
+    "laptops",
+    "campaigns",
+    "gaming",
+    "deals",
+    "monitors",
+    "professional",
+    "arrivals",
+    "b2b",
+    "services",
+    "guide",
+    "newsletter"
+  ]
+}

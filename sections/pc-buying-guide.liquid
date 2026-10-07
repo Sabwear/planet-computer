@@ -1,0 +1,32 @@
+{% capture questions %}{% for block in section.blocks %}{% if block.settings.question != blank and block.settings.answer != blank %}
+<details class="pc-guide__item" {{ block.shopify_attributes }}><summary><span>{{ block.settings.question | escape }}</span>{% render 'pc-icon', name: 'plus' %}</summary><div class="pc-guide__answer rte">{{ block.settings.answer }}</div></details>
+{% endif %}{% endfor %}{% endcapture %}
+{% if questions != blank %}
+{{ 'pc-support.css' | asset_url | stylesheet_tag }}
+<section class="pc-section pc-guide"{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %}>
+  <div class="pc-container pc-guide__layout">
+    <div class="pc-stack">
+      {% if section.settings.eyebrow != blank %}<p class="pc-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2 class="pc-section-heading">{{ section.settings.heading | escape }}</h2>{% endif %}
+      {% if section.settings.text != blank %}<p class="pc-muted">{{ section.settings.text | escape }}</p>{% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}<a class="pc-button pc-button--secondary" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+    </div>
+    <div class="pc-guide__questions">{{ questions }}</div>
+  </div>
+</section>
+{% endif %}
+{% schema %}
+{
+ "name":"Guide d’achat Planet","max_blocks":8,
+ "settings":[
+  {"type":"text","id":"anchor","label":"Ancre du lien"},
+  {"type":"text","id":"eyebrow","label":"Surtitre","default":"LES REPÈRES UTILES"},
+  {"type":"text","id":"heading","label":"Titre","default":"Choisir avec les bonnes informations."},
+  {"type":"textarea","id":"text","label":"Introduction","default":"Quelques points à vérifier pour comparer les équipements selon votre usage."},
+  {"type":"text","id":"button_label","label":"Bouton"},
+  {"type":"url","id":"button_link","label":"Lien"}
+ ],
+ "blocks":[{"type":"question","name":"Question et réponse","settings":[{"type":"text","id":"question","label":"Question"},{"type":"richtext","id":"answer","label":"Réponse"}]}],
+ "presets":[{"name":"Guide d’achat Planet"}]
+}
+{% endschema %}

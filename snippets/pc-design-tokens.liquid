@@ -1,0 +1,11 @@
+{% style %}
+  :root {
+    --pc-color-primary: {{ settings.pc_primary | default: '#161616' }};
+    --pc-color-accent: {{ settings.pc_accent | default: '#163F70' }};
+    {% unless settings.pc_system_font %}
+      --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+      --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    {% endunless %}
+    --pc-container: {{ settings.pc_container | default: 1440 }}px;
+  }
+{% endstyle %}

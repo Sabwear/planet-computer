@@ -1,0 +1,7 @@
+{% if desktop_image != blank or mobile_image != blank %}
+  {% assign fallback_image = desktop_image | default: mobile_image %}
+  <picture class="pc-campaign-image">
+    {% if mobile_image != blank %}<source width="{{ mobile_image.width }}" height="{{ mobile_image.height }}" media="(max-width: 767px)" srcset="{{ mobile_image | image_url: width: 360 }} 360w, {{ mobile_image | image_url: width: 600 }} 600w, {{ mobile_image | image_url: width: 900 }} 900w" sizes="90vw">{% endif %}
+    {% render 'responsive-image', image: fallback_image, alt: alt, sizes: sizes, eager: eager, image_class: 'pc-campaign-image__img' %}
+  </picture>
+{% endif %}

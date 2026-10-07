@@ -1,0 +1,7 @@
+{% assign technical_keys = 'cpu,cpu_generation,ram,storage,gpu,screen_size,resolution,refresh_rate,panel_type' | split: ',' %}
+{% assign state_keys = 'condition,warranty,keyboard,color' | split: ',' %}
+{% capture rows %}
+  {% for key in technical_keys %}{% assign value = product.metafields.tech[key].value %}{% assign label_key = 'pc.specs.' | append: key %}{% if value != blank %}<tr><th scope="row">{{ label_key | t }}</th><td>{{ value | escape }}</td></tr>{% endif %}{% endfor %}
+  {% for key in state_keys %}{% assign value = product.metafields.product[key].value %}{% assign label_key = 'pc.specs.' | append: key %}{% if value != blank %}<tr><th scope="row">{{ label_key | t }}</th><td>{{ value | escape }}</td></tr>{% endif %}{% endfor %}
+{% endcapture %}
+{% if rows != blank %}<details class="pc-specification-panel" open><summary>{{ 'pc.product.specifications' | t }}</summary><table class="pc-specification-table"><caption class="visually-hidden">{{ 'pc.product.specifications' | t }}</caption><tbody>{{ rows }}</tbody></table></details>{% endif %}

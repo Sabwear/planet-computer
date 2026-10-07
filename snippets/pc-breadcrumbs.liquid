@@ -1,0 +1,4 @@
+<nav class="pc-breadcrumbs" aria-label="{{ 'pc.product.breadcrumbs' | t }}"><ol role="list"><li><a href="{{ routes.root_url }}">{{ 'pc.product.home' | t }}</a></li>
+{% if product != blank %}<li><a href="{{ routes.all_products_collection_url }}">{{ 'pc.product.catalog' | t }}</a></li><li aria-current="page">{{ product.title | escape }}</li>
+{% elsif collection != blank %}<li aria-current="page">{{ collection.title | escape }}</li>{% else %}<li aria-current="page">{{ 'pc.shell.search_submit' | t }}</li>{% endif %}
+</ol></nav>

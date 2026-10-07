@@ -1,0 +1,5 @@
+{% render 'pc-icon', name: 'cart' %}
+<span class="visually-hidden">{{ 'pc.shell.cart' | t }}</span>
+{% if cart.item_count > 0 %}
+  <span class="pc-cart-count"><span aria-hidden="true">{% if cart.item_count > 99 %}99+{% else %}{{ cart.item_count }}{% endif %}</span><span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span></span>
+{% endif %}

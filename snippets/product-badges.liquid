@@ -1,0 +1,12 @@
+{% liquid
+  assign condition = product.metafields.product.condition.value
+  assign variant = product.selected_or_first_available_variant
+%}
+<div class="pc-badges">
+  {% if product.price_varies == false and product.compare_at_price_varies == false and variant.compare_at_price > variant.price %}
+    {% assign discount = variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | floor %}
+    {% if discount > 0 %}<span class="pc-badge pc-badge--sale">−{{ discount }}%</span>{% endif %}
+  {% endif %}
+  {% if condition == 'Neuf' or condition == 'Comme neuf' or condition == 'Reconditionné' or condition == 'Occasion' %}<span class="pc-badge">{{ condition | escape }}</span>{% endif %}
+  {% if product.tags contains 'new-arrival' %}<span class="pc-badge">{{ 'pc.product.new' | t }}</span>{% endif %}
+</div>

@@ -1,0 +1,20 @@
+<ul class="pc-mobile-nav" role="list">
+  {% for link in menu.links %}
+    <li>
+      {% if link.links != blank %}
+        <details><summary>{{ link.title | escape }}{% render 'pc-icon', name: 'chevron' %}</summary>
+          <a class="pc-mobile-nav__all" href="{{ link.url }}">{{ 'pc.shell.view_category' | t: category: link.title | escape }}</a>
+          <ul role="list">
+            {% for child in link.links %}
+              <li><a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title | escape }}</a>
+                {% if child.links != blank %}<ul role="list">{% for grandchild in child.links %}<li><a href="{{ grandchild.url }}"{% if grandchild.current %} aria-current="page"{% endif %}>{{ grandchild.title | escape }}</a></li>{% endfor %}</ul>{% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
+      {% else %}
+        <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

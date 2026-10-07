@@ -1,0 +1,72 @@
+{% capture service_items %}{% for block in section.blocks %}{% if block.settings.confirmed and block.settings.heading != blank %}
+  <li class="pc-panel pc-stack" {{ block.shopify_attributes }}><h3>{{ block.settings.heading | escape }}</h3>{% if block.settings.text != blank %}<p class="pc-muted">{{ block.settings.text | escape }}</p>{% endif %}{% if block.settings.link != blank and block.settings.link_label != blank %}<a class="pc-text-link" href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>{% endif %}</li>
+{% endif %}{% endfor %}{% endcapture %}
+{% if service_items != blank %}
+  {{ 'homepage.css' | asset_url | stylesheet_tag }}
+  <section class="pc-section" style="padding-block: {{ section.settings.spacing }}px"><div class="pc-container">{% if section.settings.heading != blank %}<h2 class="pc-section-heading">{{ section.settings.heading | escape }}</h2>{% endif %}<ul class="pc-services" role="list">{{ service_items }}</ul></div></section>
+{% endif %}
+{% schema %}
+{
+  "name": "Services Planet",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Affichez uniquement les services vérifiés et approuvés par le marchand."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "Espacement",
+      "min": 16,
+      "max": 64,
+      "step": 8,
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service confirmé",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Titre"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Lien"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Libellé du lien"
+        },
+        {
+          "type": "checkbox",
+          "id": "confirmed",
+          "label": "Service confirmé",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services Planet"
+    }
+  ]
+}
+{% endschema %}

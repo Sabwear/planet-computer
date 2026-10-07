@@ -1,0 +1,21 @@
+{% comment %}Native Shopify prices only; variable prices never receive a blanket discount.{% endcomment %}
+{% liquid
+  assign variant = product.selected_or_first_available_variant
+  assign amount = variant.price
+  if product.price_varies
+    assign amount = product.price_min
+  endif
+%}
+{% if amount != blank %}
+  <div class="pc-price">
+    <span class="visually-hidden">{{ 'pc.product.price' | t }}</span>
+    <strong>{% if product.price_varies %}{{ 'pc.product.from' | t }} {% endif %}{% if settings.currency_code_enabled %}{{ amount | money_with_currency }}{% else %}{{ amount | money }}{% endif %}</strong>
+    {% if product.price_varies == false and product.compare_at_price_varies == false and variant.compare_at_price > amount %}
+      <span class="visually-hidden">{{ 'pc.product.previous_price' | t }}</span>
+      <s>{% if settings.currency_code_enabled %}{{ variant.compare_at_price | money_with_currency }}{% else %}{{ variant.compare_at_price | money }}{% endif %}</s>
+    {% endif %}
+    {% if variant.unit_price_measurement != blank %}
+      <small>{{ variant.unit_price | money }} / {% if variant.unit_price_measurement.reference_value != 1 %}{{ variant.unit_price_measurement.reference_value }}{% endif %}{{ variant.unit_price_measurement.reference_unit | escape }}</small>
+    {% endif %}
+  </div>
+{% endif %}

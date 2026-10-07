@@ -1,0 +1,10 @@
+<div class="pc-product-summary">
+  {% render 'product-badges', product: product %}
+  {% render 'specs-chips', product: product, mode: mode %}
+  {% if product.metafields.product.warranty.value != blank %}<p>{{ 'pc.specs.warranty' | t }} : {{ product.metafields.product.warranty.value | escape }}</p>{% endif %}
+  {% if settings.pc_whatsapp != blank %}
+    {% assign number = settings.pc_whatsapp | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')' %}
+    {% capture message %}{{ 'pc.product.whatsapp_message' | t }} {{ product.title }} {{ request.origin }}{{ product.url }}{% endcapture %}
+    <a class="pc-button pc-button--secondary" href="https://wa.me/{{ number | url_encode }}?text={{ message | strip | url_encode }}">{{ 'pc.product.whatsapp' | t }}</a>
+  {% endif %}
+</div>

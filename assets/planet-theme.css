@@ -1,0 +1,54 @@
+/* Planet Computer foundation. Brand colors remain merchant-configurable. */
+:root {
+  --pc-color-primary: #161616;
+  --pc-color-accent: #163f70;
+  --pc-color-text: #161616;
+  --pc-color-muted: #5c6370;
+  --pc-color-border: #dfe3e8;
+  --pc-color-surface: #fff;
+  --pc-color-surface-soft: #f5f6f8;
+  --pc-radius-sm: 6px;
+  --pc-radius-md: 10px;
+  --pc-radius-lg: 16px;
+  --pc-space-1: 4px;
+  --pc-space-2: 8px;
+  --pc-space-3: 12px;
+  --pc-space-4: 16px;
+  --pc-space-6: 24px;
+  --pc-space-8: 32px;
+  --pc-space-12: 48px;
+  --pc-container: 1440px;
+  --pc-shadow-card: 0 4px 16px rgb(0 0 0 / 6%);
+  --font-body-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading-family: var(--font-body-family);
+}
+body { color: var(--pc-color-text); }
+.pc-container { width: 100%; max-width: var(--pc-container); margin-inline: auto; padding-inline: var(--pc-space-4); }
+.pc-section { padding-block: var(--pc-space-8); }
+.pc-stack > * + * { margin-block-start: var(--pc-space-4); }
+.pc-muted { color: var(--pc-color-muted); }
+.pc-eyebrow { font-size: 1.2rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.pc-title { font-size: clamp(2.8rem, 5vw, 4.8rem); line-height: 1.15; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.pc-button { display: inline-flex; align-items: center; justify-content: center; gap: var(--pc-space-2); min-height: 44px; padding: 12px 20px; border: 1px solid transparent; border-radius: var(--pc-radius-sm); background: var(--pc-color-primary); color: #fff; text-decoration: none; font: inherit; font-weight: 600; cursor: pointer; text-align: center; }
+.pc-button--secondary { color: var(--pc-color-text); background: var(--pc-color-surface); border-color: var(--pc-color-border); }
+.pc-button:disabled { opacity: .6; cursor: not-allowed; }
+.pc-icon { width: 24px; height: 24px; flex-shrink: 0; }
+.pc-panel { border: 1px solid var(--pc-color-border); border-radius: var(--pc-radius-lg); padding: var(--pc-space-3); background: var(--pc-color-surface); overflow-wrap: anywhere; }
+.pc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--pc-space-4); }
+.pc-grid > * { min-width: 0; }
+.pc-scroll-row { display: flex; gap: var(--pc-space-4); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pc-space-4); }
+.pc-scroll-row > * { flex: 0 0 auto; scroll-snap-align: start; }
+.pc-button:focus-visible, .pc-panel a:focus-visible { outline: 3px solid var(--pc-color-accent); outline-offset: 4px; }
+.pc-foundation { background: var(--pc-color-surface-soft); }
+.pc-foundation p { max-width: 64ch; }
+@media (min-width: 768px) {
+  .pc-container { padding-inline: var(--pc-space-8); }
+  .pc-panel { padding: var(--pc-space-6); }
+  .pc-section { padding-block: var(--pc-space-12); }
+  .pc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1280px) { .pc-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+.pc-section-heading { margin: 0 0 24px; font-size: clamp(2rem, 3vw, 2.8rem); line-height: 1.2; letter-spacing: -.02em; overflow-wrap: anywhere; }

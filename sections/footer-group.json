@@ -1,0 +1,20 @@
+{
+  "name": "Pied de page",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "pc-footer",
+      "settings": {
+        "description": "L’informatique pour travailler, créer et jouer. Explorez les configurations selon vos besoins.",
+        "catalog_links": true,
+        "contact_link": "shopify://pages/contact",
+        "guide_link": "/#guide-achat"
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

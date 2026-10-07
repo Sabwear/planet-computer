@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "main": {
+      "type": "pc-contact",
+      "settings": {}
+    },
+    "guide": {
+      "type": "pc-buying-guide",
+      "settings": {
+        "anchor": "guide-achat",
+        "eyebrow": "LES REPÈRES UTILES",
+        "heading": "Choisir avec les bonnes informations.",
+        "text": "Du premier repérage à la comparaison des configurations, gardez les critères qui comptent pour vous."
+      },
+      "blocks": {
+        "q0": {
+          "type": "question",
+          "settings": {
+            "question": "Quels critères comparer pour un ordinateur ?",
+            "answer": "<p>Commencez par votre usage et vos logiciels. Comparez ensuite le processeur, la mémoire, le stockage, l’écran et la connectique indiqués sur chaque fiche produit.</p>"
+          }
+        },
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Comment vérifier la compatibilité d’un accessoire ?",
+            "answer": "<p>Comparez la référence exacte de votre appareil avec les modèles, ports et dimensions indiqués dans la fiche de l’accessoire. En cas de doute, transmettez-nous les deux références avant de commander.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Où trouver l’état et les caractéristiques du produit ?",
+            "answer": "<p>Consultez les informations et les photos de la fiche produit. Si l’état, une caractéristique ou les conditions de garantie ne sont pas indiqués, demandez une précision avant de commander.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Comment présenter un projet professionnel ?",
+            "answer": "<p>Indiquez les usages, les logiciels, les quantités recherchées et votre budget. Vous pouvez aussi préciser les ports et formats nécessaires à votre installation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q0",
+        "q1",
+        "q2",
+        "q3"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "guide"
+  ]
+}
