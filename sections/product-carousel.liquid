@@ -1,14 +1,32 @@
-{% if section.settings.collection != blank and section.settings.collection.products.size > 0 %}
+{% liquid
+  assign row_collection = section.settings.collection
+  assign row_products = row_collection.products
+  if row_collection == blank and section.settings.catalog_source != 'none'
+    assign row_collection = collections.all
+    assign row_products = row_collection.products
+    case section.settings.catalog_source
+      when 'laptops'
+        assign row_products = row_products | where: 'type', 'Ordinateurs portables'
+      when 'desktop'
+        assign row_products = row_products | where: 'type', 'Ordinateurs de bureau'
+      when 'gaming'
+        assign row_products = row_products | where: 'type', 'Gaming'
+      when 'monitors'
+        assign row_products = row_products | where: 'type', 'Moniteurs'
+    endcase
+  endif
+%}
+{% if row_products.size > 0 %}
   {{ 'product-card.css' | asset_url | stylesheet_tag }}
   {{ 'homepage.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'carousel.js' | asset_url }}" defer="defer"></script>
   <section class="pc-section pc-products pc-products--{{ section.settings.background }}" style="padding-block: {{ section.settings.spacing }}px">
     <div class="pc-container">
-      <div class="pc-products__heading">{% if section.settings.heading != blank %}<h2 class="pc-section-heading">{{ section.settings.heading | escape }}</h2>{% endif %}{% if section.settings.show_all %}<a class="pc-text-link" href="{{ section.settings.collection.url }}">{{ 'pc.home.view_all' | t }}</a>{% endif %}</div>
+      <div class="pc-products__heading">{% if section.settings.heading != blank %}<h2 class="pc-section-heading">{{ section.settings.heading | escape }}</h2>{% endif %}{% if section.settings.show_all %}<a class="pc-text-link" href="{{ row_collection.url }}">{{ 'pc.home.view_all' | t }}</a>{% endif %}</div>
       {% if section.settings.banner_desktop != blank or section.settings.banner_mobile != blank %}<div class="pc-product-banner">{% render 'pc-campaign-image', desktop_image: section.settings.banner_desktop, mobile_image: section.settings.banner_mobile, alt: section.settings.banner_alt, sizes: '90vw' %}</div>{% endif %}
       {% if section.settings.carousel %}<pc-carousel><div class="pc-carousel__controls" data-controls hidden><button data-prev type="button" aria-label="{{ 'pc.home.previous' | t }} {{ section.settings.heading | escape }}" aria-controls="PCRow-{{ section.id }}">{% render 'pc-icon', name: 'chevron' %}</button><button data-next type="button" aria-label="{{ 'pc.home.next' | t }} {{ section.settings.heading | escape }}" aria-controls="PCRow-{{ section.id }}">{% render 'pc-icon', name: 'chevron' %}</button></div>{% endif %}
-      <div {% if section.settings.carousel %}id="PCRow-{{ section.id }}" class="pc-product-row" data-row tabindex="0" role="region" aria-label="{{ section.settings.heading | default: section.settings.collection.title | escape }}"{% else %}class="pc-grid"{% endif %}>
-        {% for product in section.settings.collection.products limit: section.settings.maximum %}
+      <div {% if section.settings.carousel %}id="PCRow-{{ section.id }}" class="pc-product-row" data-row tabindex="0" role="region" aria-label="{{ section.settings.heading | default: row_collection.title | escape }}"{% else %}class="pc-grid"{% endif %}>
+        {% for product in row_products limit: section.settings.maximum %}
           {% render 'pc-product-card', product: product, mode: section.settings.spec_mode, show_price: section.settings.show_price, quick_add: section.settings.quick_add %}
         {% endfor %}
       </div>
@@ -29,6 +47,38 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "select",
+      "id": "catalog_source",
+      "label": "Sans collection : catalogue Shopify",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "Masquer sans collection"
+        },
+        {
+          "value": "all",
+          "label": "Tous les produits publiés"
+        },
+        {
+          "value": "laptops",
+          "label": "Type : Ordinateurs portables"
+        },
+        {
+          "value": "desktop",
+          "label": "Type : Ordinateurs de bureau"
+        },
+        {
+          "value": "gaming",
+          "label": "Type : Gaming"
+        },
+        {
+          "value": "monitors",
+          "label": "Type : Moniteurs"
+        }
+      ]
     },
     {
       "type": "range",

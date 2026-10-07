@@ -2,7 +2,7 @@
 {% if section.settings.heading != blank or section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
   <section class="pc-hero pc-section" style="padding-block: {{ section.settings.spacing }}px">
     <div class="pc-container pc-hero__grid">
-      <div class="pc-hero__main">
+      <div class="pc-hero__main{% if section.settings.campaign_photo != blank and section.settings.campaign_photo != 'none' %} pc-hero__main--photo{% endif %}">
         <div class="pc-hero__content pc-stack">
           {% if section.settings.eyebrow != blank %}<p class="pc-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
           <h1 class="pc-title">{{ section.settings.heading | default: shop.name | escape }}</h1>
@@ -10,13 +10,13 @@
           {% if section.settings.button_label != blank and section.settings.button_link != blank %}<a class="pc-button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>{% endif %}
           {% if section.settings.secondary_label != blank and section.settings.secondary_link != blank %}<a class="pc-button pc-button--secondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label | escape }}</a>{% endif %}
         </div>
-        {% if section.settings.editorial_art and section.settings.desktop_image == blank and section.settings.mobile_image == blank %}<img class="pc-editorial-art" src="{{ 'pc-editorial-devices.webp' | asset_url }}" width="1536" height="1024" alt="" fetchpriority="high">{% else %}{% render 'pc-campaign-image', desktop_image: section.settings.desktop_image, mobile_image: section.settings.mobile_image, alt: section.settings.image_alt, sizes: '(min-width: 1024px) 40vw, 90vw', eager: true %}{% endif %}
+        {% if section.settings.campaign_photo != blank and section.settings.campaign_photo != 'none' and section.settings.desktop_image == blank and section.settings.mobile_image == blank %}{% render 'pc-retail-photo', photo: section.settings.campaign_photo, eager: true %}{% elsif section.settings.editorial_art and section.settings.desktop_image == blank and section.settings.mobile_image == blank %}<img class="pc-editorial-art" src="{{ 'pc-editorial-devices.webp' | asset_url }}" width="1536" height="1024" alt="" fetchpriority="high">{% else %}{% render 'pc-campaign-image', desktop_image: section.settings.desktop_image, mobile_image: section.settings.mobile_image, alt: section.settings.image_alt, sizes: '(min-width: 1024px) 40vw, 90vw', eager: true %}{% endif %}
       </div>
       {% capture hero_tiles %}
         {% for block in section.blocks %}
           {% if block.settings.heading != blank or block.settings.desktop_image != blank or block.settings.mobile_image != blank %}
-            <article class="pc-campaign-tile" {{ block.shopify_attributes }}>
-              {% render 'pc-campaign-image', desktop_image: block.settings.desktop_image, mobile_image: block.settings.mobile_image, alt: block.settings.image_alt, sizes: '(min-width: 1024px) 25vw, 90vw' %}
+            <article class="pc-campaign-tile{% if block.settings.campaign_photo != blank and block.settings.campaign_photo != 'none' %} pc-campaign-tile--photo pc-campaign-tile--{{ block.settings.campaign_photo }}{% endif %}" {{ block.shopify_attributes }}>
+              {% if block.settings.desktop_image != blank or block.settings.mobile_image != blank %}{% render 'pc-campaign-image', desktop_image: block.settings.desktop_image, mobile_image: block.settings.mobile_image, alt: block.settings.image_alt, sizes: '(min-width: 1024px) 25vw, 90vw' %}{% else %}{% render 'pc-retail-photo', photo: block.settings.campaign_photo %}{% endif %}
               <div class="pc-campaign-tile__content pc-stack">
                 {% if block.settings.heading != blank %}<h2>{{ block.settings.heading | escape }}</h2>{% endif %}
                 {% if block.settings.text != blank %}<p class="pc-muted">{{ block.settings.text | escape }}</p>{% endif %}
@@ -38,7 +38,13 @@
       "index"
     ]
   },
-  "settings": [{"type":"checkbox","id":"editorial_art","label":"Illustration conceptuelle (sans produit réel)","default":false},
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "editorial_art",
+      "label": "Illustration conceptuelle (sans produit réel)",
+      "default": false
+    },
     {
       "type": "image_picker",
       "id": "desktop_image",
@@ -97,6 +103,30 @@
       "max": 64,
       "step": 8,
       "default": 24
+    },
+    {
+      "type": "select",
+      "id": "campaign_photo",
+      "label": "Photographie illustrative (remplaçable)",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "Aucune"
+        },
+        {
+          "value": "portable",
+          "label": "Ordinateur portable"
+        },
+        {
+          "value": "gaming",
+          "label": "Univers gaming"
+        },
+        {
+          "value": "workspace",
+          "label": "Espace de travail"
+        }
+      ]
     }
   ],
   "blocks": [
@@ -138,6 +168,30 @@
           "type": "url",
           "id": "button_link",
           "label": "Lien"
+        },
+        {
+          "type": "select",
+          "id": "campaign_photo",
+          "label": "Photographie illustrative (remplaçable)",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "Aucune"
+            },
+            {
+              "value": "portable",
+              "label": "Ordinateur portable"
+            },
+            {
+              "value": "gaming",
+              "label": "Univers gaming"
+            },
+            {
+              "value": "workspace",
+              "label": "Espace de travail"
+            }
+          ]
         }
       ]
     }

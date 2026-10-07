@@ -1,0 +1,2 @@
+{% case photo %}{% when 'portable' %}{% assign photo_asset = 'pc-retail-portable.webp' %}{% when 'gaming' %}{% assign photo_asset = 'pc-retail-gaming.webp' %}{% when 'workspace' %}{% assign photo_asset = 'pc-retail-workspace.webp' %}{% else %}{% assign photo_asset = blank %}{% endcase %}
+{% if photo_asset != blank %}<picture class="pc-campaign-image pc-retail-photo"><img class="pc-campaign-image__img" src="{{ photo_asset | asset_url }}" width="1536" height="1024" alt="" {% if eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %}></picture>{% endif %}

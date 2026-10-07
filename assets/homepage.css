@@ -96,3 +96,48 @@ pc-carousel { display: block; }
 @media (max-width: 767px) { .pc-editorial-art { max-height: 260px; } .pc-hero__content h1 { font-size: 3.7rem; } .pc-category-icon { width: 88px; height: 88px; } .pc-hero__side .pc-campaign-tile__content { padding: 24px; } }
 @media (prefers-reduced-motion: reduce) { .pc-category-icon { transition: none; } }
 .pc-hero__side .pc-campaign-tile:not(:has(picture)) { display: block; }
+
+/* Photo-led retail merchandising: bundled art is decorative, never a product photo. */
+.pc-hero__main--photo { position: relative; display: block; min-height: 390px; background: #edf0f3; border-radius: 10px; }
+.pc-hero__main--photo > .pc-retail-photo { position: absolute; inset: 0; }
+.pc-hero__main--photo > .pc-retail-photo img { width: 100%; height: 100%; max-height: none; object-fit: cover; object-position: center; }
+.pc-hero__main--photo .pc-hero__content { position: relative; z-index: 1; width: 46%; min-height: 390px; justify-content: center; background: linear-gradient(90deg,rgba(241,243,245,.98),rgba(241,243,245,.8) 70%,transparent); }
+.pc-hero__main--photo .pc-title { font-size: clamp(2.6rem,2.6vw,3.8rem); max-width: 13ch; }
+.pc-hero__main--photo .rte { font-size: 1.4rem; line-height: 1.5; }
+.pc-hero__main--photo .pc-eyebrow { font-size: 1.1rem; letter-spacing: .1em; }
+.pc-campaign-tile--photo { position: relative; display: block !important; min-height: 185px; isolation: isolate; }
+.pc-campaign-tile--photo > .pc-campaign-image { position: absolute; inset: 0; z-index: -2; }
+.pc-campaign-tile--photo > .pc-campaign-image img { height: 100%; width: 100%; object-fit: cover; }
+.pc-campaign-tile--photo::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgba(244,245,247,.98),rgba(244,245,247,.82) 35%,transparent 80%); }
+.pc-campaign-tile--gaming::after { background: linear-gradient(90deg,rgba(5,17,39,.95),rgba(5,17,39,.75) 40%,transparent); }
+.pc-campaign-tile--gaming { color: #fff; }
+.pc-campaign-tile--gaming .pc-text-link { color: #fff; }
+.pc-campaign-tile--photo .pc-campaign-tile__content { width: 58%; padding: 22px; gap: 10px; }
+.pc-campaign-tile--photo h2, .pc-campaign-tile--photo h3 { font-size: 2rem; line-height: 1.15; }
+.pc-promo-grid .pc-campaign-tile--photo::before { display: none; }
+.pc-promo-grid .pc-campaign-tile--photo { min-height: 180px; }
+.pc-promo-grid .pc-campaign-tile--photo h3 { font-size: 2.1rem; }
+.pc-category-image { width: 112px; height: 112px; padding: 4px; border: 3px solid #fff; background: #f2f2f2; box-shadow: 0 0 0 1px #e5e5e5; }
+.pc-category-image > img { width: 100%; height: 100%; border-radius: 50%; object-fit: contain; }
+.pc-products--plain { background: #f6f7f8; }
+.pc-products--deals { background: #fff3a7; }
+.pc-products .pc-section-heading { font-size: 2.2rem; letter-spacing: -.03em; }
+.pc-product-row { gap: 12px; grid-auto-columns: calc((100% - 12px) / 2); }
+.pc-categories { gap: 20px; }
+@media (min-width:768px) { .pc-product-row { grid-auto-columns: calc((100% - 36px) / 4); } }
+@media (min-width:1280px) { .pc-product-row { grid-auto-columns: calc((100% - 60px) / 6); } }
+@media (min-width:1024px) { .pc-hero__grid:has(.pc-hero__side) { grid-template-columns: minmax(0,3fr) minmax(0,1fr); } .pc-hero__side { gap: 12px; } .pc-hero__side .pc-campaign-tile--photo .pc-campaign-image__img { height: 100%; } .pc-hero__side .pc-campaign-tile--photo .pc-campaign-tile__content { padding: 20px; width: 68%; } .pc-hero__side .pc-campaign-tile--photo h2 { font-size: 2rem; } }
+@media (max-width:767px) {
+ .pc-hero__main--photo { display: flex; flex-direction: column; min-height: 0; }
+ .pc-hero__main--photo > .pc-retail-photo { position: static; order: -1; aspect-ratio: 1.75; }
+ .pc-hero__main--photo > .pc-retail-photo img { height: 100%; object-fit: cover; object-position: right center; }
+ .pc-hero__main--photo .pc-hero__content { width: 100%; min-height: 0; background: #eef1f4; padding: 22px; gap: 12px; }
+ .pc-hero__main--photo .pc-title { font-size: 2.8rem; max-width: 19ch; }
+ .pc-hero__side { grid-auto-columns: 85%; gap: 12px; }
+ .pc-hero__side .pc-campaign-tile--photo .pc-campaign-image__img { height: 100%; }
+ .pc-category-image { width: 84px; height: 84px; }
+ .pc-categories a { width: 90px; font-size: 1.2rem; }
+ .pc-promo-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+ .pc-promo-grid .pc-campaign-tile { flex: 0 0 88%; scroll-snap-align: start; }
+ .pc-promo-grid .pc-campaign-tile--photo h3 { font-size: 2rem; }
+}

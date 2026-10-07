@@ -3,33 +3,36 @@
     "hero": {
       "type": "hero-promotions",
       "settings": {
-        "spacing": 24,
-        "editorial_art": true,
+        "spacing": 16,
+        "editorial_art": false,
         "eyebrow": "PLANET COMPUTER · INFORMATIQUE",
-        "heading": "Un nouvel élan pour vos idées.",
-        "text": "<p>Travail, création, gaming : trouvez l’équipement qui correspond à votre quotidien.</p>",
+        "heading": "Votre prochain ordinateur commence ici.",
+        "text": "<p>Comparez les configurations. Trouvez votre équipement pour travailler, créer et jouer.</p>",
         "button_label": "Explorer le catalogue",
         "button_link": "shopify://collections/all",
-        "secondary_label": "Parlons de votre projet",
-        "secondary_link": "shopify://pages/contact"
+        "secondary_label": "",
+        "secondary_link": "shopify://pages/contact",
+        "campaign_photo": "portable"
       },
       "blocks": {
         "work": {
           "type": "campaign",
           "settings": {
             "heading": "Votre espace de travail",
-            "text": "Du bureau à vos déplacements, pensez confort et polyvalence.",
+            "text": "",
             "button_label": "Explorer",
-            "button_link": "/search?q=ordinateur&type=product"
+            "button_link": "/search?q=ordinateur&type=product",
+            "campaign_photo": "workspace"
           }
         },
         "gaming": {
           "type": "campaign",
           "settings": {
             "heading": "Place au gaming",
-            "text": "Comparez les configurations et choisissez votre prochaine expérience.",
+            "text": "",
             "button_label": "Explorer",
-            "button_link": "/search?q=gaming&type=product"
+            "button_link": "/search?q=gaming&type=product",
+            "campaign_photo": "gaming"
           }
         }
       },
@@ -41,8 +44,9 @@
     "categories": {
       "type": "category-circles",
       "settings": {
-        "spacing": 24,
-        "heading": "Explorez nos univers"
+        "spacing": 16,
+        "heading": "",
+        "photographic_categories": true
       },
       "blocks": {
         "c0": {
@@ -113,48 +117,52 @@
       "type": "product-carousel",
       "settings": {
         "heading": "PC Portables",
-        "maximum": 10,
+        "maximum": 12,
         "spec_mode": "computer",
         "show_price": true,
         "quick_add": true,
         "carousel": true,
         "show_all": true,
         "background": "plain",
-        "spacing": 32
+        "spacing": 24,
+        "catalog_source": "laptops"
       }
     },
     "campaigns": {
       "type": "promo-grid",
       "settings": {
-        "spacing": 24,
-        "heading": "Le bon équipement commence par le bon usage"
+        "spacing": 16,
+        "heading": ""
       },
       "blocks": {
         "p0": {
           "type": "campaign",
           "settings": {
-            "heading": "Travailler partout",
-            "text": "Format, autonomie, clavier : les critères à comparer pour vos déplacements.",
-            "button_label": "Voir le catalogue",
-            "button_link": "shopify://collections/all"
+            "heading": "La mobilité au quotidien",
+            "text": "",
+            "button_label": "Découvrir",
+            "button_link": "shopify://collections/all",
+            "campaign_photo": "portable"
           }
         },
         "p1": {
           "type": "campaign",
           "settings": {
-            "heading": "Créer sans limites",
-            "text": "Processeur, mémoire et écran : composez un environnement adapté à vos projets.",
-            "button_label": "Voir le catalogue",
-            "button_link": "shopify://collections/all"
+            "heading": "Votre univers gaming",
+            "text": "",
+            "button_label": "Découvrir",
+            "button_link": "shopify://collections/all",
+            "campaign_photo": "gaming"
           }
         },
         "p2": {
           "type": "campaign",
           "settings": {
-            "heading": "Soigner chaque détail",
-            "text": "Écran, connectique et accessoires : construisez un bureau qui vous ressemble.",
-            "button_label": "Voir le catalogue",
-            "button_link": "shopify://collections/all"
+            "heading": "Un bureau bien équipé",
+            "text": "",
+            "button_label": "Découvrir",
+            "button_link": "shopify://collections/all",
+            "campaign_photo": "workspace"
           }
         }
       },
@@ -168,70 +176,75 @@
       "type": "product-carousel",
       "settings": {
         "heading": "Gaming",
-        "maximum": 10,
+        "maximum": 12,
         "spec_mode": "gaming",
         "show_price": true,
         "quick_add": true,
         "carousel": true,
         "show_all": true,
         "background": "plain",
-        "spacing": 32
+        "spacing": 24,
+        "catalog_source": "gaming"
       }
     },
     "deals": {
       "type": "product-carousel",
       "settings": {
         "heading": "À ne pas manquer",
-        "maximum": 10,
+        "maximum": 12,
         "spec_mode": "computer",
         "show_price": true,
         "quick_add": true,
         "carousel": true,
         "show_all": true,
         "background": "deals",
-        "spacing": 32
+        "spacing": 24,
+        "catalog_source": "all"
       }
     },
     "monitors": {
       "type": "product-carousel",
       "settings": {
         "heading": "Moniteurs & Accessoires",
-        "maximum": 10,
+        "maximum": 12,
         "spec_mode": "monitor",
         "show_price": true,
         "quick_add": true,
         "carousel": true,
         "show_all": true,
         "background": "plain",
-        "spacing": 32
+        "spacing": 24,
+        "catalog_source": "monitors"
       }
     },
     "professional": {
       "type": "product-carousel",
       "settings": {
         "heading": "Professionnel / Workstations",
-        "maximum": 10,
+        "maximum": 12,
         "spec_mode": "computer",
         "show_price": true,
         "quick_add": true,
         "carousel": true,
         "show_all": true,
         "background": "plain",
-        "spacing": 32
+        "spacing": 24,
+        "catalog_source": "desktop"
       }
     },
     "arrivals": {
       "type": "product-carousel",
       "settings": {
-        "heading": "Nouveaux Arrivages",
-        "maximum": 10,
+        "heading": "Tout le catalogue",
+        "maximum": 12,
         "spec_mode": "computer",
         "show_price": true,
         "quick_add": true,
         "carousel": true,
         "show_all": true,
         "background": "soft",
-        "spacing": 32
+        "spacing": 24,
+        "catalog_source": "all"
       }
     },
     "b2b": {
@@ -307,8 +320,8 @@
     "hero",
     "categories",
     "brands",
-    "laptops",
     "campaigns",
+    "laptops",
     "gaming",
     "deals",
     "monitors",

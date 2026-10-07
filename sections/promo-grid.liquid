@@ -1,6 +1,6 @@
 {% capture tiles %}{% for block in section.blocks %}{% if block.settings.heading != blank or block.settings.desktop_image != blank or block.settings.mobile_image != blank %}
-  <article class="pc-campaign-tile" {{ block.shopify_attributes }}>
-    {% render 'pc-campaign-image', desktop_image: block.settings.desktop_image, mobile_image: block.settings.mobile_image, alt: block.settings.image_alt, sizes: '(min-width: 768px) 30vw, 90vw' %}
+  <article class="pc-campaign-tile{% if block.settings.campaign_photo != blank and block.settings.campaign_photo != 'none' %} pc-campaign-tile--photo pc-campaign-tile--{{ block.settings.campaign_photo }}{% endif %}" {{ block.shopify_attributes }}>
+    {% if block.settings.desktop_image != blank or block.settings.mobile_image != blank %}{% render 'pc-campaign-image', desktop_image: block.settings.desktop_image, mobile_image: block.settings.mobile_image, alt: block.settings.image_alt, sizes: '(min-width: 768px) 30vw, 90vw' %}{% else %}{% render 'pc-retail-photo', photo: block.settings.campaign_photo %}{% endif %}
     <div class="pc-campaign-tile__content pc-stack">
       {% if block.settings.heading != blank %}<h3>{{ block.settings.heading | escape }}</h3>{% endif %}
       {% if block.settings.text != blank %}<p class="pc-muted">{{ block.settings.text | escape }}</p>{% endif %}
@@ -16,5 +16,96 @@
   </div></section>
 {% endif %}
 {% schema %}
-{"name":"Campagnes Planet","max_blocks":3,"settings":[{"type":"text","id":"heading","label":"Titre"},{"type":"range","id":"spacing","label":"Espacement","min":16,"max":64,"step":8,"default":24}],"blocks":[{"type":"campaign","name":"Campagne approuvée","settings":[{"type":"image_picker","id":"desktop_image","label":"Image ordinateur"},{"type":"image_picker","id":"mobile_image","label":"Image mobile"},{"type":"text","id":"image_alt","label":"Description de l’image"},{"type":"text","id":"heading","label":"Titre"},{"type":"text","id":"text","label":"Texte"},{"type":"text","id":"button_label","label":"Bouton"},{"type":"url","id":"button_link","label":"Lien"}]}],"presets":[{"name":"Campagnes Planet"}]}
+{
+  "name": "Campagnes Planet",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "Espacement",
+      "min": 16,
+      "max": 64,
+      "step": 8,
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "campaign",
+      "name": "Campagne approuvée",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "desktop_image",
+          "label": "Image ordinateur"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Image mobile"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Description de l’image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Titre"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Bouton"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Lien"
+        },
+        {
+          "type": "select",
+          "id": "campaign_photo",
+          "label": "Photographie illustrative (remplaçable)",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "Aucune"
+            },
+            {
+              "value": "portable",
+              "label": "Ordinateur portable"
+            },
+            {
+              "value": "gaming",
+              "label": "Univers gaming"
+            },
+            {
+              "value": "workspace",
+              "label": "Espace de travail"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Campagnes Planet"
+    }
+  ]
+}
 {% endschema %}
