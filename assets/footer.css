@@ -12,3 +12,5 @@
 .pc-footer a:focus-visible { outline: 3px solid var(--pc-color-accent); outline-offset: 4px; }
 @media (min-width: 768px) { .pc-footer__grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (min-width: 1024px) { .pc-footer__grid { grid-template-columns: 1.5fr repeat(3,minmax(0,1fr)); } }
+
+.pc-footer__logo { display: block; width: min(220px, 100%); height: auto; max-height: 90px; object-fit: contain; }

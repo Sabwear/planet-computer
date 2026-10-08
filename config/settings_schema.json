@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Planet Computer",
-    "theme_version": "0.9.0",
+    "theme_version": "0.10.0",
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
@@ -12,7 +12,7 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Identité provisoire : personnalisez les couleurs après validation des éléments de marque."
+        "content": "Identité Planet Computer intégrée : le logo fourni par le marchand est utilisé par défaut, et le logo Shopify personnalisé reste prioritaire."
       },
       {
         "type": "text",

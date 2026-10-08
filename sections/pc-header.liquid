@@ -17,7 +17,7 @@
           {% assign logo_alt = settings.logo.alt | default: shop.name %}
           {{ settings.logo | image_url: width: 600 | image_tag: widths: '100, 200, 300, 400, 600', sizes: '(max-width: 767px) 140px, 200px', alt: logo_alt, class: 'pc-brand__logo' }}
         {% else %}
-          <span>{{ settings.pc_brand_name | default: shop.name | escape }}</span>
+          <img src="{{ 'pc-business-logo.png' | asset_url }}" width="2098" height="749" alt="{{ settings.pc_brand_name | default: shop.name | escape }} — Professional" class="pc-brand__logo" fetchpriority="high">
         {% endif %}
       </a>
       {% if settings.predictive_search_enabled %}<script src="{{ 'pc-predictive-search.js' | asset_url }}" defer="defer"></script><pc-predictive-search class="pc-search-container" data-url="{{ routes.predictive_search_url }}" data-loading="{{ 'pc.search.loading' | t }}" data-results-label="{{ 'pc.search.results' | t }}" data-failure="{{ 'pc.search.failure' | t }}">{% endif %}

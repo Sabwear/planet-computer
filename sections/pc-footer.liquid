@@ -3,7 +3,14 @@
   <div class="pc-container">
     <div class="pc-footer__grid">
       <div class="pc-footer__brand pc-stack">
-        <a class="pc-brand" href="{{ routes.root_url }}">{{ settings.pc_brand_name | default: shop.name | escape }}</a>
+        <a class="pc-brand" href="{{ routes.root_url }}">
+          {% if settings.logo != blank %}
+            {% assign footer_logo_alt = settings.logo.alt | default: shop.name %}
+            {{ settings.logo | image_url: width: 600 | image_tag: widths: '200, 400, 600', sizes: '220px', alt: footer_logo_alt, class: 'pc-footer__logo', loading: 'lazy' }}
+          {% else %}
+            <img src="{{ 'pc-business-logo.png' | asset_url }}" width="2098" height="749" alt="{{ settings.pc_brand_name | default: shop.name | escape }} — Professional" class="pc-footer__logo" loading="lazy">
+          {% endif %}
+        </a>
         {% if section.settings.description != blank %}<p class="pc-muted">{{ section.settings.description | escape }}</p>{% endif %}
         {% if settings.pc_address != blank %}<p>{{ settings.pc_address | escape | newline_to_br }}</p>{% endif %}
         {% if settings.pc_contact_email != blank %}<a href="mailto:{{ settings.pc_contact_email | escape }}">{{ settings.pc_contact_email | escape }}</a>{% endif %}
