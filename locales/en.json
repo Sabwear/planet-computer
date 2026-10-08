@@ -558,7 +558,17 @@
       "whatsapp_message": "Hello, I am interested in:",
       "breadcrumbs": "Breadcrumbs",
       "home": "Home",
-      "catalog": "Catalog"
+      "catalog": "Catalog",
+      "view": "View product",
+      "business": "Business",
+      "in_stock": "In stock",
+      "out_of_stock": "Out of stock",
+      "order_available": "Available to order",
+      "help_heading": "A question about this product?",
+      "help_text": "Check configuration, compatibility and terms before ordering.",
+      "contact": "Ask a question",
+      "description": "Overview",
+      "help_link": "Buying guide"
     },
     "specs": {
       "cpu": "Processor",

@@ -9,18 +9,21 @@
     endif
   %}
   <article class="pc-product-card">
+    <div class="pc-product-card__media">
     <a class="pc-product-card__image" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
       {% if product.featured_image != blank %}{% render 'responsive-image', image: product.featured_image, alt: product.title, image_class: 'pc-product-image' %}
       {% else %}<span class="pc-missing-image">{% render 'pc-icon', name: 'image' %}<span>{{ 'pc.product.image_unavailable' | t }}</span></span>{% endif %}
     </a>
+    {% render 'product-badges', product: product %}
+    </div>
     <div class="pc-product-card__content">
-      {% render 'product-badges', product: product %}
-      {% if product.vendor != blank %}<p class="pc-product-card__vendor">{{ product.vendor | escape }}</p>{% endif %}
+      {% if product.vendor != blank and product.vendor != shop.name and product.vendor != 'My Store' %}<p class="pc-product-card__vendor">{{ product.vendor | escape }}</p>{% endif %}
       <h3 class="pc-product-card__title"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+      {% if product.type != blank %}<p class="pc-product-card__type">{{ product.type | escape }}</p>{% endif %}
       {% render 'specs-chips', product: product, mode: mode %}
       <div class="pc-product-card__purchase">
         {% unless show_price == false %}{% render 'pc-price', product: product %}{% endunless %}
-        <p class="pc-availability">{% if product.available %}{{ 'pc.product.available' | t }}{% else %}{{ 'pc.product.unavailable' | t }}{% endif %}</p>
+        {% render 'pc-availability', variant: variant %}
         {% if quick_add %}
           {% if safe_quick_add %}
             <form action="{{ routes.cart_add_url }}" method="post" class="pc-quick-add">
@@ -29,7 +32,7 @@
               <button type="submit" class="pc-button" aria-label="{{ 'pc.product.add_named' | t: title: product.title | escape }}">{{ 'pc.product.add' | t }}</button>
             </form>
           {% elsif product.available %}<a class="pc-button pc-button--secondary" href="{{ product.url }}">{{ 'pc.product.options' | t }}</a>
-          {% else %}<button class="pc-button pc-button--secondary" disabled>{{ 'pc.product.unavailable' | t }}</button>{% endif %}
+          {% else %}<a class="pc-button pc-button--secondary" href="{{ product.url }}">{{ 'pc.product.view' | t }}</a>{% endif %}
         {% endif %}
       </div>
     </div>

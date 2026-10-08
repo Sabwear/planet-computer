@@ -33,14 +33,11 @@
             "show_gift_card_recipient": true
           }
         },
-        "description": {
-          "type": "description"
-        },
         "pc_summary": {
           "type": "pc_summary"
         },
-        "pc_specs": {
-          "type": "pc_specs"
+        "pc_help": {
+          "type": "pc_help"
         }
       },
       "block_order": [
@@ -51,15 +48,14 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
-        "pc_specs"
+        "pc_help"
       ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_position": "left",
         "gallery_layout": "thumbnail_slider",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "image_zoom": "lightbox",
@@ -94,10 +90,17 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "information": {
+      "type": "pc-product-information",
+      "settings": {
+        "spacing": 24
+      }
     }
   },
   "order": [
     "main",
+    "information",
     "disclosures",
     "related-products"
   ]

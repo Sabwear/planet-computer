@@ -570,7 +570,17 @@
       "whatsapp_message": "Bonjour, je suis intéressé(e) par :",
       "breadcrumbs": "Fil d’Ariane",
       "home": "Accueil",
-      "catalog": "Catalogue"
+      "catalog": "Catalogue",
+      "view": "Voir le produit",
+      "business": "Professionnel",
+      "in_stock": "En stock",
+      "out_of_stock": "Rupture de stock",
+      "order_available": "Disponible à la commande",
+      "help_heading": "Une question sur ce produit ?",
+      "help_text": "Vérifiez la configuration, la compatibilité et les conditions avant de commander.",
+      "contact": "Poser une question",
+      "description": "Présentation",
+      "help_link": "Guide d’achat"
     },
     "specs": {
       "cpu": "Processeur",

@@ -1,4 +1,5 @@
 <div class="pc-product-summary">
+  <div id="PC-Availability-{{ section_id }}" role="status">{% render 'pc-availability', variant: product.selected_or_first_available_variant %}</div>
   {% render 'product-badges', product: product %}
   {% render 'specs-chips', product: product, mode: mode %}
   {% if product.metafields.product.warranty.value != blank %}<p>{{ 'pc.specs.warranty' | t }} : {{ product.metafields.product.warranty.value | escape }}</p>{% endif %}

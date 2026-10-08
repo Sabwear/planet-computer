@@ -7,6 +7,7 @@
     {% assign discount = variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | floor %}
     {% if discount > 0 %}<span class="pc-badge pc-badge--sale">−{{ discount }}%</span>{% endif %}
   {% endif %}
-  {% if condition == 'Neuf' or condition == 'Comme neuf' or condition == 'Reconditionné' or condition == 'Occasion' %}<span class="pc-badge">{{ condition | escape }}</span>{% endif %}
-  {% if product.tags contains 'new-arrival' %}<span class="pc-badge">{{ 'pc.product.new' | t }}</span>{% endif %}
+  {% if condition == 'Neuf' or condition == 'Comme neuf' or condition == 'Reconditionné' or condition == 'Occasion' %}<span class="pc-badge pc-badge--condition">{{ condition | escape }}</span>{% endif %}
+  {% if product.tags contains 'new-arrival' %}<span class="pc-badge pc-badge--new">{{ 'pc.product.new' | t }}</span>{% endif %}
+  {% if product.tags contains 'gaming' %}<span class="pc-badge">Gaming</span>{% elsif product.tags contains 'business' %}<span class="pc-badge">{{ 'pc.product.business' | t }}</span>{% endif %}
 </div>

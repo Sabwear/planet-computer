@@ -163,7 +163,12 @@
           }
         }
       },
-      "block_order": ["v0", "v1", "v2", "v3"]
+      "block_order": [
+        "v0",
+        "v1",
+        "v2",
+        "v3"
+      ]
     },
     "brands": {
       "type": "brand-strip",
@@ -376,21 +381,81 @@
         "q2",
         "q3"
       ]
+    },
+    "use_cases": {
+      "type": "pc-shop-by-use",
+      "settings": {
+        "heading": "À chaque usage, son équipement.",
+        "spacing": 24
+      },
+      "blocks": {
+        "office": {
+          "type": "use",
+          "settings": {
+            "scene": "office",
+            "eyebrow": "TRAVAIL & ÉTUDES",
+            "heading": "Un espace pour vos projets.",
+            "text": "Associez un ordinateur, un écran et les bons accessoires selon vos usages.",
+            "link_label": "Explorer les moniteurs",
+            "link": "/collections/moniteurs"
+          }
+        },
+        "gaming": {
+          "type": "use",
+          "settings": {
+            "scene": "gaming",
+            "eyebrow": "GAMING",
+            "heading": "Votre prochaine configuration.",
+            "text": "Comparez les processeurs, cartes graphiques et écrans disponibles dans le catalogue.",
+            "link_label": "Explorer le gaming",
+            "link": "/collections/gaming"
+          }
+        }
+      },
+      "block_order": [
+        "office",
+        "gaming"
+      ]
+    },
+    "catalog_brands": {
+      "type": "pc-catalog-brands",
+      "settings": {
+        "heading": "Vos marques, dans le catalogue.",
+        "spacing": 24
+      }
+    },
+    "accessories": {
+      "type": "product-carousel",
+      "settings": {
+        "heading": "Les accessoires qui complètent votre équipement",
+        "maximum": 12,
+        "spec_mode": "computer",
+        "show_price": true,
+        "quick_add": true,
+        "carousel": true,
+        "show_all": true,
+        "background": "plain",
+        "spacing": 24,
+        "collection": "accessoires-informatiques"
+      }
     }
   },
   "order": [
     "hero",
     "categories",
-    "values",
     "brands",
-    "campaigns",
     "laptops",
+    "use_cases",
     "gaming",
     "deals",
+    "campaigns",
     "monitors",
+    "accessories",
     "professional",
     "arrivals",
+    "catalog_brands",
     "b2b",
+    "values",
     "services",
     "guide",
     "newsletter"

@@ -16,3 +16,24 @@
 .product-form__submit { border-radius: var(--pc-radius-sm); min-height: 48px; }
 .product__media-wrapper .product__media { border-radius: var(--pc-radius-md); }
 @media (max-width: 749px) { .pc-specification-table th, .pc-specification-table td { padding: 10px; font-size: 1.2rem; } }
+
+.pc-product-summary .pc-specs { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; padding: 0; list-style: none; font-size: 1.3rem; color: #566171; line-height: 1.5; }
+.pc-product-summary .pc-specs li { border: 0; padding: 0; }
+.pc-product-summary .pc-stock { margin: 0; font-size: 1.3rem; }
+.pc-product-help { padding: 16px 20px; border-radius: 10px; background: #f3f6fa; margin-top: 20px; }
+.pc-product-help h2 { margin: 0 0 6px; font-size: 1.5rem; font-weight: 700; }
+.pc-product-help p { margin: 0; font-size: 1.2rem; line-height: 1.6; color: #566171; }
+.pc-product-help .pc-text-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #203f65; font-size: 1.3rem; }
+.pc-product-help .pc-icon { width: 16px; height: 16px; }
+.pc-product-information__grid { display: grid; gap: 24px; }
+.pc-product-description { min-width: 0; border: 1px solid #e1e6ec; border-radius: 10px; overflow: hidden; align-self: start; }
+.pc-product-description summary { min-height: 48px; padding: 16px 20px; cursor: pointer; font-size: 1.7rem; font-weight: 650; }
+.pc-product-description .rte { padding: 0 20px 20px; font-size: 1.4rem; overflow-wrap: anywhere; }
+.pc-product-description .rte img { max-width: 100%; height: auto; }
+.pc-product-description .rte table { max-width: 100%; width: 100%; table-layout: fixed; }
+.pc-product-information .pc-specification-panel { margin-top: 0; }
+.product__info-container .price { font-weight: 750; color: #b32622; }
+.product__media-wrapper { background: #f7f8fa; border-radius: 12px; padding: 12px; }
+.product__info-container .product__title h1 { font-size: clamp(2rem,2.4vw,3rem); line-height: 1.25; }
+@media (min-width:990px) { .pc-product-information__grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } .product__info-wrapper { padding-left: 40px !important; } }
+@media (max-width:749px) { .product__media-wrapper { padding: 0; } .pc-product-information__grid { gap: 16px; } }

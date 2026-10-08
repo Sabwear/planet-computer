@@ -172,3 +172,19 @@ pc-carousel { display: block; }
   .pc-reveal-arrived { animation: pc-retail-arrive 240ms ease-out both; }
   @keyframes pc-retail-arrive { from { transform: translateY(8px); } to { transform: translateY(0); } }
 }
+
+/* Category photography must never inherit product-card positioning. */
+.pc-category-image { position: relative; overflow: hidden; flex-shrink: 0; }
+.pc-category-image > img, .pc-category-photo { position: static; display: block; width: 100%; height: 100%; object-fit: contain; }
+.pc-shop-use__grid { display: grid; gap: 16px; }
+.pc-use-tile { overflow: hidden; border: 1px solid #e0e5ec; border-radius: 12px; background: #fff; }
+.pc-use-tile__image { display: block; aspect-ratio: 2; overflow: hidden; }
+.pc-use-photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pc-use-tile__content { padding: 20px; }
+.pc-use-tile h3 { margin: 0 0 8px; font-size: 2.1rem; line-height: 1.2; }
+.pc-use-tile__content > p:not(.pc-eyebrow) { margin: 0; max-width: 52ch; color: #606976; font-size: 1.3rem; line-height: 1.6; }
+.pc-use-tile .pc-text-link { font-size: 1.3rem; }
+.pc-catalog-brands { background: #f6f7f9; }
+.pc-catalog-brands__list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.pc-catalog-brands__list a { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border: 1px solid #dfe4eb; border-radius: 8px; background: #fff; color: #303744; text-decoration: none; font-weight: 750; font-size: 1.4rem; text-transform: uppercase; }
+@media (min-width:768px) { .pc-shop-use__grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }

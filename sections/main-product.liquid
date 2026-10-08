@@ -110,7 +110,9 @@
                     </a>
                   </div>
                 {%- when 'pc_summary' -%}
-                  {% render 'pc-product-summary', product: product, mode: section.settings.pc_spec_mode %}
+                  {% render 'pc-product-summary', product: product, mode: section.settings.pc_spec_mode, section_id: section.id %}
+                {%- when 'pc_help' -%}
+                  {% render 'pc-product-help', product: product %}
                 {%- when 'pc_specs' -%}
                   {% render 'pc-product-specifications', product: product %}
                 {%- when 'price' -%}
@@ -2152,6 +2154,7 @@
         }
       ]
     },
+    {"type":"pc_help","name":"Aide à l’achat","limit":1},
     {
       "type": "pc_summary",
       "name": "Résumé technique",

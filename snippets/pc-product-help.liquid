@@ -1,0 +1,5 @@
+<div class="pc-product-help">
+  <h2>{{ 'pc.product.help_heading' | t }}</h2>
+  <p>{{ 'pc.product.help_text' | t }}</p>
+  <a class="pc-text-link" href="{{ routes.root_url }}pages/contact?product={{ product.title | url_encode }}">{{ 'pc.product.contact' | t }}{% render 'pc-icon', name: 'chevron' %}</a>
+</div>

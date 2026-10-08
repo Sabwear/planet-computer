@@ -1,0 +1,8 @@
+{{ 'product.css' | asset_url | stylesheet_tag }}
+<section class="pc-section pc-product-information" style="padding-block: {{ section.settings.spacing }}px"><div class="pc-container pc-product-information__grid">
+  {% if product.description != blank %}<details class="pc-product-description" open><summary>{{ 'pc.product.description' | t }}</summary><div class="rte">{{ product.description }}</div></details>{% endif %}
+  <div>{% render 'pc-product-specifications', product: product %}{% render 'pc-product-help', product: product %}</div>
+</div></section>
+{% schema %}
+{"name":"Détails Planet Computer","settings":[{"type":"range","id":"spacing","label":"Espacement","min":16,"max":64,"step":8,"default":24}],"presets":[{"name":"Détails Planet Computer"}]}
+{% endschema %}

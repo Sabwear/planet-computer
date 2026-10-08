@@ -1,0 +1,12 @@
+{% liquid
+  assign stock_key = 'pc.product.order_available'
+  assign stock_class = 'pc-stock--order'
+  if variant.available == false or variant == blank
+    assign stock_key = 'pc.product.out_of_stock'
+    assign stock_class = 'pc-stock--out'
+  elsif variant.inventory_management == 'shopify' and variant.inventory_quantity > 0
+    assign stock_key = 'pc.product.in_stock'
+    assign stock_class = 'pc-stock--in'
+  endif
+%}
+<p class="pc-stock {{ stock_class }}">{{ stock_key | t }}</p>
