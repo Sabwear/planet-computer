@@ -137,7 +137,9 @@ pc-carousel { display: block; }
 .pc-products .pc-section-heading { font-size: 2.2rem; letter-spacing: -.03em; }
 .pc-product-row { gap: 12px; grid-auto-columns: calc((100% - 12px) / 2); }
 .pc-categories { gap: 20px; }
+@media (min-width:600px) { .pc-product-row { grid-auto-columns: calc((100% - 24px) / 3); } }
 @media (min-width:768px) { .pc-product-row { grid-auto-columns: calc((100% - 36px) / 4); } }
+@media (min-width:1024px) { .pc-product-row { grid-auto-columns: calc((100% - 48px) / 5); } }
 @media (min-width:1280px) { .pc-product-row { grid-auto-columns: calc((100% - 60px) / 6); } }
 @media (min-width:1024px) { .pc-hero__grid:has(.pc-hero__side) { grid-template-columns: minmax(0,3fr) minmax(0,1fr); } .pc-hero__side { gap: 12px; } .pc-hero__side .pc-campaign-tile--photo .pc-campaign-image__img { height: 100%; } .pc-hero__side .pc-campaign-tile--photo .pc-campaign-tile__content { padding: 20px; width: 68%; } .pc-hero__side .pc-campaign-tile--photo h2 { font-size: 2rem; } }
 @media (max-width:767px) {
