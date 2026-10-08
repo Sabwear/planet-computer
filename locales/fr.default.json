@@ -580,7 +580,8 @@
       "help_text": "Vérifiez la configuration, la compatibilité et les conditions avant de commander.",
       "contact": "Poser une question",
       "description": "Présentation",
-      "help_link": "Guide d’achat"
+      "help_link": "Guide d’achat",
+      "question_prefix": "Bonjour, je souhaite des informations sur :"
     },
     "specs": {
       "cpu": "Processeur",

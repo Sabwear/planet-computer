@@ -568,7 +568,8 @@
       "help_text": "Check configuration, compatibility and terms before ordering.",
       "contact": "Ask a question",
       "description": "Overview",
-      "help_link": "Buying guide"
+      "help_link": "Buying guide",
+      "question_prefix": "Hello, I would like information about:"
     },
     "specs": {
       "cpu": "Processor",
