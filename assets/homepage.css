@@ -24,6 +24,17 @@
 .pc-services { display: grid; gap: 16px; list-style: none; padding: 0; margin: 0; }
 .pc-services h3 { font-size: 1.6rem; margin: 0; }
 .pc-services p { font-size: 1.3rem; margin: 0; }
+.pc-value-cards { background: #f5f7fa; }
+.pc-value-cards__intro { max-width: 700px; margin-bottom: 24px; }
+.pc-value-cards__intro .pc-section-heading { margin-bottom: 0; }
+.pc-value-cards__grid { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.pc-value-card { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 16px; min-width: 0; padding: 20px; border: 1px solid #dfe6ef; border-radius: 12px; background: #fff; }
+.pc-value-card__icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 10px; color: #163f70; background: #edf3fb; }
+.pc-value-card__icon .pc-icon { width: 26px; height: 26px; }
+.pc-value-card h3 { margin: 0; font-size: 1.7rem; line-height: 1.25; overflow-wrap: anywhere; }
+.pc-value-card .rte { line-height: 1.6; }
+.pc-value-card .rte p { margin: 0; }
+.pc-value-card .pc-text-link { min-height: 36px; font-size: 1.3rem; }
 .pc-b2b { display: flex; flex-direction: column; gap: 24px; border-radius: var(--pc-radius-lg); padding: 24px; background: var(--pc-color-primary); color: #fff; }
 .pc-b2b h2 { margin: 0; color: inherit; font-size: clamp(2rem, 3vw, 3.2rem); line-height: 1.2; overflow-wrap: anywhere; }
 .pc-b2b .pc-button { align-self: flex-start; flex-shrink: 0; background: #fff; color: #161616; }
@@ -51,6 +62,7 @@ pc-carousel { display: block; }
   .pc-hero__main { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .pc-promo-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
   .pc-services { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .pc-value-cards__grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .pc-newsletter__row { flex-direction: row; }
   .pc-product-row { grid-auto-columns: calc((100% - 32px) / 3); }
 }
@@ -64,6 +76,7 @@ pc-carousel { display: block; }
   .pc-b2b { flex-direction: row; justify-content: space-between; align-items: center; padding: 32px; }
   .pc-b2b .pc-button { align-self: center; }
   .pc-services { grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .pc-value-cards__grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
 }
 @media (min-width: 1280px) { .pc-product-row { grid-auto-columns: calc((100% - 64px) / 5); } }
 @media (max-width: 767px) {

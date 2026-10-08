@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
@@ -121,6 +112,58 @@
         "c4",
         "c5"
       ]
+    },
+    "values": {
+      "type": "pc-value-cards",
+      "settings": {
+        "eyebrow": "POUR AVANCER SEREINEMENT",
+        "heading": "Un équipement pensé pour votre usage.",
+        "text": "<p>Commencez par votre besoin, comparez les informations utiles et avancez avec une sélection claire.</p>",
+        "spacing": 32
+      },
+      "blocks": {
+        "v0": {
+          "type": "value",
+          "settings": {
+            "icon": "search",
+            "heading": "Commencez par votre usage",
+            "text": "<p>Travail, création, mobilité ou gaming : le bon équipement dépend d’abord de ce que vous voulez faire.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "v1": {
+          "type": "value",
+          "settings": {
+            "icon": "storage",
+            "heading": "Comparez les configurations",
+            "text": "<p>Processeur, mémoire, stockage, écran et connectique : retrouvez les critères utiles sur chaque fiche produit.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "icon": "desktop",
+            "heading": "Explorez par univers",
+            "text": "<p>Parcourez les ordinateurs portables, PC de bureau, moniteurs, accessoires et imprimantes.</p>",
+            "link_label": "Voir le catalogue",
+            "link": "shopify://collections/all"
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "icon": "phone",
+            "heading": "Une question sur un produit ?",
+            "text": "<p>Transmettez-nous votre besoin ou une référence pour obtenir une réponse adaptée à votre projet.</p>",
+            "link_label": "Nous contacter",
+            "link": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": ["v0", "v1", "v2", "v3"]
     },
     "brands": {
       "type": "brand-strip",
@@ -338,6 +381,7 @@
   "order": [
     "hero",
     "categories",
+    "values",
     "brands",
     "campaigns",
     "laptops",

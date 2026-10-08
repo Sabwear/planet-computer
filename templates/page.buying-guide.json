@@ -1,0 +1,32 @@
+{
+  "sections": {
+    "intro": {
+      "type": "pc-foundation",
+      "settings": {
+        "heading": "Guide d’achat",
+        "text": "<p>Quelques repères simples pour comparer les équipements selon votre usage et vérifier les informations importantes avant de commander.</p>",
+        "button_label": "Voir le catalogue",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "guide": {
+      "type": "pc-buying-guide",
+      "settings": {
+        "anchor": "guide-achat",
+        "eyebrow": "LES QUESTIONS À SE POSER",
+        "heading": "Choisir avec les bonnes informations.",
+        "text": "Gardez ces critères à portée de main lorsque vous parcourez les fiches produits.",
+        "button_label": "Nous contacter",
+        "button_link": "shopify://pages/contact"
+      },
+      "blocks": {
+        "q0": {"type":"question","settings":{"question":"Quel sera l’usage principal ?","answer":"<p>Travail, création, études, mobilité ou gaming : l’usage aide à prioriser la puissance, l’autonomie, l’écran et le format.</p>"}},
+        "q1": {"type":"question","settings":{"question":"Quelle configuration comparer ?","answer":"<p>Regardez le processeur, la mémoire, le stockage, l’écran, la connectique et les informations de disponibilité présentées sur la fiche.</p>"}},
+        "q2": {"type":"question","settings":{"question":"Comment vérifier un accessoire ?","answer":"<p>Comparez la référence de votre appareil avec les ports, dimensions et modèles indiqués pour l’accessoire.</p>"}},
+        "q3": {"type":"question","settings":{"question":"Une donnée n’est pas claire ?","answer":"<p>Demandez une précision avec le nom ou la référence du produit avant de commander.</p>"}}
+      },
+      "block_order": ["q0", "q1", "q2", "q3"]
+    }
+  },
+  "order": ["intro", "guide"]
+}

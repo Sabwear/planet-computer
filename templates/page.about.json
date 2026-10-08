@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "intro": {
+      "type": "pc-foundation",
+      "settings": {
+        "heading": "À propos de Planet Computer",
+        "text": "<p>Planet Computer accompagne vos choix informatiques avec une présentation claire des équipements et des informations utiles pour chaque usage.</p>",
+        "button_label": "Explorer le catalogue",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "values": {
+      "type": "pc-value-cards",
+      "settings": {
+        "eyebrow": "L’ESPRIT PLANET COMPUTER",
+        "heading": "Un repère simple pour vos décisions.",
+        "text": "<p>Notre approche commence par votre besoin et laisse les caractéristiques du produit parler clairement.</p>",
+        "spacing": 32
+      },
+      "blocks": {
+        "v0": {"type":"value","settings":{"icon":"search","heading":"Comprendre l’usage","text":"<p>Identifiez les logiciels, formats et habitudes qui comptent avant de choisir une configuration.</p>"}},
+        "v1": {"type":"value","settings":{"icon":"storage","heading":"Lire les caractéristiques","text":"<p>Comparez les informations affichées sur les fiches : processeur, mémoire, stockage, écran et connectique.</p>"}},
+        "v2": {"type":"value","settings":{"icon":"desktop","heading":"Trouver le bon univers","text":"<p>Accédez rapidement aux familles d’équipements et aux collections du catalogue.</p>","link_label":"Voir les collections","link":"shopify://collections"}},
+        "v3": {"type":"value","settings":{"icon":"phone","heading":"Poser une question","text":"<p>Lorsque vous avez besoin d’une précision, partagez votre projet et la référence concernée.</p>","link_label":"Nous contacter","link":"shopify://pages/contact"}}
+      },
+      "block_order": ["v0", "v1", "v2", "v3"]
+    },
+    "guide": {
+      "type": "pc-buying-guide",
+      "settings": {
+        "anchor": "guide-achat",
+        "eyebrow": "LES REPÈRES UTILES",
+        "heading": "Choisir avec les bonnes informations.",
+        "text": "Du premier repérage à la comparaison des configurations, gardez les critères qui comptent pour vous.",
+        "button_label": "Poser une question",
+        "button_link": "shopify://pages/contact"
+      },
+      "blocks": {
+        "q0": {"type":"question","settings":{"question":"Que comparer en premier ?","answer":"<p>Commencez par votre usage et vos logiciels, puis comparez le processeur, la mémoire, le stockage, l’écran et la connectique.</p>"}},
+        "q1": {"type":"question","settings":{"question":"Comment choisir un accessoire ?","answer":"<p>Vérifiez la référence exacte de votre appareil, ses ports et les dimensions indiquées dans la fiche de l’accessoire.</p>"}},
+        "q2": {"type":"question","settings":{"question":"Une information manque sur une fiche ?","answer":"<p>Demandez une précision avant de commander afin de confirmer la compatibilité ou la caractéristique recherchée.</p>"}}
+      },
+      "block_order": ["q0", "q1", "q2"]
+    }
+  },
+  "order": ["intro", "values", "guide"]
+}
