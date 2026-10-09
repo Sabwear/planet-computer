@@ -1,7 +1,7 @@
 {% assign logo_brands = '' %}{% assign text_brands = '' %}
 {% for vendor in shop.vendors %}{% if vendor != blank and vendor != shop.name and vendor != 'My Store' %}
 {% assign brand_key = vendor | downcase | strip %}{% assign brand_logo = '' %}
-{% case brand_key %}{% when 'dell' %}{% assign brand_logo = 'pc-brand-dell.png' %}{% when 'hp' %}{% assign brand_logo = 'pc-brand-hp.svg' %}{% when 'lenovo' %}{% assign brand_logo = 'pc-brand-lenovo.png' %}{% endcase %}
+{% case brand_key %}{% when 'acer' %}{% assign brand_logo = 'pc-brand-acer.svg' %}{% when 'asus' %}{% assign brand_logo = 'pc-brand-asus.png' %}{% when 'microsoft' %}{% assign brand_logo = 'pc-brand-microsoft.png' %}{% when 'msi' %}{% assign brand_logo = 'pc-brand-msi.png' %}{% when 'dell' %}{% assign brand_logo = 'pc-brand-dell.png' %}{% when 'hp' %}{% assign brand_logo = 'pc-brand-hp.svg' %}{% when 'lenovo' %}{% assign brand_logo = 'pc-brand-lenovo.png' %}{% endcase %}
 {% capture brand_item %}<li><a href="{{ routes.root_url }}collections/vendors?q={{ vendor | url_encode }}">{% if brand_logo != blank %}<img src="{{ brand_logo | asset_url }}" alt="{{ vendor | escape }}" width="120" height="44" loading="lazy">{% else %}{{ vendor | escape }}{% endif %}</a></li>{% endcapture %}
 {% if brand_logo != blank %}{% assign logo_brands = logo_brands | append: brand_item %}{% else %}{% assign text_brands = text_brands | append: brand_item %}{% endif %}
 {% endif %}{% endfor %}

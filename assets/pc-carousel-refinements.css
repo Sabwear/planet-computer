@@ -1,0 +1,21 @@
+/* Keep touch, arrow and keyboard scrolling; hide only the carousel scrollbars. */
+.pc-catalog-brands .pc-catalog-brands__list,
+.pc-section .pc-product-row {
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pc-catalog-brands .pc-catalog-brands__list::-webkit-scrollbar,
+.pc-section .pc-product-row::-webkit-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+/* The official ASUS PNG has generous built-in transparent clear space. */
+.pc-catalog-brands .pc-catalog-brands__list a { overflow: hidden; }
+.pc-catalog-brands .pc-catalog-brands__list img[src*="pc-brand-asus"] {
+  width: 120px;
+  height: 120px;
+  max-height: none;
+  flex-shrink: 0;
+}
