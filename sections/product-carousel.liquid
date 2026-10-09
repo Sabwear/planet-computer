@@ -24,7 +24,7 @@
     <div class="pc-container">
       <div class="pc-products__heading">{% if section.settings.heading != blank %}<h2 class="pc-section-heading">{{ section.settings.heading | escape }}</h2>{% endif %}{% if section.settings.show_all %}<a class="pc-text-link" href="{{ row_collection.url }}">{{ 'pc.home.view_all' | t }}</a>{% endif %}</div>
       {% if section.settings.banner_desktop != blank or section.settings.banner_mobile != blank %}<div class="pc-product-banner">{% render 'pc-campaign-image', desktop_image: section.settings.banner_desktop, mobile_image: section.settings.banner_mobile, alt: section.settings.banner_alt, sizes: '90vw' %}</div>{% endif %}
-      {% if section.settings.carousel %}<pc-carousel><div class="pc-carousel__controls" data-controls hidden><button data-prev type="button" aria-label="{{ 'pc.home.previous' | t }} {{ section.settings.heading | escape }}" aria-controls="PCRow-{{ section.id }}">{% render 'pc-icon', name: 'chevron' %}</button><button data-next type="button" aria-label="{{ 'pc.home.next' | t }} {{ section.settings.heading | escape }}" aria-controls="PCRow-{{ section.id }}">{% render 'pc-icon', name: 'chevron' %}</button></div>{% endif %}
+      {% if section.settings.carousel %}<pc-carousel{% if section.settings.autoplay %} data-autoplay{% endif %}><div class="pc-carousel__controls" data-controls hidden>{% if section.settings.autoplay %}<button type="button" data-autoplay-toggle aria-pressed="false" aria-label="Mettre en pause le défilement automatique">Pause</button>{% endif %}<button data-prev type="button" aria-label="{{ 'pc.home.previous' | t }} {{ section.settings.heading | escape }}" aria-controls="PCRow-{{ section.id }}">{% render 'pc-icon', name: 'chevron' %}</button><button data-next type="button" aria-label="{{ 'pc.home.next' | t }} {{ section.settings.heading | escape }}" aria-controls="PCRow-{{ section.id }}">{% render 'pc-icon', name: 'chevron' %}</button></div>{% endif %}
       <div {% if section.settings.carousel %}id="PCRow-{{ section.id }}" class="pc-product-row" data-row tabindex="0" role="region" aria-label="{{ section.settings.heading | default: row_collection.title | escape }}"{% else %}class="pc-grid"{% endif %}>
         {% for product in row_products limit: section.settings.maximum %}
           {% render 'pc-product-card', product: product, mode: section.settings.spec_mode, show_price: section.settings.show_price, quick_add: section.settings.quick_add %}
@@ -38,6 +38,7 @@
 {
   "name": "Produits Planet Computer",
   "settings": [
+    {"type":"checkbox","id":"autoplay","label":"Défilement automatique (avec pause)","default":false},
     {
       "type": "text",
       "id": "heading",

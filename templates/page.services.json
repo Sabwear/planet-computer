@@ -3,8 +3,8 @@
     "intro": {
       "type": "pc-foundation",
       "settings": {
-        "heading": "Votre projet informatique",
-        "text": "<p>Présentez votre usage, les logiciels concernés, les quantités recherchées et les contraintes de votre installation.</p>",
+        "heading": "Vente, Maintenance & Installation",
+        "text": "<p>Planet Computer accompagne vos besoins informatiques à Tanger : choisir un équipement, faire examiner un appareil ou préparer un poste de travail. Nos deux boutiques sont aussi des points de contact pour discuter de votre projet, au-delà de l’achat.</p>",
         "button_label": "Nous contacter",
         "button_link": "shopify://pages/contact"
       }
@@ -18,13 +18,58 @@
         "spacing": 32
       },
       "blocks": {
-        "v0": {"type":"value","settings":{"icon":"search","heading":"Décrire votre usage","text":"<p>Précisez les tâches quotidiennes, les logiciels, la mobilité et le niveau de performance attendu.</p>"}},
-        "v1": {"type":"value","settings":{"icon":"desktop","heading":"Définir l’environnement","text":"<p>Notez les écrans, ports, formats, accessoires et contraintes d’espace à prendre en compte.</p>"}},
-        "v2": {"type":"value","settings":{"icon":"storage","heading":"Comparer les options","text":"<p>Comparez les caractéristiques et le prix affichés sur les fiches du catalogue.</p>","link_label":"Ouvrir le catalogue","link":"shopify://collections/all"}},
-        "v3": {"type":"value","settings":{"icon":"phone","heading":"Échanger sur le besoin","text":"<p>Envoyez les références et les informations utiles dans le formulaire de contact.</p>","link_label":"Ouvrir le contact","link":"shopify://pages/contact"}}
+        "v0": {
+          "type": "value",
+          "settings": {
+            "icon": "search",
+            "heading": "Décrire votre usage",
+            "text": "<p>Précisez les tâches quotidiennes, les logiciels, la mobilité et le niveau de performance attendu.</p>"
+          }
+        },
+        "v1": {
+          "type": "value",
+          "settings": {
+            "icon": "desktop",
+            "heading": "Définir l’environnement",
+            "text": "<p>Notez les écrans, ports, formats, accessoires et contraintes d’espace à prendre en compte.</p>"
+          }
+        },
+        "v2": {
+          "type": "value",
+          "settings": {
+            "icon": "storage",
+            "heading": "Comparer les options",
+            "text": "<p>Comparez les caractéristiques et le prix affichés sur les fiches du catalogue.</p>",
+            "link_label": "Ouvrir le catalogue",
+            "link": "shopify://collections/all"
+          }
+        },
+        "v3": {
+          "type": "value",
+          "settings": {
+            "icon": "phone",
+            "heading": "Échanger sur le besoin",
+            "text": "<p>Envoyez les références et les informations utiles dans le formulaire de contact.</p>",
+            "link_label": "Ouvrir le contact",
+            "link": "shopify://pages/contact"
+          }
+        }
       },
-      "block_order": ["v0", "v1", "v2", "v3"]
+      "block_order": [
+        "v0",
+        "v1",
+        "v2",
+        "v3"
+      ]
+    },
+    "expertise": {
+      "type": "pc-services-detail",
+      "settings": {}
     }
   },
-  "order": ["intro", "values"]
+  "order": [
+    "intro",
+    "expertise",
+    "values"
+  ]
 }

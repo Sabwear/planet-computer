@@ -1,4 +1,4 @@
-{% capture catalog_brands %}{% for vendor in shop.vendors %}{% if vendor != blank and vendor != shop.name and vendor != 'My Store' %}<li><a href="{{ routes.root_url }}collections/vendors?q={{ vendor | url_encode }}">{{ vendor | escape }}</a></li>{% endif %}{% endfor %}{% endcapture %}
+{% capture catalog_brands %}{% for vendor in shop.vendors %}{% if vendor != blank and vendor != shop.name and vendor != 'My Store' %}<li><a href="{{ routes.root_url }}collections/vendors?q={{ vendor | url_encode }}">{% assign brand_key = vendor | downcase | strip %}{% assign brand_logo = '' %}{% case brand_key %}{% when 'dell' %}{% assign brand_logo = 'pc-brand-dell.png' %}{% when 'hp' %}{% assign brand_logo = 'pc-brand-hp.svg' %}{% when 'lenovo' %}{% assign brand_logo = 'pc-brand-lenovo.png' %}{% endcase %}{% if brand_logo != blank %}<img src="{{ brand_logo | asset_url }}" alt="{{ vendor | escape }}" width="120" height="44" loading="lazy">{% else %}{{ vendor | escape }}{% endif %}</a></li>{% endif %}{% endfor %}{% endcapture %}
 {% if catalog_brands != blank %}
 {{ 'homepage.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'carousel.js' | asset_url }}" defer="defer"></script>
