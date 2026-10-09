@@ -188,13 +188,3 @@ pc-carousel { display: block; }
 .pc-catalog-brands__list { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
 .pc-catalog-brands__list a { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border: 1px solid #dfe4eb; border-radius: 8px; background: #fff; color: #303744; text-decoration: none; font-weight: 750; font-size: 1.4rem; text-transform: uppercase; }
 @media (min-width:768px) { .pc-shop-use__grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
-.pc-catalog-brands .pc-catalog-brands__list{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:4px}
-.pc-catalog-brands__list li{flex:0 0 148px;scroll-snap-align:start}
-.pc-catalog-brands .pc-catalog-brands__list a{height:76px;padding:14px}
-.pc-catalog-brands__list img{width:120px;height:44px;object-fit:contain}
-.pc-catalog-brands__list img[src*="dell"],.pc-catalog-brands__list img[src*="hp"]{width:44px}
-.pc-services-detail .pc-about__services{grid-template-columns:repeat(3,minmax(0,1fr))}
-.pc-services-detail .pc-about__services p,.pc-services-detail li{font-size:14px;line-height:1.8;color:#596576}
-.pc-services-detail ul{padding-left:20px;margin:14px 0}
-@media(max-width:989px){.pc-services-detail .pc-about__services{grid-template-columns:1fr}}
-.pc-carousel__controls [data-autoplay-toggle]{width:auto;padding:0 12px;font-size:12px;min-height:44px}
