@@ -1,11 +1,10 @@
 {
   "sections": {
     "banner": {
-      "type": "main-collection-banner",
+      "type": "pc-catalog-banner",
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": false,
-        "color_scheme": "scheme-1"
+        "text": "Comparez les équipements selon votre usage.",
+        "show_description": true
       }
     },
     "product-grid": {

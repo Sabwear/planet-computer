@@ -1,0 +1,7 @@
+<product-form>
+  <div class="product-form__error-message-wrapper" role="alert" hidden><span class="product-form__error-message"></span></div>
+  <form action="{{ routes.cart_add_url }}" method="post" class="pc-quick-add">
+    <input type="hidden" name="id" value="{{ variant.id }}"><input type="hidden" name="quantity" value="1">
+    <button type="submit" class="pc-button" aria-label="{{ 'pc.product.add_named' | t: title: product.title | escape }}"><span>{{ 'pc.product.add' | t }}</span><div class="loading__spinner hidden"><svg aria-hidden="true" focusable="false" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="90 40"/></svg></div></button>
+  </form>
+</product-form>

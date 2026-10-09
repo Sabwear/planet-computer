@@ -2,9 +2,9 @@
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 
 <div class="page-width">
-  <h1 class="title title--primary inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  {% unless section.settings.hide_title %}<h1 class="title title--primary inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     {{ section.settings.title }}
-  </h1>
+  </h1>{% endunless %}
   {%- liquid
     case section.settings.sort
       when 'products_high', 'products_low'
@@ -51,7 +51,7 @@
 {
   "name": "t:sections.main-list-collections.name",
   "class": "section",
-  "settings": [
+  "settings": [{"type":"checkbox","id":"hide_title","label":"Masquer le titre (bannière active)","default":false},
     {
       "type": "inline_richtext",
       "id": "title",

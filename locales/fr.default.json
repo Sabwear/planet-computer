@@ -552,7 +552,9 @@
       "account": "Mon compte",
       "cart": "Panier",
       "view_category": "Tout voir : {{ category }}",
-      "facebook": "Facebook"
+      "facebook": "Facebook",
+      "catalog": "Tout le catalogue",
+      "explore_categories": "Explorez nos univers"
     },
     "product": {
       "price": "Prix",
@@ -581,7 +583,12 @@
       "contact": "Poser une question",
       "description": "Présentation",
       "help_link": "Guide d’achat",
-      "question_prefix": "Bonjour, je souhaite des informations sur :"
+      "question_prefix": "Bonjour, je souhaite des informations sur :",
+      "quick_view": "Aperçu rapide",
+      "quick_view_named": "Aperçu de : {{ title }}",
+      "full_details": "Voir tous les détails",
+      "quick_view_failure": "Impossible de charger cet aperçu. Ouvrez la fiche produit.",
+      "view_cart": "Voir mon panier"
     },
     "specs": {
       "cpu": "Processeur",
@@ -605,7 +612,8 @@
       "email": "Adresse e-mail",
       "subscribe": "S’inscrire",
       "consent": "Je souhaite recevoir des e-mails de Planet Computer.",
-      "subscribed": "Votre inscription a été enregistrée."
+      "subscribed": "Votre inscription a été enregistrée.",
+      "hero_slides": "Sélections du moment"
     },
     "search": {
       "empty": "Aucun produit suggéré. Lancez une recherche complète.",

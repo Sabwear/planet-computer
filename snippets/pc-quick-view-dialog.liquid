@@ -1,0 +1,7 @@
+<pc-quick-view>
+<dialog class="pc-quick-view-dialog" aria-labelledby="PCQuickViewTitle">
+  <button type="button" class="pc-icon-button pc-quick-view-close" data-quick-view-close aria-label="{{ 'accessibility.close' | t }}">{% render 'pc-icon', name: 'close' %}</button>
+  <div data-quick-view-body><h2 id="PCQuickViewTitle">{{ 'pc.product.quick_view' | t }}</h2></div>
+  <p data-quick-view-status role="status" data-loading="{{ 'accessibility.loading' | t }}" data-failure="{{ 'pc.product.quick_view_failure' | t }}"></p>
+</dialog>
+</pc-quick-view>

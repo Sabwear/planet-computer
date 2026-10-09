@@ -35,17 +35,12 @@ class CartDrawer extends HTMLElement {
       this.classList.add('animate', 'active');
     });
 
-    this.addEventListener(
-      'transitionend',
-      () => {
-        const containerToTrapFocusOn = this.classList.contains('is-empty')
-          ? this.querySelector('.drawer__inner-empty')
-          : document.getElementById('CartDrawer');
-        const focusElement = this.querySelector('.drawer__inner') || this.querySelector('.drawer__close');
-        trapFocus(containerToTrapFocusOn, focusElement);
-      },
-      { once: true },
-    );
+    // Focus must be trapped even when reduced motion disables transitions.
+    requestAnimationFrame(() => {
+      const container = this.classList.contains('is-empty')
+        ? this.querySelector('.drawer__inner-empty') : this.querySelector('#CartDrawer');
+      trapFocus(container, this.querySelector('.drawer__close'));
+    });
 
     document.body.classList.add('overflow-hidden');
 

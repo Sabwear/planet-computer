@@ -540,7 +540,9 @@
       "account": "My account",
       "cart": "Cart",
       "view_category": "View all: {{ category }}",
-      "facebook": "Facebook"
+      "facebook": "Facebook",
+      "catalog": "Shop all",
+      "explore_categories": "Explore our categories"
     },
     "product": {
       "price": "Price",
@@ -569,7 +571,12 @@
       "contact": "Ask a question",
       "description": "Overview",
       "help_link": "Buying guide",
-      "question_prefix": "Hello, I would like information about:"
+      "question_prefix": "Hello, I would like information about:",
+      "quick_view": "Quick view",
+      "quick_view_named": "Quick view: {{ title }}",
+      "full_details": "View full details",
+      "quick_view_failure": "This preview could not load. Open the product page.",
+      "view_cart": "View my cart"
     },
     "specs": {
       "cpu": "Processor",
@@ -593,7 +600,8 @@
       "email": "Email address",
       "subscribe": "Subscribe",
       "consent": "I would like to receive emails from Planet Computer.",
-      "subscribed": "Your subscription has been registered."
+      "subscribed": "Your subscription has been registered.",
+      "hero_slides": "Featured selections"
     },
     "search": {
       "empty": "No suggested products. Run a full search.",

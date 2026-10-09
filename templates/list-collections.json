@@ -7,11 +7,20 @@
         "sort": "alphabetical",
         "image_ratio": "square",
         "columns_desktop": 3,
-        "columns_mobile": "2"
+        "columns_mobile": "2",
+        "hide_title": true
+      }
+    },
+    "catalog_banner": {
+      "type": "pc-catalog-banner",
+      "settings": {
+        "heading": "Explorez nos univers.",
+        "text": "Ordinateurs, gaming, écrans et accessoires : commencez par votre besoin."
       }
     }
   },
   "order": [
+    "catalog_banner",
     "main"
   ]
 }

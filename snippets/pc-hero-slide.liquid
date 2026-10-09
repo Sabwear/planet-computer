@@ -1,0 +1,4 @@
+<article class="pc-hero__main pc-hero-slide pc-hero__main--photo" {{ attributes }}>
+<div class="pc-hero__content pc-stack"><h2 class="pc-title">{{ campaign.heading | escape }}</h2>{% if campaign.text != blank %}<p class="pc-muted">{{ campaign.text | escape }}</p>{% endif %}{% if campaign.button_label != blank and campaign.button_link != blank %}<a class="pc-button" href="{{ campaign.button_link }}">{{ campaign.button_label | escape }}</a>{% endif %}</div>
+{% if campaign.desktop_image != blank or campaign.mobile_image != blank %}{% render 'pc-campaign-image', desktop_image: campaign.desktop_image, mobile_image: campaign.mobile_image, alt: campaign.image_alt, sizes: '(min-width: 1024px) 70vw, 90vw' %}{% else %}{% render 'pc-retail-photo', photo: campaign.campaign_photo %}{% endif %}
+</article>

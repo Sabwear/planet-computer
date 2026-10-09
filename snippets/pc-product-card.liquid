@@ -15,6 +15,7 @@
       {% else %}<span class="pc-missing-image">{% render 'pc-icon', name: 'image' %}<span>{{ 'pc.product.image_unavailable' | t }}</span></span>{% endif %}
     </a>
     {% render 'product-badges', product: product %}
+    <button type="button" class="pc-quick-view-trigger" data-pc-quick-view="{{ product.url }}" {% if show_price == false %}data-hide-price{% endif %} aria-label="{{ 'pc.product.quick_view_named' | t: title: product.title | escape }}" hidden>{{ 'pc.product.quick_view' | t }}</button>
     </div>
     <div class="pc-product-card__content">
       {% if product.vendor != blank and product.vendor != shop.name and product.vendor != 'My Store' %}<p class="pc-product-card__vendor">{{ product.vendor | escape }}</p>{% endif %}
@@ -26,11 +27,7 @@
         {% render 'pc-availability', variant: variant %}
         {% if quick_add %}
           {% if safe_quick_add %}
-            <form action="{{ routes.cart_add_url }}" method="post" class="pc-quick-add">
-              <input type="hidden" name="id" value="{{ variant.id }}">
-              <input type="hidden" name="quantity" value="1">
-              <button type="submit" class="pc-button" aria-label="{{ 'pc.product.add_named' | t: title: product.title | escape }}">{{ 'pc.product.add' | t }}</button>
-            </form>
+            {% render 'pc-card-add', product: product, variant: variant %}
           {% elsif product.available %}<a class="pc-button pc-button--secondary" href="{{ product.url }}">{{ 'pc.product.options' | t }}</a>
           {% else %}<a class="pc-button pc-button--secondary" href="{{ product.url }}">{{ 'pc.product.view' | t }}</a>{% endif %}
         {% endif %}

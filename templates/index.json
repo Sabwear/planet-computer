@@ -34,11 +34,43 @@
             "button_link": "/collections/gaming",
             "campaign_photo": "gaming"
           }
+        },
+        "slide_work": {
+          "type": "slide",
+          "settings": {
+            "heading": "Votre espace de travail, à votre mesure.",
+            "text": "Explorez les ordinateurs et les écrans du catalogue.",
+            "button_label": "Équiper mon bureau",
+            "button_link": "/collections/ordinateurs-de-bureau",
+            "campaign_photo": "workspace"
+          }
+        },
+        "slide_game": {
+          "type": "slide",
+          "settings": {
+            "heading": "Place à votre prochaine configuration.",
+            "text": "Comparez les équipements pour vos jeux et vos projets.",
+            "button_label": "Explorer le gaming",
+            "button_link": "/collections/gaming",
+            "campaign_photo": "gaming"
+          }
+        },
+        "side_accessories": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Les bons accessoires",
+            "button_label": "Découvrir",
+            "button_link": "/collections/accessoires-informatiques",
+            "campaign_photo": "portable"
+          }
         }
       },
       "block_order": [
         "work",
-        "gaming"
+        "gaming",
+        "slide_work",
+        "slide_game",
+        "side_accessories"
       ]
     },
     "categories": {
@@ -438,6 +470,60 @@
         "spacing": 24,
         "collection": "accessoires-informatiques"
       }
+    },
+    "customer_reviews": {
+      "type": "pc-customer-reviews",
+      "settings": {
+        "heading": "Votre expérience compte.",
+        "text": "Partagez votre expérience avec Planet Computer.",
+        "button_label": "Partager mon expérience",
+        "button_link": "/pages/contact",
+        "spacing": 32
+      }
+    },
+    "extra_campaigns": {
+      "type": "promo-grid",
+      "settings": {
+        "spacing": 16,
+        "heading": ""
+      },
+      "blocks": {
+        "p0": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Votre équipement, partout avec vous.",
+            "text": "",
+            "button_label": "Découvrir",
+            "button_link": "/collections/ordinateurs-portables",
+            "campaign_photo": "portable"
+          }
+        },
+        "p1": {
+          "type": "campaign",
+          "settings": {
+            "heading": "À vous de choisir la configuration.",
+            "text": "",
+            "button_label": "Découvrir",
+            "button_link": "/collections/gaming",
+            "campaign_photo": "gaming"
+          }
+        },
+        "p2": {
+          "type": "campaign",
+          "settings": {
+            "heading": "Travaillez avec les bons outils.",
+            "text": "",
+            "button_label": "Découvrir",
+            "button_link": "/collections/ordinateurs-de-bureau",
+            "campaign_photo": "workspace"
+          }
+        }
+      },
+      "block_order": [
+        "p0",
+        "p1",
+        "p2"
+      ]
     }
   },
   "order": [
@@ -450,6 +536,7 @@
     "deals",
     "campaigns",
     "monitors",
+    "extra_campaigns",
     "accessories",
     "professional",
     "arrivals",
@@ -457,6 +544,7 @@
     "b2b",
     "values",
     "services",
+    "customer_reviews",
     "guide",
     "newsletter"
   ]

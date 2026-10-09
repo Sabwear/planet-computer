@@ -1,0 +1,17 @@
+{% if product != blank %}
+<div data-quick-view-content class="pc-quick-view-grid">
+  <a href="{{ product.url }}" class="pc-quick-view-image">{% if product.featured_image %}{{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '320, 480, 800', sizes: '(min-width: 768px) 40vw, 85vw', alt: product.title }}{% else %}<span>{{ 'pc.product.image_unavailable' | t }}</span>{% endif %}</a>
+  <div class="pc-stack">
+    {% if product.vendor != blank and product.vendor != shop.name and product.vendor != 'My Store' %}<p class="pc-eyebrow">{{ product.vendor | escape }}</p>{% endif %}
+    <h2 id="PCQuickViewTitle">{{ product.title | escape }}</h2>
+    {% render 'product-badges', product: product %}
+    <div data-quick-view-price>{% render 'pc-price', product: product %}</div>
+    {% assign variant = product.selected_or_first_available_variant %}
+    {% render 'pc-availability', variant: variant %}
+    {% render 'specs-chips', product: product, mode: 'computer' %}
+    {% if product.variants.size == 1 and variant.available and product.requires_selling_plan == false and variant.quantity_rule.min <= 1 and variant.quantity_rule.increment <= 1 and product.quantity_price_breaks_configured? != true %}{% render 'pc-card-add', product: product, variant: variant %}{% endif %}
+    <a class="pc-text-link" href="{{ product.url }}">{{ 'pc.product.full_details' | t }}</a>
+  </div>
+</div>
+{% endif %}
+{% schema %}{"name":"Aperçu rapide","settings":[]}{% endschema %}
