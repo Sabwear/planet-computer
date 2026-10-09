@@ -30,18 +30,13 @@ class CartDrawer extends HTMLElement {
     if (triggeredBy) this.setActiveElement(triggeredBy);
     const cartDrawerNote = this.querySelector('[id^="Details-"] summary');
     if (cartDrawerNote && !cartDrawerNote.hasAttribute('role')) this.setSummaryAccessibility(cartDrawerNote);
-    // Activate before focusing: hidden drawer controls cannot receive focus.
-    setTimeout(() => {
-      this.classList.add('animate', 'active');
-      const panel = this.querySelector('.drawer__inner');
-      const duration = Math.max(...getComputedStyle(panel).transitionDuration.split(',').map(value => parseFloat(value) * (value.trim().endsWith('ms') ? 1 : 1000)));
-      setTimeout(() => {
-        if (!this.classList.contains('active')) return;
-        const container = this.classList.contains('is-empty')
-          ? this.querySelector('.drawer__inner-empty') : this.querySelector('#CartDrawer');
-        trapFocus(container, this.querySelector('.drawer__close'));
-      }, duration + 30);
-    });
+    // Activate synchronously so keyboard focus enters the visible modal.
+    this.classList.add('animate');
+    this.querySelector('.drawer__inner').getBoundingClientRect();
+    this.classList.add('active');
+    const container = this.classList.contains('is-empty')
+      ? this.querySelector('.drawer__inner-empty') : this.querySelector('#CartDrawer');
+    trapFocus(container, this.querySelector('.drawer__close'));
 
     document.body.classList.add('overflow-hidden');
 
