@@ -574,8 +574,8 @@
 
         <!-- CTAs -->
 
+        <div class="pc-drawer-actions">
         {% render 'pc-whatsapp-order', cart_order: true %}
-        <a class="pc-cart-details-link" href="{{ routes.cart_url }}">{{ 'pc.product.view_cart' | t }}</a>
         <div class="cart__ctas" {{ block.shopify_attributes }}>
           <button
             type="submit"
@@ -589,6 +589,8 @@
           >
             {{ 'sections.cart.checkout' | t }}
           </button>
+        </div>
+        <a class="pc-cart-details-link" href="{{ routes.cart_url }}">{{ 'pc.product.view_cart' | t }}</a>
         </div>
       </div>
     </div>
