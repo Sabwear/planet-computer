@@ -51,6 +51,12 @@ class CartDrawer extends HTMLElement {
     const container = this.classList.contains('is-empty')
       ? this.querySelector('.drawer__inner-empty') : this.querySelector('#CartDrawer');
     trapFocus(container, this.querySelector('.drawer__close'));
+    // Visibility may settle after the initial style update on some browsers.
+    setTimeout(() => {
+      if (this.classList.contains('active') && !this.contains(document.activeElement)) {
+        trapFocus(container, this.querySelector('.drawer__close'));
+      }
+    }, 250);
 
     document.body.classList.add('overflow-hidden');
 
