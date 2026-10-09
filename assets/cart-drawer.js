@@ -33,11 +33,14 @@ class CartDrawer extends HTMLElement {
     // Activate before focusing: hidden drawer controls cannot receive focus.
     setTimeout(() => {
       this.classList.add('animate', 'active');
-      requestAnimationFrame(() => {
+      const panel = this.querySelector('.drawer__inner');
+      const duration = Math.max(...getComputedStyle(panel).transitionDuration.split(',').map(value => parseFloat(value) * (value.trim().endsWith('ms') ? 1 : 1000)));
+      setTimeout(() => {
+        if (!this.classList.contains('active')) return;
         const container = this.classList.contains('is-empty')
           ? this.querySelector('.drawer__inner-empty') : this.querySelector('#CartDrawer');
         trapFocus(container, this.querySelector('.drawer__close'));
-      });
+      }, duration + 30);
     });
 
     document.body.classList.add('overflow-hidden');
