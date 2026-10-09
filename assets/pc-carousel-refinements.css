@@ -6,7 +6,7 @@
   -ms-overflow-style: none;
 }
 .pc-catalog-brands .pc-catalog-brands__list::-webkit-scrollbar,
-.pc-section .pc-product-row::-webkit-scrollbar::-webkit-scrollbar {
+.pc-section .pc-product-row::-webkit-scrollbar {
   display: none;
   width: 0;
   height: 0;
