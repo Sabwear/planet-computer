@@ -1,0 +1,205 @@
+{{ 'pc-editorial.css' | asset_url | stylesheet_tag }}
+{{ 'pc-blog.css' | asset_url | stylesheet_tag }}
+{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'pc-article.js' | asset_url }}" defer="defer"></script>
+<article class="pc-article pc-section"><div class="pc-container"><nav class="pc-editorial__breadcrumb" aria-label="Fil d’Ariane"><a href="{{ routes.root_url }}">Accueil</a><span>/</span><a href="{{ blog.url }}">{{ blog.title | escape }}</a><span>/</span><span>{{ article.title | escape }}</span></nav><header class="pc-article__header"><span class="pc-eyebrow">CONSEILS PLANET COMPUTER</span><h1>{{ article.title | escape }}</h1><div class="pc-article__meta"><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%d/%m/%Y' }}</time>{% if article.author != blank %}<span>Par {{ article.author | escape }}</span>{% endif %}<span data-reading-time hidden></span></div>{% if article.excerpt != blank %}<div class="pc-article__excerpt">{{ article.excerpt }}</div>{% endif %}</header>
+<div class="pc-article__image">{% if article.image != blank %}{{ article.image | image_url: width: 1500 | image_tag: widths: '500, 900, 1500', sizes: '(min-width: 1200px) 1120px, 100vw', loading: 'eager', alt: article.image.alt }}{% else %}<img src="{{ 'pc-editorial-home-office.jpg' | asset_url }}" width="1536" height="1024" alt="Un poste de travail informatique" loading="eager">{% endif %}</div>
+<div class="pc-article__layout"><aside class="pc-article__aside"><nav aria-label="Sommaire de l’article" data-article-toc hidden><h2>Dans cet article</h2><ol></ol></nav><div class="pc-article__help"><h2>Un conseil pour votre projet ?</h2><p>Deux boutiques à Tanger. Un échange pour préciser votre besoin.</p><a href="{{ routes.root_url }}pages/contact">Contacter Planet Computer →</a></div></aside><div class="pc-editorial-prose rte" data-article-content>{{ article.content }}</div></div>
+{% if article.tags.size > 0 %}<nav class="pc-blog__tags" aria-label="Sujets associés">{% for tag in article.tags %}<a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag | escape }}</a>{% endfor %}</nav>{% endif %}<div class="pc-blog__cta"><div><span class="pc-eyebrow">VOTRE PROCHAINE ÉTAPE</span><h2>Passons de l’idée à votre installation.</h2><p>Décrivez votre usage, votre équipement et les questions à clarifier.</p></div><a class="pc-button" href="{{ routes.root_url }}pages/contact">Parlons-en {% render 'pc-icon', name: 'chevron' %}</a></div>
+{% if blog.articles_count > 1 %}<section class="pc-article__related"><h2>D’autres conseils à découvrir</h2><div class="pc-blog__grid">{% assign related_count = 0 %}{% for post in blog.articles %}{% unless post.id == article.id %}{% render 'pc-editorial-card', post: post %}{% assign related_count = related_count | plus: 1 %}{% if related_count == 3 %}{% break %}{% endif %}{% endunless %}{% endfor %}</div></section>{% endif %}<a class="pc-article__back" href="{{ blog.url }}">← Tous les conseils</a>{% for block in section.blocks %}{% render block %}{% endfor %}</div>
+  {%- if blog.comments_enabled? -%}
+    <div class="article-template__comment-wrapper background-secondary">
+      <div
+        id="comments"
+        class="page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      >
+        {%- if article.comments_count > 0 -%}
+          {%- assign anchor_id = '#Comments-' | append: article.id -%}
+
+          <h2 id="Comments-{{ article.id }}" tabindex="-1">
+            {{ 'blogs.article.comments' | t: count: article.comments_count }}
+          </h2>
+          {% paginate article.comments by 5 %}
+            <div class="article-template__comments">
+              {%- if comment.status == 'pending' and comment.content -%}
+                <article id="{{ comment.id }}" class="article-template__comments-comment">
+                  {{ comment.content }}
+                  <footer class="right">
+                    <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span>
+                  </footer>
+                </article>
+              {%- endif -%}
+
+              {%- for comment in article.comments -%}
+                <article id="{{ comment.id }}" class="article-template__comments-comment">
+                  {{ comment.content }}
+                  <footer class="right">
+                    <span class="circle-divider caption-with-letter-spacing">{{ comment.author }}</span
+                    ><span class="caption-with-letter-spacing">
+                      {{- comment.created_at | time_tag: format: 'date' -}}
+                    </span>
+                  </footer>
+                </article>
+              {%- endfor -%}
+              {% render 'pagination', paginate: paginate, anchor: anchor_id %}
+            </div>
+          {% endpaginate %}
+        {%- endif -%}
+        {% form 'new_comment', article %}
+          {%- liquid
+            assign post_message = 'blogs.article.success'
+            if blog.moderated? and comment.status == 'unapproved'
+              assign post_message = 'blogs.article.success_moderated'
+            endif
+          -%}
+          <h2>{{ 'blogs.article.comment_form_title' | t }}</h2>
+          {%- if form.errors -%}
+            <div class="form__message" role="alert">
+              <h3 class="form-status caption-large text-body" tabindex="-1" autofocus>
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                {{ 'templates.contact.form.error_heading' | t }}
+              </h3>
+            </div>
+            <ul class="form-status-list caption-large">
+              {%- for field in form.errors -%}
+                <li>
+                  <a href="#CommentForm-{{ field }}" class="link">
+                    {%- if form.errors.translated_fields[field] contains 'author' -%}
+                      {{ 'blogs.article.name' | t }}
+                    {%- elsif form.errors.translated_fields[field] contains 'body' -%}
+                      {{ 'blogs.article.message' | t }}
+                    {%- else -%}
+                      {{ form.errors.translated_fields[field] }}
+                    {%- endif -%}
+                    {{ form.errors.messages[field] }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- elsif form.posted_successfully? -%}
+            <div class="form-status-list form__message" role="status">
+              <h3 class="form-status" tabindex="-1" autofocus>
+                <span class="svg-wrapper">
+                  {{- 'icon-success.svg' | inline_asset_content -}}
+                </span>
+                {{ post_message | t }}
+              </h3>
+            </div>
+          {%- endif -%}
+
+          <div
+            {% if blog.moderated? == false %}
+              class="article-template__comments-fields"
+            {% endif %}
+          >
+            <div class="article-template__comment-fields">
+              <div class="field field--with-error">
+                <input
+                  type="text"
+                  name="comment[author]"
+                  id="CommentForm-author"
+                  class="field__input"
+                  autocomplete="name"
+                  value="{{ form.author }}"
+                  aria-required="true"
+                  required
+                  {% if form.errors contains 'author' %}
+                    aria-invalid="true"
+                    aria-describedby="CommentForm-author-error"
+                  {% endif %}
+                  placeholder="{{ 'blogs.article.name' | t }}"
+                >
+                <label class="field__label" for="CommentForm-author">
+                  {{- 'blogs.article.name' | t }}
+                  <span aria-hidden="true">*</span></label
+                >
+                {%- if form.errors contains 'author' -%}
+                  <small id="CommentForm-author-error">
+                    <span class="form__message">
+                      <span class="svg-wrapper">
+                        {{- 'icon-error.svg' | inline_asset_content -}}
+                      </span>
+                      {{- 'blogs.article.name' | t }}
+                      {{ form.errors.messages.author }}.</span
+                    >
+                  </small>
+                {%- endif -%}
+              </div>
+              <div class="field field--with-error">
+                <input
+                  type="email"
+                  name="comment[email]"
+                  id="CommentForm-email"
+                  autocomplete="email"
+                  class="field__input"
+                  value="{{ form.email }}"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  aria-required="true"
+                  required
+                  {% if form.errors contains 'email' %}
+                    aria-invalid="true"
+                    aria-describedby="CommentForm-email-error"
+                  {% endif %}
+                  placeholder="{{ 'blogs.article.email' | t }}"
+                >
+                <label class="field__label" for="CommentForm-email">
+                  {{- 'blogs.article.email' | t }}
+                  <span aria-hidden="true">*</span></label
+                >
+                {%- if form.errors contains 'email' -%}
+                  <small id="CommentForm-email-error">
+                    <span class="form__message">
+                      <span class="svg-wrapper">
+                        {{- 'icon-error.svg' | inline_asset_content -}}
+                      </span>
+                      {{- 'blogs.article.email' | t }}
+                      {{ form.errors.messages.email }}.</span
+                    >
+                  </small>
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="field field--with-error">
+              <textarea
+                rows="5"
+                name="comment[body]"
+                id="CommentForm-body"
+                class="text-area field__input"
+                aria-required="true"
+                required
+                {% if form.errors contains 'body' %}
+                  aria-invalid="true"
+                  aria-describedby="CommentForm-body-error"
+                {% endif %}
+                placeholder="{{ 'blogs.article.message' | t }}"
+              >{{ form.body }}</textarea>
+              <label class="form__label field__label" for="CommentForm-body">
+                {{- 'blogs.article.message' | t }}
+                <span aria-hidden="true">*</span></label
+              >
+            </div>
+            {%- if form.errors contains 'body' -%}
+              <small id="CommentForm-body-error">
+                <span class="form__message">
+                  <span class="svg-wrapper">
+                    {{- 'icon-error.svg' | inline_asset_content -}}
+                  </span>
+                  {{- 'blogs.article.message' | t }}
+                  {{ form.errors.messages.body }}.</span
+                >
+              </small>
+            {%- endif -%}
+          </div>
+          {%- if blog.moderated? -%}
+            <p class="article-template__comment-warning caption">{{ 'blogs.article.moderated' | t }}</p>
+          {%- endif -%}
+          <input type="submit" class="button" value="{{ 'blogs.article.post' | t }}">
+        {% endform %}
+      </div>
+    </div>
+  {%- endif -%}
+</article><script type="application/ld+json">{{ article | structured_data }}</script>
+{% schema %}{"name":"Article Planet Computer","settings":[],"blocks":[{"type":"@app"}]}{% endschema %}

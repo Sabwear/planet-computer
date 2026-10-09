@@ -283,6 +283,7 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'planet-theme.css' | asset_url | stylesheet_tag }}
     {{ 'pc-retail-enhancements.css' | asset_url | stylesheet_tag }}
+    {{ 'pc-contact-privacy.css' | asset_url | stylesheet_tag }}
     {% render 'pc-design-tokens' %}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -349,6 +350,9 @@
     </main>
 
     {% sections 'footer-group' %}
+    {% render 'pc-contact-widget' %}
+    {% render 'pc-cookie-banner' %}
+    <script src="{{ 'pc-contact-privacy.js' | asset_url }}" defer="defer"></script>
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

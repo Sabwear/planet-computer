@@ -1,0 +1,12 @@
+{% if settings.pc_contact_widget and settings.pc_whatsapp != blank %}
+<div class="pc-contact-widget" data-contact-widget>
+  <section class="pc-contact-widget__panel" id="PcContactPanel" aria-labelledby="PcContactHeading" hidden>
+    <header><span class="pc-contact-widget__avatar">{% render 'pc-icon', name: 'whatsapp' %}</span><div><h2 id="PcContactHeading">Planet Computer</h2><p>Vente · Maintenance · Installation</p></div><button type="button" class="pc-contact-widget__close" aria-label="Fermer le contact" data-contact-close>{% render 'pc-icon', name: 'close' %}</button></header>
+    <div class="pc-contact-widget__body"><p>Bonjour ! Comment pouvons-nous vous aider ?</p><span>Un produit, une réparation ou un projet à Tanger : choisissez votre moyen de contact.</span>
+      <a class="pc-contact-widget__chat" href="https://wa.me/{{ settings.pc_whatsapp | remove: '+' | remove: ' ' | escape }}?text=Bonjour%20Planet%20Computer%2C%20je%20souhaite%20un%20renseignement." target="_blank" rel="noopener">{% render 'pc-icon', name: 'whatsapp' %} Discuter sur WhatsApp<span class="visually-hidden"> (nouvelle fenêtre)</span></a>
+      <a class="pc-contact-widget__call" href="tel:+{{ settings.pc_whatsapp | remove: '+' | remove: ' ' | escape }}">{% render 'pc-icon', name: 'phone' %} Appeler {{ settings.pc_contact_phone | escape }}</a>
+    </div>
+  </section>
+  <button class="pc-contact-widget__trigger" type="button" aria-expanded="false" aria-controls="PcContactPanel" aria-label="Contacter Planet Computer sur WhatsApp ou par téléphone" data-contact-toggle>{% render 'pc-icon', name: 'whatsapp' %}<span>Besoin d’aide ?</span></button>
+</div>
+{% endif %}

@@ -1,37 +1,15 @@
 {{ 'footer.css' | asset_url | stylesheet_tag }}
-<footer class="pc-footer pc-section">
+<footer class="pc-footer">
+  <div class="pc-footer__service-band"><div class="pc-container"><div>{% render 'pc-icon', name: 'laptop' %}<span><strong>Vente</strong>Équipements & accessoires</span></div><div>{% render 'pc-icon', name: 'storage' %}<span><strong>Maintenance</strong>Parlons de votre appareil</span></div><div>{% render 'pc-icon', name: 'desktop' %}<span><strong>Installation</strong>Votre poste de travail</span></div><div>{% render 'pc-icon', name: 'location' %}<span><strong>2 boutiques à Tanger</strong>Un contact près de vous</span></div></div></div>
   <div class="pc-container">
     <div class="pc-footer__grid">
-      <div class="pc-footer__brand pc-stack">
-        <a class="pc-brand" href="{{ routes.root_url }}">
-          {% if settings.logo != blank %}
-            {% assign footer_logo_alt = settings.logo.alt | default: shop.name %}
-            {{ settings.logo | image_url: width: 600 | image_tag: widths: '200, 400, 600', sizes: '220px', alt: footer_logo_alt, class: 'pc-footer__logo', loading: 'lazy' }}
-          {% else %}
-            <img src="{{ 'pc-business-logo.png' | asset_url }}" width="2098" height="749" alt="{{ settings.pc_brand_name | default: shop.name | escape }} — Professional" class="pc-footer__logo" loading="lazy">
-          {% endif %}
-        </a>
-        {% if section.settings.description != blank %}<p class="pc-muted">{{ section.settings.description | escape }}</p>{% endif %}
-        {% if settings.pc_address != blank %}<p>{{ settings.pc_address | escape | newline_to_br }}</p>{% endif %}
-        {% if settings.pc_contact_email != blank %}<a href="mailto:{{ settings.pc_contact_email | escape }}">{{ settings.pc_contact_email | escape }}</a>{% endif %}
-        {% if settings.pc_contact_phone != blank %}<a href="tel:{{ settings.pc_contact_phone | remove: ' ' | escape }}">{{ settings.pc_contact_phone | escape }}</a>{% endif %}
-        {% if settings.social_facebook_link != blank %}<a href="{{ settings.social_facebook_link }}">{{ 'pc.shell.facebook' | t }}</a>{% endif %}
-      </div>
-      {% if section.settings.catalog_links %}<div><h2 class="pc-footer__heading">Explorer</h2><ul class="pc-footer__links" role="list"><li><a href="{{ routes.all_products_collection_url }}">Tous les produits</a></li><li><a href="{{ routes.collections_url }}/ordinateurs-portables">PC portables</a></li><li><a href="{{ routes.collections_url }}/moniteurs">Moniteurs</a></li></ul></div>{% endif %}
-      {% if section.settings.contact_link != blank %}<div><h2 class="pc-footer__heading">Votre projet</h2><ul class="pc-footer__links" role="list"><li><a href="{{ section.settings.contact_link }}">Nous contacter</a></li>{% if section.settings.guide_link != blank %}<li><a href="{{ section.settings.guide_link }}">Guide d’achat</a></li>{% endif %}<li><a href="{{ routes.cart_url }}">Mon panier</a></li></ul></div>{% endif %}
-      {% for block in section.blocks %}
-        {% if block.settings.menu.links != blank %}
-          <div {{ block.shopify_attributes }}>
-            {% if block.settings.heading != blank %}<h2 class="pc-footer__heading">{{ block.settings.heading | escape }}</h2>{% endif %}
-            <ul class="pc-footer__links" role="list">{% for link in block.settings.menu.links %}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{% endfor %}</ul>
-          </div>
-        {% endif %}
-      {% endfor %}
+      <div class="pc-footer__brand"><a href="{{ routes.root_url }}" class="pc-brand">{% if settings.logo != blank %}{{ settings.logo | image_url: width: 600 | image_tag: widths: '200, 400, 600', sizes: '220px', alt: shop.name, class: 'pc-footer__logo', loading: 'lazy' }}{% else %}<img src="{{ 'pc-business-logo.png' | asset_url }}" width="2098" height="749" alt="{{ settings.pc_brand_name | default: shop.name | escape }}" class="pc-footer__logo" loading="lazy">{% endif %}</a><p class="pc-footer__tagline">{{ settings.pc_tagline | escape }}</p>{% if section.settings.description != blank %}<p>{{ section.settings.description | escape }}</p>{% endif %}<a href="tel:+{{ settings.pc_whatsapp | remove: '+' | remove: ' ' | escape }}" class="pc-footer__contact">{% render 'pc-icon', name: 'phone' %}{{ settings.pc_contact_phone | escape }}</a><a class="pc-footer__contact" href="mailto:{{ settings.pc_contact_email | escape }}">{% render 'pc-icon', name: 'email' %}{{ settings.pc_contact_email | escape }}</a>{% if settings.social_facebook_link != blank %}<a href="{{ settings.social_facebook_link }}">Facebook</a>{% endif %}</div>
+      {% if section.settings.catalog_links %}<div><h2 class="pc-footer__heading">Le catalogue</h2><ul class="pc-footer__links" role="list"><li><a href="{{ routes.all_products_collection_url }}">Tous les produits</a></li><li><a href="{{ routes.collections_url }}">Toutes les catégories</a></li><li><a href="{{ routes.collections_url }}/ordinateurs-portables">Ordinateurs portables</a></li><li><a href="{{ routes.collections_url }}/moniteurs">Écrans & moniteurs</a></li><li><a href="{{ routes.cart_url }}">Mon panier</a></li></ul></div>{% endif %}
+      <div><h2 class="pc-footer__heading">Planet Computer</h2><ul class="pc-footer__links" role="list"><li><a href="{{ routes.root_url }}pages/a-propos-de-planet-computer">À propos de nous</a></li><li><a href="{{ routes.root_url }}pages/services">Vente, maintenance & installation</a></li><li><a href="{{ routes.root_url }}pages/contact">Nos boutiques & contact</a></li><li><a href="{{ routes.root_url }}pages/guide-d-achat">Guide d’achat</a></li>{% if blogs['conseils'] != blank %}<li><a href="{{ blogs['conseils'].url }}">Conseils & actualités</a></li>{% endif %}</ul></div>
+      <div><h2 class="pc-footer__heading">Une question ?</h2><p class="pc-footer__intro">Préparez votre référence produit ou décrivez votre projet. Retrouvez-nous dans l’une de nos deux boutiques à Tanger.</p><a class="pc-footer__visit" href="{{ routes.root_url }}pages/contact">Voir les adresses {% render 'pc-icon', name: 'chevron' %}</a><ul class="pc-footer__links" role="list">{% for policy in shop.policies %}{% if policy != blank %}<li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>{% endif %}{% endfor %}<li><a href="{{ routes.root_url }}pages/informations-legales">Informations légales</a></li><li><a href="{{ routes.root_url }}pages/cookies">Politique de cookies</a></li>{% if settings.pc_cookie_banner %}<li><button class="pc-footer__cookie-button" type="button" data-cookie-open>Gérer mes cookies</button></li>{% endif %}</ul></div>
+      {% for block in section.blocks %}{% if block.settings.menu.links != blank %}<div {{ block.shopify_attributes }}>{% if block.settings.heading != blank %}<h2 class="pc-footer__heading">{{ block.settings.heading | escape }}</h2>{% endif %}<ul class="pc-footer__links" role="list">{% for link in block.settings.menu.links %}<li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>{% endfor %}</ul></div>{% endif %}{% endfor %}
     </div>
-    <div class="pc-footer__bottom">
-      <small>&copy; {{ 'now' | date: '%Y' }} {{ settings.pc_brand_name | default: shop.name | escape }}</small>
-      {% if shop.policies.size > 0 %}<ul class="pc-footer__policies" role="list">{% for policy in shop.policies %}{% if policy != blank %}<li><a href="{{ policy.url }}">{{ policy.title | escape }}</a></li>{% endif %}{% endfor %}</ul>{% endif %}
-    </div>
+    <div class="pc-footer__bottom"><small>&copy; {{ 'now' | date: '%Y' }} {{ settings.pc_brand_name | default: shop.name | escape }}.</small><small>Created by <a href="https://ranber.com" target="_blank" rel="noopener">Ranber Agency<span class="visually-hidden"> (nouvelle fenêtre)</span></a></small></div>
   </div>
 </footer>
 {% schema %}

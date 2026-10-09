@@ -48,10 +48,15 @@
         "q2",
         "q3"
       ]
+    },
+    "boutiques": {
+      "type": "pc-boutiques",
+      "settings": {}
     }
   },
   "order": [
     "main",
+    "boutiques",
     "guide"
   ]
 }

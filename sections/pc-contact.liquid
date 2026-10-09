@@ -35,7 +35,7 @@
               {% if section.settings.company_field %}<div class="pc-form-field pc-form-field--wide"><label for="{{ form_id }}-company">Entreprise <span>(facultatif)</span></label><input id="{{ form_id }}-company" name="contact[Entreprise]" autocomplete="organization" maxlength="160"></div>{% endif %}
               <div class="pc-form-field pc-form-field--wide"><label for="{{ form_id }}-message">Votre message *</label><textarea id="{{ form_id }}-message" name="contact[body]" data-product-context data-product-prefix="{{ 'pc.product.question_prefix' | t | escape }}" rows="6" required maxlength="5000" aria-describedby="{{ form_id }}-hint">{{ form.body | escape }}</textarea><p class="pc-muted pc-field-hint" id="{{ form_id }}-hint">Précisez le modèle, votre usage ou votre numéro de commande si nécessaire.</p></div>
             </div>
-            {% if shop.privacy_policy != blank %}<p class="pc-contact__privacy">Consultez notre <a href="{{ shop.privacy_policy.url }}">politique de confidentialité</a> pour connaître le traitement de vos données.</p>{% endif %}
+            <p class="pc-contact__privacy">Vos coordonnées servent à répondre à votre demande. Aucun abonnement marketing automatique. Évitez les données sensibles. <a href="{{ routes.root_url }}pages/informations-legales">En savoir plus sur vos données</a>.</p>{% if shop.privacy_policy != blank %}<p class="pc-contact__privacy">Consultez notre <a href="{{ shop.privacy_policy.url }}">politique de confidentialité</a> pour connaître le traitement de vos données.</p>{% endif %}
             <button class="pc-button" type="submit">Envoyer mon message {% render 'pc-icon', name: 'chevron' %}</button>
           {% endif %}
         {% endform %}

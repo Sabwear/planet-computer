@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "pc-legal-page",
+      "settings": {
+        "intro": "Comprenez les catégories de cookies et gérez vos choix à tout moment.",
+        "cookie_controls": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "pc-legal-page",
+      "settings": {
+        "intro": "Comment les données de votre demande sont utilisées et comment nous contacter.",
+        "cookie_controls": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

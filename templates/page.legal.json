@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "pc-legal-page",
+      "settings": {
+        "intro": "Nos coordonnées, les informations du site et les liens vers les politiques de la boutique.",
+        "cookie_controls": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

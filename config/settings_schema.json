@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Planet Computer",
-    "theme_version": "0.14.0",
+    "theme_version": "0.15.0",
     "theme_author": "Shopify",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
     "theme_support_url": "https://support.shopify.com/"
@@ -67,6 +67,39 @@
         "type": "text",
         "id": "pc_contact_phone",
         "label": "Numéro de téléphone confirmé"
+      },
+      {
+        "type": "text",
+        "id": "pc_tagline",
+        "label": "Signature de la boutique",
+        "default": "Vente, Maintenance & Installation"
+      },
+      {
+        "type": "textarea",
+        "id": "pc_second_address",
+        "label": "Adresse de la deuxième boutique"
+      },
+      {
+        "type": "url",
+        "id": "pc_google_maps_url",
+        "label": "Fiche Google Business"
+      },
+      {
+        "type": "url",
+        "id": "pc_second_maps_url",
+        "label": "Itinéraire deuxième boutique"
+      },
+      {
+        "type": "checkbox",
+        "id": "pc_contact_widget",
+        "label": "Widget de contact WhatsApp",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "pc_cookie_banner",
+        "label": "Préférences cookies Shopify",
+        "default": true
       }
     ]
   },
