@@ -71,3 +71,7 @@ cart-drawer .cart__checkout-button { border-radius: 6px; }
 .facets-vertical .facets__label { min-height: 40px; }
 .facets-vertical .facets__form-vertical { background: #fff; border: 1px solid #e4e8ed; padding: 16px; border-radius: 10px; }
 .mobile-facets__inner { border-radius: 12px 0 0 12px; }
+
+/* Override the legacy last-tile palette for the third light campaign photo. */
+.pc-hero .pc-hero__side .pc-campaign-tile--portable { color: #161616; }
+.pc-hero .pc-hero__side .pc-campaign-tile--portable .pc-text-link { color: var(--pc-color-accent); }

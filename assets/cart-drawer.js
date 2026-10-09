@@ -30,16 +30,14 @@ class CartDrawer extends HTMLElement {
     if (triggeredBy) this.setActiveElement(triggeredBy);
     const cartDrawerNote = this.querySelector('[id^="Details-"] summary');
     if (cartDrawerNote && !cartDrawerNote.hasAttribute('role')) this.setSummaryAccessibility(cartDrawerNote);
-    // here the animation doesn't seem to always get triggered. A timeout seem to help
+    // Activate before focusing: hidden drawer controls cannot receive focus.
     setTimeout(() => {
       this.classList.add('animate', 'active');
-    });
-
-    // Focus must be trapped even when reduced motion disables transitions.
-    requestAnimationFrame(() => {
-      const container = this.classList.contains('is-empty')
-        ? this.querySelector('.drawer__inner-empty') : this.querySelector('#CartDrawer');
-      trapFocus(container, this.querySelector('.drawer__close'));
+      requestAnimationFrame(() => {
+        const container = this.classList.contains('is-empty')
+          ? this.querySelector('.drawer__inner-empty') : this.querySelector('#CartDrawer');
+        trapFocus(container, this.querySelector('.drawer__close'));
+      });
     });
 
     document.body.classList.add('overflow-hidden');
