@@ -5,6 +5,20 @@ class CartDrawer extends HTMLElement {
     this.addEventListener('keyup', (evt) => evt.code === 'Escape' && this.close());
     this.querySelector('#CartDrawer-Overlay').addEventListener('click', this.close.bind(this));
     this.setHeaderCartIconAccessibility();
+    // Keep modal focus inside the drawer if another control attempts to reclaim it.
+    document.addEventListener('focusin', (event) => {
+      if (this.classList.contains('active') && !this.contains(event.target)) {
+        this.querySelector('.drawer__close')?.focus();
+      }
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!this.classList.contains('active') || this.contains(event.target)) return;
+      if (event.key === 'Escape') this.close();
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        this.querySelector('.drawer__close')?.focus();
+      }
+    });
   }
 
   setHeaderCartIconAccessibility() {
