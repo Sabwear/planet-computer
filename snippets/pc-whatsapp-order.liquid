@@ -1,3 +1,4 @@
+{% comment %}Available products can request an order; sold-out products offer an availability enquiry.{% endcomment %}
 {% if settings.pc_whatsapp != blank %}
   {% assign whatsapp_number = settings.pc_whatsapp | remove: '+' | remove: ' ' | remove: '-' %}
   {% if cart_order and cart.item_count > 0 %}
