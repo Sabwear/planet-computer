@@ -33,7 +33,7 @@
     if (ready()) return;
     if (!window.Shopify?.loadFeatures) { error('loader'); return; }
     window.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], failure => {
-      if (!ready()) error(failure ? 'load-failed' : 'api-missing');
+      if (!ready()) { banner.dataset.cookieLoadMessage = String(failure?.message || failure || 'API missing'); error(failure ? 'load-failed' : 'api-missing'); }
     });
   };
   buttons.forEach(button => button.addEventListener('click', () => {
