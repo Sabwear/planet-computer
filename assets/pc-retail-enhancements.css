@@ -17,7 +17,7 @@
 .pc-catalog-brands .pc-catalog-brands__list a { min-height: 88px; justify-content: center; font-size: 1.7rem; letter-spacing: .04em; background: #fff; box-shadow: 0 3px 10px rgb(0 0 0 / 3%); }
 .pc-header .pc-desktop-nav--utilities .pc-nav-list { justify-content: flex-start; }
 .pc-desktop-nav--utilities { border-bottom: 1px solid #edf0f4; }
-.pc-catalog-nav .pc-container { position: relative; overflow: visible; align-items: center; }
+.pc-header .pc-catalog-nav .pc-container { position: relative; overflow: visible; align-items: center; }
 .pc-catalog-mega { flex: 0 0 auto; }
 .pc-catalog-mega > summary { color: #fff; min-height: 48px; padding: 8px 16px; font-size: 1.3rem; }
 .pc-catalog-mega__panel { left: 0; right: 0; display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 32px; box-shadow: 0 16px 32px rgb(0 0 0 / 12%); }
@@ -73,5 +73,5 @@ cart-drawer .cart__checkout-button { border-radius: 6px; }
 .mobile-facets__inner { border-radius: 12px 0 0 12px; }
 
 /* Override the legacy last-tile palette for the third light campaign photo. */
-.pc-hero .pc-hero__side .pc-campaign-tile--portable { color: #161616; }
-.pc-hero .pc-hero__side .pc-campaign-tile--portable .pc-text-link { color: var(--pc-color-accent); }
+.pc-hero .pc-hero__side .pc-campaign-tile.pc-campaign-tile--portable { color: #161616; }
+.pc-hero .pc-hero__side .pc-campaign-tile.pc-campaign-tile--portable .pc-text-link { color: var(--pc-color-accent); }
