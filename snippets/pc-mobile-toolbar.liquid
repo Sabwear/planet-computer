@@ -1,0 +1,11 @@
+<nav class="pc-mobile-toolbar" aria-label="Navigation mobile">
+  <a href="{{ routes.root_url }}"{% if request.page_type == 'index' %} aria-current="page"{% endif %}>{% render 'pc-icon', name: 'home' %}<span>Accueil</span></a>
+  <a href="{{ routes.all_products_collection_url }}"{% if request.page_type == 'collection' or request.page_type == 'list-collections' %} aria-current="page"{% endif %}>{% render 'pc-icon', name: 'categories' %}<span>Boutique</span></a>
+  <a href="{{ routes.search_url }}" data-mobile-search{% if request.page_type == 'search' %} aria-current="page"{% endif %}>{% render 'pc-icon', name: 'search' %}<span>Recherche</span></a>
+  <a href="{{ routes.cart_url }}" data-mobile-cart{% if request.page_type == 'cart' %} aria-current="page"{% endif %}><span class="pc-mobile-toolbar__cart">{% render 'pc-icon', name: 'cart' %}<span class="pc-mobile-toolbar__count" data-mobile-cart-count{% if cart.item_count == 0 %} hidden{% endif %} aria-hidden="true">{% if cart.item_count > 99 %}99+{% else %}{{ cart.item_count }}{% endif %}</span></span><span>Panier</span><span class="visually-hidden" data-mobile-cart-description>{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span></a>
+  {% if shop.customer_accounts_enabled %}
+    <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">{% render 'pc-icon', name: 'account' %}<span>Compte</span></a>
+  {% else %}
+    <a href="{{ routes.root_url }}pages/contact">{% render 'pc-icon', name: 'phone' %}<span>Contact</span></a>
+  {% endif %}
+</nav>

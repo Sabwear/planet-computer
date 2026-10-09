@@ -287,6 +287,7 @@
     {{ 'pc-contact-privacy.css' | asset_url | stylesheet_tag }}
     {{ 'pc-policy.css' | asset_url | stylesheet_tag }}
     {{ 'pc-responsive.css' | asset_url | stylesheet_tag }}
+    {{ 'pc-mobile-toolbar.css' | asset_url | stylesheet_tag }}
     {% render 'pc-design-tokens' %}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -353,6 +354,7 @@
     </main>
 
     {% sections 'footer-group' %}
+    {% render 'pc-mobile-toolbar' %}
     {% render 'pc-contact-widget' %}
     {% render 'pc-cookie-banner' %}
     <script src="{{ 'pc-contact-privacy.js' | asset_url }}" defer="defer"></script>
@@ -418,5 +420,6 @@
     <script src="{{ 'pc-quick-view.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pc-whatsapp-order.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pc-responsive.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'pc-mobile-toolbar.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

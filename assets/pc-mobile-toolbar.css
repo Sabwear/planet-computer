@@ -1,0 +1,21 @@
+.pc-mobile-toolbar{display:none}
+.pc-header .pc-catalog-mega>summary{padding-inline:32px}
+@media(max-width:1023px){
+ :root{--pc-toolbar-height:calc(58px + env(safe-area-inset-bottom,0px))}
+ body{padding-bottom:var(--pc-toolbar-height)}
+ .pc-mobile-toolbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;inset:auto 0 0;z-index:75;min-height:var(--pc-toolbar-height);padding:4px 6px calc(4px + env(safe-area-inset-bottom,0px));border-top:1px solid #e3e5e9;background:#fffffff5;backdrop-filter:blur(12px);box-shadow:0 -4px 20px #172a4710;animation:pc-toolbar-enter .35s cubic-bezier(.2,.8,.2,1) both}
+ .pc-mobile-toolbar>a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:50px;min-width:0;border-radius:8px;color:#525967;text-decoration:none;font:600 10px/1.2 var(--font-body-family);transition:background .2s,color .2s,transform .2s;-webkit-tap-highlight-color:transparent}
+ .pc-mobile-toolbar>a:hover,.pc-mobile-toolbar>a[aria-current=page]{background:#c529360a;color:#b42530}
+ .pc-mobile-toolbar>a:active{transform:translateY(-2px)}
+ .pc-mobile-toolbar>a:focus-visible{outline:2px solid #b42530;outline-offset:-2px}
+ .pc-mobile-toolbar .pc-icon{width:22px;height:22px}
+ .pc-mobile-toolbar__cart{position:relative;display:flex}
+ .pc-mobile-toolbar__count{position:absolute;right:-10px;top:-5px;min-width:16px;height:16px;border-radius:20px;background:#b42530;color:white;text-align:center;padding:2px 3px;font:700 9px/12px system-ui}
+ .pc-mobile-toolbar__count[hidden]{display:none}
+ .pc-cookie.pc-cookie{bottom:var(--pc-toolbar-height);max-height:calc(85dvh - var(--pc-toolbar-height))}
+ .pc-contact-widget.pc-contact-widget{bottom:calc(16px + var(--pc-cookie-offset,0px) + var(--pc-toolbar-height))}
+ .pc-contact-widget .pc-contact-widget__panel{max-height:max(80px,calc(100dvh - var(--pc-cookie-offset,0px) - var(--pc-toolbar-height) - 110px))}
+ .pc-header .pc-catalog-mega>summary{padding-inline:28px}
+}
+@keyframes pc-toolbar-enter{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.pc-mobile-toolbar{animation:none}.pc-mobile-toolbar>a{transition:none}}
