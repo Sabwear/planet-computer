@@ -1,5 +1,6 @@
 {% if settings.pc_cookie_banner %}
 <section class="pc-cookie" data-cookie-banner aria-labelledby="PcCookieTitle" hidden>
+  <button type="button" class="pc-cookie__close" data-cookie-close aria-label="Fermer sans modifier mes choix">{% render 'pc-icon', name: 'close' %}</button>
   <header><span class="pc-eyebrow">VOTRE CONFIDENTIALITÉ</span><h2 id="PcCookieTitle">Vous gardez le choix.</h2></header>
   <p>Les cookies nécessaires font fonctionner la boutique. Choisissez si vous autorisez les usages facultatifs : personnalisation, mesure d’audience et marketing.</p>
   <details data-cookie-details><summary>Personnaliser mes choix</summary><fieldset><legend class="visually-hidden">Catégories de cookies</legend>
@@ -8,6 +9,7 @@
   </fieldset><button type="button" class="pc-cookie__button" data-cookie-save="custom">Enregistrer mes choix</button></details>
   <div class="pc-cookie__actions"><button type="button" class="pc-cookie__button" data-cookie-save="reject">Tout refuser</button><button type="button" class="pc-cookie__button" data-cookie-save="accept">Tout accepter</button></div>
   <div class="pc-cookie__links"><a href="{{ routes.root_url }}pages/cookies">Comprendre les cookies</a>{% if shop.privacy_policy != blank %}<a href="{{ shop.privacy_policy.url }}">Confidentialité</a>{% endif %}</div>
+  <button type="button" class="pc-cookie__retry" data-cookie-retry hidden>Réessayer le service de préférences</button>
   <p class="pc-cookie__status" role="status" aria-live="polite" data-cookie-status></p>
 </section>
 {% endif %}

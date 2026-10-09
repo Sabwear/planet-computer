@@ -7,6 +7,6 @@
       <a class="pc-contact-widget__call" href="tel:+{{ settings.pc_whatsapp | remove: '+' | remove: ' ' | escape }}">{% render 'pc-icon', name: 'phone' %} Appeler {{ settings.pc_contact_phone | escape }}</a>
     </div>
   </section>
-  <button class="pc-contact-widget__trigger" type="button" aria-expanded="false" aria-controls="PcContactPanel" aria-label="Contacter Planet Computer sur WhatsApp ou par téléphone" data-contact-toggle>{% render 'pc-icon', name: 'whatsapp' %}<span>Besoin d’aide ?</span></button>
+  <button class="pc-contact-widget__trigger" type="button" aria-expanded="false" aria-controls="PcContactPanel" aria-label="Besoin d’aide ? Contacter Planet Computer sur WhatsApp ou par téléphone" data-contact-toggle>{% render 'pc-icon', name: 'whatsapp' %}<span>Besoin d’aide ?</span></button>
 </div>
 {% endif %}

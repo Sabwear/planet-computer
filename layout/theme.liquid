@@ -15,11 +15,12 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {% assign seo_brand_name = settings.pc_brand_name | default: shop.name %}
     <title>
-      {{ page_title }}
+      {% if request.page_type == 'index' %}{{ seo_brand_name | escape }} | Informatique à Tanger{% else %}{{ page_title }}{% endif %}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- unless page_title contains seo_brand_name or request.page_type == 'index' %} &ndash; {{ seo_brand_name | escape }}{% endunless -%}
     </title>
 
     {% if page_description %}
@@ -284,6 +285,7 @@
     {{ 'planet-theme.css' | asset_url | stylesheet_tag }}
     {{ 'pc-retail-enhancements.css' | asset_url | stylesheet_tag }}
     {{ 'pc-contact-privacy.css' | asset_url | stylesheet_tag }}
+    {{ 'pc-policy.css' | asset_url | stylesheet_tag }}
     {% render 'pc-design-tokens' %}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 

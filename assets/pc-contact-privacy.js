@@ -18,16 +18,21 @@
   const fields = [...banner.querySelectorAll('[data-consent]')];
   const buttons = [...banner.querySelectorAll('[data-cookie-save]')];
   let api; let opener; let saving = false;
+  const nativeBanner = () => document.getElementById('shopify-pc__banner');
+  const deferToNative = () => { const native = nativeBanner(); if (native && !native.hidden && native.getClientRects().length) banner.hidden = true; };
+  if (typeof MutationObserver !== 'undefined') new MutationObserver(deferToNative).observe(document.body, { childList: true, subtree: true });
   const read = () => {
     const consent = api.currentVisitorConsent();
     fields.forEach(field => { field.checked = consent[field.dataset.consent] === 'yes'; });
     return fields.every(field => ['yes', 'no'].includes(consent[field.dataset.consent]));
   };
-  const error = (stage = 'save') => { banner.dataset.cookieError = stage; banner.hidden = false; status.textContent = 'Le service de consentement est indisponible. Rechargez la page pour réessayer. Aucun choix n’a été enregistré.'; };
+  const retry = banner.querySelector('[data-cookie-retry]');
+  banner.querySelector('[data-cookie-close]').addEventListener('click', () => { banner.hidden = true; opener?.focus(); });
+  const error = (stage = 'save') => { banner.dataset.cookieError = stage; if (retry) retry.hidden = false; banner.hidden = false; status.textContent = 'Le service de consentement est indisponible. Rechargez la page pour réessayer. Aucun choix n’a été enregistré.'; };
   const ready = () => {
     api = window.Shopify?.customerPrivacy;
     if (!api) return false;
-    try { banner.hidden = read(); delete banner.dataset.cookieError; return true; } catch { error('read'); return true; }
+    try { banner.hidden = read(); deferToNative(); if (retry) retry.hidden = true; status.textContent = ''; delete banner.dataset.cookieError; return true; } catch { error('read'); return true; }
   };
   const init = () => {
     if (ready()) return;
@@ -56,10 +61,15 @@
   }));
   document.addEventListener('click', event => {
     const button = event.target.closest('[data-cookie-open]'); if (!button) return;
-    opener = button; banner.hidden = false; banner.querySelector('[data-cookie-details]').open = true;
+    opener = button;
+    const nativePreferences = nativeBanner()?.querySelector('#shopify-pc__banner__btn-manage-prefs');
+    if (nativePreferences) { banner.hidden = true; nativePreferences.click(); return; }
+    banner.hidden = false; banner.querySelector('[data-cookie-details]').open = true;
     if (api) { try { read(); } catch { error(); } }
     banner.querySelector('summary').focus();
   });
   document.addEventListener('visitorConsentCollected', () => { if (api && !saving) { try { read(); } catch { error(); } } });
+  retry?.addEventListener('click', () => { status.textContent = 'Chargement…'; init(); });
   init();
+  deferToNative();
 })();

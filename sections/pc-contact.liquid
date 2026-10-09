@@ -13,7 +13,7 @@
           {% if section.settings.notes_heading != blank %}<h2>{{ section.settings.notes_heading | escape }}</h2>{% endif %}
           <p class="pc-muted">{{ section.settings.notes | escape }}</p>
           {% if settings.pc_contact_email != blank %}<a class="pc-support-link" href="mailto:{{ settings.pc_contact_email | escape }}">{% render 'pc-icon', name: 'email' %}{{ settings.pc_contact_email | escape }}</a>{% endif %}
-          {% if settings.pc_contact_phone != blank %}<a class="pc-support-link" href="tel:{{ settings.pc_contact_phone | remove: ' ' | escape }}">{% render 'pc-icon', name: 'phone' %}{{ settings.pc_contact_phone | escape }}</a>{% endif %}
+          {% if settings.pc_contact_phone != blank %}<a class="pc-support-link" href="tel:{{ settings.pc_whatsapp | remove: '+' | remove: ' ' | prepend: '+' | escape }}">{% render 'pc-icon', name: 'phone' %}{{ settings.pc_contact_phone | escape }}</a>{% endif %}
           {% if settings.pc_address != blank %}<p>{{ settings.pc_address | escape | newline_to_br }}</p>{% endif %}
           <a class="pc-support-link" href="{{ routes.all_products_collection_url }}">Explorer le catalogue {% render 'pc-icon', name: 'chevron' %}</a>
         </div>
