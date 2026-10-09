@@ -76,7 +76,7 @@
     {% endif %}
     {% if section.settings.catalog_navigation %}
       <nav class="pc-catalog-nav" aria-label="Univers informatiques"><div class="pc-container">
-        <details class="pc-mega pc-catalog-mega"><summary class="pc-catalog-nav__all">{% render 'pc-icon', name: 'menu' %} {{ 'pc.shell.catalog' | t }}{% render 'pc-icon', name: 'chevron' %}</summary>
+        <details class="pc-mega pc-catalog-mega"><summary class="pc-catalog-nav__all">{% render 'pc-icon', name: 'categories' %} {{ 'pc.shell.catalog' | t }}{% render 'pc-icon', name: 'chevron' %}</summary>
           <div class="pc-mega__panel pc-catalog-mega__panel"><div class="pc-catalog-mega__intro"><p class="pc-eyebrow">{{ settings.pc_brand_name | default: shop.name | escape }}</p><h2>{{ 'pc.shell.explore_categories' | t }}</h2><a class="pc-text-link" href="{{ routes.all_products_collection_url }}">{{ 'pc.home.view_all' | t }}</a></div><ul class="pc-mega__groups" role="list">{% for block in section.blocks %}{% assign category_url = block.settings.collection.url | default: block.settings.link %}{% assign category_label = block.settings.label | default: block.settings.collection.title %}{% if category_url != blank and category_label != blank %}<li><a class="pc-mega-category" href="{{ category_url }}">{% if block.settings.collection.image %}{{ block.settings.collection.image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80, 160', sizes: '80px', alt: category_label }}{% endif %}<strong>{{ category_label | escape }}</strong></a></li>{% endif %}{% endfor %}</ul></div>
         </details>
         {% for block in section.blocks %}

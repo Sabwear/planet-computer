@@ -5,6 +5,14 @@ if (!customElements.get('pc-header')) {
       this.controller?.abort();
       this.controller = new AbortController();
       const options = { signal: this.controller.signal };
+      const utility = this.querySelector('.pc-desktop-nav--utilities');
+      const section = this.closest('.pc-header-section');
+      if (utility && section && this.classList.contains('pc-header--sticky')) {
+        const measure = () => section.style.setProperty('--pc-utility-height', `${utility.getBoundingClientRect().height}px`);
+        this.utilityObserver = new ResizeObserver(measure);
+        this.utilityObserver.observe(utility);
+        measure();
+      }
       this.dialog = this.querySelector('dialog');
       this.trigger = this.querySelector('[data-menu-open]');
       this.fallback = this.querySelector('[data-menu-fallback]');
@@ -64,6 +72,7 @@ if (!customElements.get('pc-header')) {
     }
     disconnectedCallback() {
       this.controller?.abort();
+      this.utilityObserver?.disconnect();
       if (this.dialog?.open) this.dialog.close();
       document.body.classList.remove('pc-menu-open');
     }

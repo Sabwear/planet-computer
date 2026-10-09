@@ -6,13 +6,13 @@
 {{ request.origin }}{{ item.url }}
 {% endfor %}Total estimé : {{ cart.total_price | money_with_currency | strip_html }}.
 Merci de confirmer la disponibilité, les frais éventuels et les modalités avant validation.{% endcapture %}
-    <a class="pc-whatsapp-order" href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_message | strip | url_encode }}" target="_blank" rel="noopener">{% render 'pc-icon', name: 'whatsapp' %}Commander par WhatsApp<span class="visually-hidden"> (nouvelle fenêtre)</span></a>
+    <a class="pc-whatsapp-order" href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_message | strip | url_encode }}" target="_blank" rel="noopener">{% render 'pc-icon', name: 'whatsapp' %}{{ label | default: 'Commander par WhatsApp' }}<span class="visually-hidden"> (nouvelle fenêtre)</span></a>
     <p class="pc-whatsapp-order-note">Confirmation avec la boutique. Aucun paiement automatique.</p>
   {% elsif product != blank %}
     {% assign whatsapp_variant = product.selected_or_first_available_variant %}
     {% if whatsapp_variant.available %}
       {% capture whatsapp_message %}Bonjour Planet Computer, je souhaite commander : {{ product.title }}{% unless whatsapp_variant.title == 'Default Title' %} — {{ whatsapp_variant.title }}{% endunless %}. Quantité : 1. {{ request.origin }}{{ product.url }}?variant={{ whatsapp_variant.id }}. Merci de confirmer la disponibilité et les modalités avant validation.{% endcapture %}
-      <a class="pc-whatsapp-order" href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_message | strip | url_encode }}" data-whatsapp-product data-phone="{{ whatsapp_number }}" data-title="{{ product.title | escape }}" data-url="{{ request.origin }}{{ product.url }}" data-variants="{{ product.variants | json | escape }}" target="_blank" rel="noopener">{% render 'pc-icon', name: 'whatsapp' %}Commander par WhatsApp<span class="visually-hidden"> (nouvelle fenêtre)</span></a>
+      <a class="pc-whatsapp-order" href="https://wa.me/{{ whatsapp_number }}?text={{ whatsapp_message | strip | url_encode }}" data-whatsapp-product data-phone="{{ whatsapp_number }}" data-title="{{ product.title | escape }}" data-url="{{ request.origin }}{{ product.url }}" data-variants="{{ product.variants | json | escape }}" target="_blank" rel="noopener">{% render 'pc-icon', name: 'whatsapp' %}{{ label | default: 'Commander par WhatsApp' }}<span class="visually-hidden"> (nouvelle fenêtre)</span></a>
     {% endif %}
   {% endif %}
 {% endif %}

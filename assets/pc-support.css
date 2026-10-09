@@ -45,3 +45,5 @@
 .pc-not-found__search .pc-button { border-radius: 0; }
 .pc-not-found__search:focus-within { outline: 3px solid var(--pc-color-accent); outline-offset: 4px; }
 .pc-not-found__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+.pc-contact__consent{display:flex;align-items:flex-start;gap:12px;min-height:44px;font-size:1.3rem;line-height:1.6;cursor:pointer}.pc-contact__consent input{width:20px;height:20px;flex-shrink:0;margin:2px 0 0;accent-color:var(--pc-color-accent)}

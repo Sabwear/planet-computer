@@ -19,7 +19,7 @@
 .pc-desktop-nav--utilities { border-bottom: 1px solid #edf0f4; }
 .pc-header .pc-catalog-nav .pc-container { position: relative; overflow: visible; align-items: center; }
 .pc-catalog-mega { flex: 0 0 auto; }
-.pc-catalog-mega > summary { color: #fff; min-height: 48px; padding: 8px 16px; font-size: 1.3rem; }
+.pc-catalog-mega > summary { color: #fff; min-height: 48px; padding: 10px 24px; gap: 12px; font-size: 1.3rem; }
 .pc-catalog-mega__panel { left: 0; right: 0; display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 32px; box-shadow: 0 16px 32px rgb(0 0 0 / 12%); }
 .pc-catalog-mega__intro h2 { font-size: 2.4rem; }
 .pc-catalog-mega__panel .pc-mega__groups { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
@@ -94,8 +94,8 @@ cart-drawer .cart__checkout-button { border-radius: 6px; }
 .pc-quick-view-details{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;color:#242424;font-size:1.2rem;text-underline-offset:4px}
 .pc-quick-view-details .pc-icon{width:14px;height:14px}
 .pc-quick-view-dialog [data-quick-view-status]:empty{display:none}
-.pc-whatsapp-order{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border:1px solid #137c45;border-radius:6px;background:#f0faf4;color:#126338!important;padding:10px 12px;font-size:1.3rem;font-weight:700;line-height:1.4;text-align:center;text-decoration:none;box-sizing:border-box}
-.pc-whatsapp-order:hover{background:#dff4e7;border-color:#096533}
+.pc-whatsapp-order{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border:1px solid #137c45;border-radius:6px;background:#087b43;color:#fff!important;padding:10px 12px;font-size:1.3rem;font-weight:700;line-height:1.4;text-align:center;text-decoration:none;box-sizing:border-box}
+.pc-whatsapp-order:hover{background:#066337;border-color:#066337}
 .pc-whatsapp-order .pc-icon{width:20px;height:20px;flex-shrink:0}
 .pc-whatsapp-order:focus-visible{outline:3px solid #137c45;outline-offset:3px}
 .pc-whatsapp-order-note{font-size:1.1rem;line-height:1.5;color:#535353;text-align:center;margin:6px 0}
@@ -106,3 +106,6 @@ cart-drawer .pc-whatsapp-order{width:100%}
 @media(max-height:500px) and (min-width:550px){.pc-quick-view-grid{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}.pc-quick-view-image{height:190px}}
 .pc-quick-view-dialog .pc-quick-view-close{position:absolute;left:auto;right:4px;top:4px;width:44px;height:44px;min-height:44px;padding:10px;background:transparent;border:0;border-radius:50%;cursor:pointer}
 .pc-quick-view-dialog .pc-quick-view-close:hover{background:#f0f0f0}
+
+.product-form__buttons>.pc-whatsapp-order{flex-basis:100%;width:100%}
+.pc-catalog-mega>summary>.pc-icon:first-child{width:22px;height:22px;flex-shrink:0}
