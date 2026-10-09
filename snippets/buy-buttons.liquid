@@ -93,6 +93,7 @@
             </span>
             {%- render 'loading-spinner' -%}
           </button>
+          {% render 'pc-whatsapp-order', product: product %}
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}

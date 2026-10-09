@@ -75,3 +75,32 @@ cart-drawer .cart__checkout-button { border-radius: 6px; }
 /* Override the legacy last-tile palette for the third light campaign photo. */
 .pc-hero .pc-hero__side .pc-campaign-tile.pc-campaign-tile--portable { color: #161616; }
 .pc-hero .pc-hero__side .pc-campaign-tile.pc-campaign-tile--portable .pc-text-link { color: var(--pc-color-accent); }
+
+/* Compact, bounded quick view: purchase essentials before full specifications. */
+.pc-quick-view-dialog{box-sizing:border-box;width:min(820px,calc(100vw - 32px));max-width:none;max-height:calc(100dvh - 32px);padding:32px 24px 20px;overflow:auto;overscroll-behavior:contain}
+.pc-quick-view-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px;align-items:start}
+.pc-quick-view-image{display:flex;align-items:center;justify-content:center;min-width:0;background:#f6f6f6;border-radius:12px;padding:16px;aspect-ratio:1.12}
+.pc-quick-view-image img{width:100%;height:100%;max-height:280px;object-fit:contain;mix-blend-mode:multiply}
+.pc-quick-view-info{min-width:0;display:flex;flex-direction:column;gap:10px}
+.pc-quick-view-info>p,.pc-quick-view-info .pc-stock{margin:0}
+.pc-quick-view-grid h2{font-size:clamp(1.8rem,2vw,2.4rem);line-height:1.25;letter-spacing:-.4px}
+.pc-quick-view-info .pc-badges:empty,.pc-quick-view-info .pc-specs:empty{display:none}
+.pc-quick-view-purchase{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-block:4px}
+.pc-quick-view-purchase .pc-price strong{font-size:2.4rem;color:#b32622}
+.pc-quick-view-info .pc-specs{display:flex;flex-wrap:wrap;gap:6px 12px;list-style:none;margin:0;padding:0;font-size:1.2rem;color:#535353;line-height:1.6}
+.pc-quick-view-info .pc-specs li{border:0;padding:0;overflow-wrap:anywhere}
+.pc-quick-view-actions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:4px}
+.pc-quick-view-actions .pc-button{min-height:46px;font-size:1.3rem;width:100%;padding:10px 12px}
+.pc-quick-view-details{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;color:#242424;font-size:1.2rem;text-underline-offset:4px}
+.pc-quick-view-details .pc-icon{width:14px;height:14px}
+.pc-quick-view-dialog [data-quick-view-status]:empty{display:none}
+.pc-whatsapp-order{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border:1px solid #137c45;border-radius:6px;background:#f0faf4;color:#126338!important;padding:10px 12px;font-size:1.3rem;font-weight:700;line-height:1.4;text-align:center;text-decoration:none;box-sizing:border-box}
+.pc-whatsapp-order:hover{background:#dff4e7;border-color:#096533}
+.pc-whatsapp-order .pc-icon{width:20px;height:20px;flex-shrink:0}
+.pc-whatsapp-order:focus-visible{outline:3px solid #137c45;outline-offset:3px}
+.pc-whatsapp-order-note{font-size:1.1rem;line-height:1.5;color:#535353;text-align:center;margin:6px 0}
+.product-form__buttons>.pc-whatsapp-order{margin-bottom:12px}
+cart-drawer .pc-whatsapp-order{width:100%}
+@media(min-width:990px){.product-form__buttons{display:flex;flex-wrap:wrap;gap:10px}.product-form__buttons>.product-form__submit,.product-form__buttons>.pc-whatsapp-order{flex:1 1 calc(50% - 10px);margin:0 0 12px}.product-form__buttons>div,.product-form__buttons>shopify-accelerated-checkout{flex-basis:100%}}
+@media(max-width:767px){.pc-quick-view-dialog{width:calc(100vw - 20px);max-height:calc(100dvh - 20px);padding:30px 16px 12px;border-radius:14px}.pc-quick-view-grid{grid-template-columns:1fr;gap:12px}.pc-quick-view-image{aspect-ratio:auto;height:150px;padding:8px}.pc-quick-view-image img{height:134px;max-width:230px}.pc-quick-view-info{gap:8px}.pc-quick-view-grid h2{font-size:1.8rem}.pc-quick-view-purchase .pc-price strong{font-size:2.1rem}.pc-quick-view-info .pc-specs{font-size:1.1rem;gap:4px 10px}.pc-quick-view-actions{margin-top:2px}}
+@media(max-height:500px) and (min-width:550px){.pc-quick-view-grid{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)}.pc-quick-view-image{height:190px}}
