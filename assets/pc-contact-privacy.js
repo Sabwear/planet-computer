@@ -23,13 +23,17 @@
     fields.forEach(field => { field.checked = consent[field.dataset.consent] === 'yes'; });
     return fields.every(field => ['yes', 'no'].includes(consent[field.dataset.consent]));
   };
-  const error = () => { banner.hidden = false; status.textContent = 'Le service de consentement est indisponible. Rechargez la page pour réessayer. Aucun choix n’a été enregistré.'; };
+  const error = (stage = 'save') => { banner.dataset.cookieError = stage; banner.hidden = false; status.textContent = 'Le service de consentement est indisponible. Rechargez la page pour réessayer. Aucun choix n’a été enregistré.'; };
+  const ready = () => {
+    api = window.Shopify?.customerPrivacy;
+    if (!api) return false;
+    try { banner.hidden = read(); delete banner.dataset.cookieError; return true; } catch { error('read'); return true; }
+  };
   const init = () => {
-    if (!window.Shopify?.loadFeatures) { error(); return; }
+    if (ready()) return;
+    if (!window.Shopify?.loadFeatures) { error('loader'); return; }
     window.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], failure => {
-      if (failure || !window.Shopify.customerPrivacy) { error(); return; }
-      api = window.Shopify.customerPrivacy;
-      try { banner.hidden = read(); } catch { error(); }
+      if (!ready()) error(failure ? 'load-failed' : 'api-missing');
     });
   };
   buttons.forEach(button => button.addEventListener('click', () => {
