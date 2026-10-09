@@ -28,7 +28,7 @@
   };
   const retry = banner.querySelector('[data-cookie-retry]');
   banner.querySelector('[data-cookie-close]').addEventListener('click', () => { banner.hidden = true; opener?.focus(); });
-  const error = (stage = 'save') => { banner.dataset.cookieError = stage; if (retry) retry.hidden = false; banner.hidden = false; status.textContent = 'Le service de consentement est indisponible. Rechargez la page pour réessayer. Aucun choix n’a été enregistré.'; };
+  const error = (stage = 'save') => { banner.dataset.cookieError = stage; if (retry) retry.hidden = false; banner.hidden = false; status.textContent = 'Service indisponible. Aucun choix enregistré.'; };
   const ready = () => {
     api = window.Shopify?.customerPrivacy;
     if (!api) return false;
